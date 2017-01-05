@@ -1,0 +1,18 @@
+name: lcov
+version: 0.1.0
+
+author: Cédric Belin <cedric@belin.io>
+description: Parse and format LCOV coverage reports.
+documentation: https://cedx.github.io/lcov.dart
+homepage: https://github.com/cedx/lcov.dart
+
+environment:
+  sdk: '>=1.21.0 <2.0.0'
+
+dependencies:
+  grinder: ^0.8.0
+  grinder_coveralls:
+    path: C:/repo/grinder-coveralls
+
+dev_dependencies:
+  test: ^0.12.18
