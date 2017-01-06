@@ -4,6 +4,4 @@ part of lcov;
 class Report {
 
   List<Record> records = [];
-
-  String title;
 }

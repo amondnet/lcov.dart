@@ -2,8 +2,10 @@
 library lcov;
 
 import 'dart:async';
+import 'dart:convert';
 
-part 'src/report.dart';
+part 'src/coverage.dart';
 part 'src/formatter.dart';
 part 'src/parser.dart';
 part 'src/record.dart';
+part 'src/report.dart';
