@@ -1,4 +1,5 @@
 # LCOV Reports for Dart
+![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Build](https://travis-ci.org/cedx/lcov.dart.svg)
 
 TODO
 
