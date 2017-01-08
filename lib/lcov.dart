@@ -4,8 +4,12 @@ library lcov;
 import 'dart:async';
 import 'dart:convert';
 
-part 'src/coverage.dart';
 part 'src/formatter.dart';
 part 'src/parser.dart';
-part 'src/record.dart';
-part 'src/report.dart';
+part 'src/token.dart';
+
+part 'src/coverage/branch.dart';
+part 'src/coverage/function.dart';
+part 'src/coverage/line.dart';
+part 'src/coverage/record.dart';
+part 'src/coverage/report.dart';
