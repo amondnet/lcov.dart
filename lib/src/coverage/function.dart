@@ -38,8 +38,9 @@ class FunctionCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var lines = functions.keys.map((key) => '${Token.functionName}:$key,${functions[key]}').toList();
-    lines.addAll(data.map((item) => item.toString()));
+    var lines = [];
+    if (functions != null) lines.addAll(functions.keys.map((key) => '${Token.functionName}:$key,${functions[key]}'));
+    if (data != null) lines.addAll(data.map((item) => item.toString()));
     lines.add('${Token.functionsFound}:$found');
     lines.add('${Token.functionsHit}:$hit');
     return lines.join('\n');

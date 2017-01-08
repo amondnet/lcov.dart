@@ -9,7 +9,7 @@ class Report {
   /// Creates a new record from the specified [map] in JSON format.
   Report.fromJson(Map<String, dynamic> map) {
     assert(map != null);
-    if (map['testName'] != null) testName = map['testName'].toString();
+    testName = map['testName'] != null ? map['testName'].toString() : null;
 
     var items = map['records'] as List<Map<String, dynamic>>;
     if (items != null) records = items.map((map) => new Record.fromJson(map)).toList();
@@ -29,5 +29,9 @@ class Report {
 
   /// Returns a string representation of this object.
   @override
-  String toString() => '$runtimeType ${JSON.encode(this)}';
+  String toString() {
+    var lines = ['${Token.testName}:$testName'];
+    if (records != null) lines.addAll(records.map((item) => item.toString()));
+    return lines.join('\n');
+  }
 }

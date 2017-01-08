@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:grinder/grinder.dart';
-import 'package:grinder_coveralls/grinder_coveralls.dart';
+//import 'package:grinder_coveralls/grinder_coveralls.dart';
 
 /// The list of source directories.
 const List<String> _sources = const ['lib', 'test', 'tool'];
@@ -14,7 +14,7 @@ void clean() => defaultClean();
 
 /// Uploads the code coverage report.
 @Task('Upload the code coverage')
-Future coverage() => uploadCoverage('var/lcov.info');
+//Future coverage() => uploadCoverage('var/lcov.info');
 
 /// Builds the documentation.
 @Task('Build the documentation')
@@ -30,4 +30,5 @@ void lint() => Analyzer.analyze(_sources);
 
 /// Runs all the test suites.
 @Task('Run the tests')
-Future test() => collectCoverage('test/all.dart', 'var/lcov.info');
+//Future test() => collectCoverage('test/all.dart', 'var/lcov.info');
+void test() => new TestRunner().test();

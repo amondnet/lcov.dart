@@ -36,10 +36,6 @@ abstract class Token {
   /// The number of lines with a non-zero execution count.
   static const String linesHit = 'LH';
 
-
-
-
-
   /// The path to a source file.
   static const String sourceFile = 'SF';
 

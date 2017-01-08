@@ -14,33 +14,40 @@ class Record {
     if (map['functions'] is List<Map>) functions = map['functions'];
     if (map['lines'] is List<Map>) lines = map['lines'];
     */
-    if (map['sourceFile'] != null) sourceFile = map['sourceFile'].toString();
+    sourceFile = map['sourceFile'] != null ? map['sourceFile'].toString() : null;
 /*
     var items = map['branches'] as List<Map<String, dynamic>>;
     if (items != null) branches = items.map((map) => new Coverage.fromJson(map)).toList();*/
   }
 
   /// The branch coverage.
-  Coverage branches = new Coverage<BranchData>();
+  BranchCoverage branches = new BranchCoverage();
 
   /// The function coverage.
-  Coverage functions = new Coverage<FunctionCoverage>();
+  FunctionCoverage functions = new FunctionCoverage();
 
   /// The statement coverage.
-  Coverage lines = new Coverage<LineCoverage>();
+  LineCoverage lines = new LineCoverage();
 
   /// The path to the source file.
   String sourceFile;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'branches': branches,
-    'functions': functions,
-    'lines': lines,
+    'branches': branches.toJson(),
+    'functions': functions.toJson(),
+    'lines': lines.toJson(),
     'sourceFile': sourceFile
   };
 
   /// Returns a string representation of this object.
   @override
-  String toString() => '$runtimeType ${JSON.encode(this)}';
+  String toString() {
+    var lines = ['${Token.sourceFile}:$sourceFile'];
+    if (functions != null) lines.add(functions.toString());
+    if (branches != null) lines.add(branches.toString());
+    if (lines != null) lines.add(lines.toString());
+    lines.add(Token.endOfRecord);
+    return lines.join('\n');
+  }
 }

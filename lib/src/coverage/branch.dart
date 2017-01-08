@@ -33,7 +33,8 @@ class BranchCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var lines = data.map((item) => item.toString()).toList();
+    var lines = [];
+    if (data != null) lines.addAll(data.map((item) => item.toString()));
     lines.add('${Token.branchesFound}:$found');
     lines.add('${Token.branchesHit}:$hit');
     return lines.join('\n');

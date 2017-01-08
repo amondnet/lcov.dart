@@ -4,8 +4,8 @@ class Parser {
 
   /// TODO
   Future<Map> parse(String coverage) {
-    List<Map> data = [];
-    Map item;
+    Report report = [];
+    Record record;
 
     List<String> lines = ['end_of_record'];
     lines.addAll(coverage.split(new RegExp(r'\r?\n')));
@@ -13,8 +13,8 @@ class Parser {
       line = line.trim();
 
       if (line.contains('end_of_record')) {
-        data.add(item);
-        item = {
+        report.add(record);
+        record = {
           'lines': {
             'details': [],
             'found': 0,
