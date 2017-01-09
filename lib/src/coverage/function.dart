@@ -56,7 +56,7 @@ class FunctionData {
   /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map) {
     assert(map != null);
-    executionCount = map['count'] is int ? map['count'] : 0;
+    executionCount = map['hit'] is int ? map['hit'] : 0;
     functionName = map['name'] != null ? map['name'].toString() : null;
   }
 
@@ -68,7 +68,7 @@ class FunctionData {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'count': executionCount,
+    'hit': executionCount,
     'name': functionName
   };
 
@@ -77,7 +77,7 @@ class FunctionData {
   String toString() => '${Token.functionData}:$executionCount,$functionName';
 }
 
-/// TODO Provides details about a function.
+/// TODO Merge this class with [FunctionData] class.
 class FunctionDef {
 
   /// Creates a new function coverage entry.
