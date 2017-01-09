@@ -44,10 +44,10 @@ class BranchCoverage {
 /// Provides details for branch coverage.
 class BranchData {
 
-  /// Creates a new branch coverage entry.
+  /// Creates a new branch data.
   BranchData({this.branchNumber = 0, this.blockNumber = 0, this.lineNumber = 0, this.taken = 0});
 
-  /// Creates a new branch coverage entry from the specified [map] in JSON format.
+  /// Creates a new branch data from the specified [map] in JSON format.
   BranchData.fromJson(Map<String, int> map) {
     assert(map != null);
     branchNumber = map['branch'] != null ? map['branch'] : 0;

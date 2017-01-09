@@ -50,10 +50,10 @@ class FunctionCoverage {
 /// Provides details for function coverage.
 class FunctionData {
 
-  /// Creates a new function coverage entry.
+  /// Creates a new function data.
   FunctionData({this.executionCount = 0, this.functionName});
 
-  /// Creates a new function coverage entry from the specified [map] in JSON format.
+  /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map) {
     assert(map != null);
     executionCount = map['count'] is int ? map['count'] : 0;

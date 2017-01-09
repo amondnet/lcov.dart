@@ -44,10 +44,10 @@ class LineCoverage {
 /// Provides details for line coverage.
 class LineData {
 
-  /// Creates a new line coverage entry.
+  /// Creates a new line data.
   LineData({this.checksum, this.executionCount = 0, this.lineNumber = 0});
 
-  /// Creates a new line coverage entry from the specified [map] in JSON format.
+  /// Creates a new line data from the specified [map] in JSON format.
   LineData.fromJson(Map<String, dynamic> map) {
     assert(map != null);
     checksum = map['checksum'] != null ? map['checksum'].toString() : null;
