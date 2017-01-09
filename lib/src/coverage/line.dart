@@ -51,7 +51,7 @@ class LineData {
   LineData.fromJson(Map<String, dynamic> map) {
     assert(map != null);
     checksum = map['checksum'] != null ? map['checksum'].toString() : null;
-    executionCount = map['count'] is int ? map['count'] : 0;
+    executionCount = map['hit'] is int ? map['hit'] : 0;
     lineNumber = map['line'] is int ? map['line'] : 0;
   }
 
@@ -67,7 +67,7 @@ class LineData {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'checksum': checksum,
-    'count': executionCount,
+    'hit': executionCount,
     'line': lineNumber
   };
 
