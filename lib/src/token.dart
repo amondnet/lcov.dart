@@ -1,6 +1,6 @@
 part of lcov;
 
-/// See: http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php
+/// Provides the list of tokens supported by the parser.
 abstract class Token {
 
   /// The coverage data of a branch.
@@ -18,14 +18,14 @@ abstract class Token {
   /// The coverage data of a function.
   static const String functionData = 'FNDA';
 
-  /// The number of functions hit.
-  static const String functionsHit = 'FRH';
-
-  /// The number of functions found.
-  static const String functionsFound = 'FRF';
-
   /// A function name.
   static const String functionName = 'FN';
+
+  /// The number of functions hit.
+  static const String functionsHit = 'FNH';
+
+  /// The number of functions found.
+  static const String functionsFound = 'FNF';
 
   /// The coverage data of a line.
   static const String lineData = 'DA';
