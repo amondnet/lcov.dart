@@ -26,7 +26,7 @@ class Record {
   /// The function coverage.
   FunctionCoverage functions = new FunctionCoverage();
 
-  /// The statement coverage.
+  /// The line coverage.
   LineCoverage lines = new LineCoverage();
 
   /// The path to the source file.

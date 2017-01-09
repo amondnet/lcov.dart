@@ -1,7 +1,7 @@
 import 'package:lcov/lcov.dart';
 import 'package:test/test.dart';
 
-/// Tests the features of the branch coverage.
+/// Tests the features of the line coverage.
 void main() {
   group('LineCoverage', () {
     group('.fromJson()', () {

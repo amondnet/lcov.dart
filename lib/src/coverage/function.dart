@@ -4,14 +4,14 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage({this.data = const [], this.found = 0, this.functions = const {}, this.hit = 0});
+  FunctionCoverage({this.data = const [], this.found = 0, this.functions = const [], this.hit = 0});
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   FunctionCoverage.fromJson(Map<String, dynamic> map) {
     assert(map != null);
     data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((map) => new FunctionData.fromJson(map)).toList() : [];
     found = map['found'] is int ? map['found'] : 0;
-    functions = map['functions'] is Map<String, String> ? new Map.fromIterable(map['functions'], key: (item) => int.parse(item, radix: 10)) : {};
+    functions = map['functions'] is List<Map<String, dynamic>> ? map['functions'].map((map) => new FunctionDef.fromJson(map)).toList() : [];
     hit = map['hit'] is int ? map['hit'] : 0;
   }
 
@@ -22,7 +22,7 @@ class FunctionCoverage {
   int found;
 
   /// The map of the line numbers of function start and the corresponding function names.
-  Map<int, String> functions;
+  List<FunctionDef> functions;
 
   /// The number of functions hit.
   int hit;
@@ -31,7 +31,7 @@ class FunctionCoverage {
   Map<String, dynamic> toJson() => {
     'data': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
-    'functions': functions,
+    'functions': functions != null ? functions.map((item) => item.toJson()).toList() : [],
     'hit': hit
   };
 
@@ -39,7 +39,7 @@ class FunctionCoverage {
   @override
   String toString() {
     var lines = [];
-    if (functions != null) lines.addAll(functions.keys.map((key) => '${Token.functionName}:$key,${functions[key]}'));
+    if (functions != null) lines.addAll(functions.map((item) => item.toString()));
     if (data != null) lines.addAll(data.map((item) => item.toString()));
     lines.add('${Token.functionsFound}:$found');
     lines.add('${Token.functionsHit}:$hit');
@@ -75,4 +75,34 @@ class FunctionData {
   /// Returns a string representation of this object.
   @override
   String toString() => '${Token.functionData}:$executionCount,$functionName';
+}
+
+/// TODO Provides details about a function.
+class FunctionDef {
+
+  /// Creates a new function coverage entry.
+  FunctionDef({this.lineNumber = 0, this.name});
+
+  /// Creates a new function coverage entry from the specified [map] in JSON format.
+  FunctionDef.fromJson(Map<String, dynamic> map) {
+    assert(map != null);
+    lineNumber = map['line'] is int ? map['line'] : 0;
+    name = map['name'] != null ? map['name'].toString() : null;
+  }
+
+  /// The line number of the function start.
+  int lineNumber;
+
+  /// The function name.
+  String name;
+
+  /// Converts this object to a map in JSON format.
+  Map<String, dynamic> toJson() => {
+    'line': lineNumber,
+    'name': name
+  };
+
+  /// Returns a string representation of this object.
+  @override
+  String toString() => '${Token.functionName}:$lineNumber,$name';
 }
