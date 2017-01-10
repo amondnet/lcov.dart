@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = new LineCoverage.fromJson({
-          'data': [const {}],
+          'details': [const {}],
           'found': 3,
           'hit': 19
         });
@@ -30,7 +30,7 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new LineCoverage().toJson();
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['data'], allOf(isList, hasLength(0)));
+        expect(map['details'], allOf(isList, hasLength(0)));
         expect(map['found'], equals(0));
         expect(map['hit'], equals(0));
       });
@@ -43,8 +43,8 @@ void main() {
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['data'], allOf(isList, hasLength(1)));
-        expect(map['data'][0], isMap);
+        expect(map['details'], allOf(isList, hasLength(1)));
+        expect(map['details'][0], isMap);
         expect(map['found'], equals(3));
         expect(map['hit'], equals(19));
       });

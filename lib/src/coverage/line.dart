@@ -9,7 +9,7 @@ class LineCoverage {
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map) {
     assert(map != null);
-    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((map) => new LineData.fromJson(map)).toList() : [];
+    data = map['details'] is List<Map<String, dynamic>> ? map['details'].map((map) => new LineData.fromJson(map)).toList() : [];
     found = map['found'] != null && map['found'] is int ? map['found'] : 0;
     hit = map['hit'] != null && map['hit'] is int ? map['hit'] : 0;
   }
@@ -25,7 +25,7 @@ class LineCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'details': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
     'hit': hit
   };

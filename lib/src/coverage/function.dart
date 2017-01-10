@@ -4,12 +4,12 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage({this.data = const [], this.found = 0, this.functions = const [], this.hit = 0});
+  FunctionCoverage({this.data = const [], this.found = 0, this.hit = 0});
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   FunctionCoverage.fromJson(Map<String, dynamic> map) {
     assert(map != null);
-    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((map) => new FunctionData.fromJson(map)).toList() : [];
+    data = map['details'] is List<Map<String, dynamic>> ? map['details'].map((map) => new FunctionData.fromJson(map)).toList() : [];
     found = map['found'] is int ? map['found'] : 0;
     hit = map['hit'] is int ? map['hit'] : 0;
   }
@@ -25,7 +25,7 @@ class FunctionCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'details': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
     'hit': hit
   };
