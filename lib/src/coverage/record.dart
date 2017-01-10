@@ -38,11 +38,11 @@ class Record {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var lines = ['${Token.sourceFile}:$sourceFile'];
-    if (functions != null) lines.add(functions.toString());
-    if (branches != null) lines.add(branches.toString());
-    if (lines != null) lines.add(lines.toString());
-    lines.add(Token.endOfRecord);
-    return lines.join('\n');
+    var output = ['${Token.sourceFile}:$sourceFile'];
+    if (functions != null) output.add(functions.toString());
+    if (branches != null) output.add(branches.toString());
+    if (lines != null) output.add(lines.toString());
+    output.add(Token.endOfRecord);
+    return output.join('\n');
   }
 }
