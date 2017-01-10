@@ -35,8 +35,8 @@ class LineCoverage {
   String toString() {
     var lines = [];
     if (data != null) lines.addAll(data.map((item) => item.toString()));
-    lines.add('${Token.linesHit}:$hit');
     lines.add('${Token.linesFound}:$found');
+    lines.add('${Token.linesHit}:$hit');
     return lines.join('\n');
   }
 }
