@@ -9,15 +9,10 @@ class Record {
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map) {
     assert(map != null);
-    /*
-    if (map['branches'] is List<Map>) branches = map['branches'];
-    if (map['functions'] is List<Map>) functions = map['functions'];
-    if (map['lines'] is List<Map>) lines = map['lines'];
-    */
-    sourceFile = map['sourceFile'] != null ? map['sourceFile'].toString() : null;
-/*
-    var items = map['branches'] as List<Map<String, dynamic>>;
-    if (items != null) branches = items.map((map) => new Coverage.fromJson(map)).toList();*/
+    branches = map['branches'] is List<Map> ? map['branches'].map((item) => new BranchCoverage.fromJson(item)).toList() : [];
+    functions = map['functions'] is List<Map> ? map['functions'].map((item) => new FunctionCoverage.fromJson(item)).toList() : [];
+    lines = map['lines'] is List<Map> ? map['lines'].map((item) => new LineCoverage.fromJson(item)).toList() : [];
+    sourceFile = map['file'] != null ? map['file'].toString() : null;
   }
 
   /// The branch coverage.
@@ -34,10 +29,10 @@ class Record {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
+    'file': sourceFile,
     'branches': branches.toJson(),
     'functions': functions.toJson(),
-    'lines': lines.toJson(),
-    'sourceFile': sourceFile
+    'lines': lines.toJson()
   };
 
   /// Returns a string representation of this object.
