@@ -11,7 +11,6 @@ class FunctionCoverage {
     assert(map != null);
     data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((map) => new FunctionData.fromJson(map)).toList() : [];
     found = map['found'] is int ? map['found'] : 0;
-    functions = map['functions'] is List<Map<String, dynamic>> ? map['functions'].map((map) => new FunctionDef.fromJson(map)).toList() : [];
     hit = map['hit'] is int ? map['hit'] : 0;
   }
 
@@ -21,9 +20,6 @@ class FunctionCoverage {
   /// The number of functions found.
   int found;
 
-  /// The map of the line numbers of function start and the corresponding function names.
-  List<FunctionDef> functions;
-
   /// The number of functions hit.
   int hit;
 
@@ -31,7 +27,6 @@ class FunctionCoverage {
   Map<String, dynamic> toJson() => {
     'data': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
-    'functions': functions != null ? functions.map((item) => item.toJson()).toList() : [],
     'hit': hit
   };
 
@@ -39,7 +34,6 @@ class FunctionCoverage {
   @override
   String toString() {
     var lines = [];
-    if (functions != null) lines.addAll(functions.map((item) => item.toString()));
     if (data != null) lines.addAll(data.map((item) => item.toString()));
     lines.add('${Token.functionsFound}:$found');
     lines.add('${Token.functionsHit}:$hit');
@@ -51,13 +45,14 @@ class FunctionCoverage {
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData({this.executionCount = 0, this.functionName});
+  FunctionData({this.executionCount = 0, this.functionName, this.lineNumber = 0});
 
   /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map) {
     assert(map != null);
     executionCount = map['hit'] is int ? map['hit'] : 0;
     functionName = map['name'] != null ? map['name'].toString() : null;
+    lineNumber = map['hit'] is int ? map['hit'] : 0;
   }
 
   /// The execution count.
@@ -66,43 +61,22 @@ class FunctionData {
   /// The function name.
   String functionName;
 
+  /// The line number of the function start.
+  int lineNumber;
+
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'hit': executionCount,
+    'line': lineNumber,
     'name': functionName
   };
 
   /// Returns a string representation of this object.
+  /// The [asDefinition] parameter indicates whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
   @override
-  String toString() => '${Token.functionData}:$executionCount,$functionName';
-}
-
-/// TODO Merge this class with [FunctionData] class.
-class FunctionDef {
-
-  /// Creates a new function coverage entry.
-  FunctionDef({this.lineNumber = 0, this.name});
-
-  /// Creates a new function coverage entry from the specified [map] in JSON format.
-  FunctionDef.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    lineNumber = map['line'] is int ? map['line'] : 0;
-    name = map['name'] != null ? map['name'].toString() : null;
+  String toString([bool asDefinition = false]) {
+    var token = asDefinition ? Token.functionName : Token.functionData;
+    var number = asDefinition ? lineNumber : executionCount;
+    return '$token:$number,$functionName';
   }
-
-  /// The line number of the function start.
-  int lineNumber;
-
-  /// The function name.
-  String name;
-
-  /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
-    'line': lineNumber,
-    'name': name
-  };
-
-  /// Returns a string representation of this object.
-  @override
-  String toString() => '${Token.functionName}:$lineNumber,$name';
 }
