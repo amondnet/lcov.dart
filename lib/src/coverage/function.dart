@@ -74,7 +74,7 @@ class FunctionData {
   /// Returns a string representation of this object.
   /// The [asDefinition] parameter indicates whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
   @override
-  String toString([bool asDefinition = false]) {
+  String toString({bool asDefinition = false}) {
     var token = asDefinition ? Token.functionName : Token.functionData;
     var number = asDefinition ? lineNumber : executionCount;
     return '$token:$number,$functionName';
