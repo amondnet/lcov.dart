@@ -7,12 +7,10 @@ class LineCoverage {
   LineCoverage({this.data = const [], this.found = 0, this.hit = 0});
 
   /// Creates a new line coverage from the specified [map] in JSON format.
-  LineCoverage.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    data = map['details'] is List<Map<String, dynamic>> ? map['details'].map((map) => new LineData.fromJson(map)).toList() : [];
-    found = map['found'] != null && map['found'] is int ? map['found'] : 0;
-    hit = map['hit'] != null && map['hit'] is int ? map['hit'] : 0;
-  }
+  LineCoverage.fromJson(Map<String, dynamic> map):
+    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((item) => new LineData.fromJson(item)).toList() : [],
+    found = map['found'] is int ? map['found'] : 0,
+    hit = map['hit'] is int ? map['hit'] : 0;
 
   /// The coverage data.
   List<LineData> data;
@@ -25,7 +23,7 @@ class LineCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'details': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
     'hit': hit
   };
@@ -48,12 +46,10 @@ class LineData {
   LineData({this.checksum, this.executionCount = 0, this.lineNumber = 0});
 
   /// Creates a new line data from the specified [map] in JSON format.
-  LineData.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    checksum = map['checksum'] != null ? map['checksum'].toString() : null;
-    executionCount = map['hit'] is int ? map['hit'] : 0;
+  LineData.fromJson(Map<String, dynamic> map):
+    checksum = map['checksum'] != null ? map['checksum'].toString() : null,
+    executionCount = map['count'] is int ? map['count'] : 0,
     lineNumber = map['line'] is int ? map['line'] : 0;
-  }
 
   /// The data checksum.
   String checksum;
@@ -67,7 +63,7 @@ class LineData {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'checksum': checksum,
-    'hit': executionCount,
+    'count': executionCount,
     'line': lineNumber
   };
 

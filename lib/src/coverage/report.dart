@@ -4,27 +4,23 @@ part of lcov;
 class Report {
 
   /// Creates a new report.
-  Report([this.testName]);
+  Report({this.records = const [], this.testName});
 
   /// Creates a new record from the specified [map] in JSON format.
-  Report.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    testName = map['testName'] != null ? map['testName'].toString() : null;
-
-    var items = map['records'] as List<Map<String, dynamic>>;
-    if (items != null) records = items.map((map) => new Record.fromJson(map)).toList();
-  }
+  Report.fromJson(Map<String, dynamic> map):
+    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
+    testName = map['test'] != null ? map['test'].toString() : null;
 
   /// The record list.
-  List<Record> records = [];
+  List<Record> records;
 
   /// The test name.
   String testName;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'records': records,
-    'testName': testName,
+    'test': testName,
+    'records': records
   };
 
   /// Returns a string representation of this object.

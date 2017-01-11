@@ -7,12 +7,10 @@ class FunctionCoverage {
   FunctionCoverage({this.data = const [], this.found = 0, this.hit = 0});
 
   /// Creates a new function coverage from the specified [map] in JSON format.
-  FunctionCoverage.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    data = map['details'] is List<Map<String, dynamic>> ? map['details'].map((map) => new FunctionData.fromJson(map)).toList() : [];
-    found = map['found'] is int ? map['found'] : 0;
+  FunctionCoverage.fromJson(Map<String, dynamic> map):
+    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((item) => new FunctionData.fromJson(item)).toList() : [],
+    found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
-  }
 
   /// The coverage data.
   List<FunctionData> data;
@@ -25,7 +23,7 @@ class FunctionCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'details': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
     'hit': hit
   };
@@ -48,12 +46,10 @@ class FunctionData {
   FunctionData({this.executionCount = 0, this.functionName, this.lineNumber = 0});
 
   /// Creates a new function data from the specified [map] in JSON format.
-  FunctionData.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    executionCount = map['hit'] is int ? map['hit'] : 0;
-    functionName = map['name'] != null ? map['name'].toString() : null;
-    lineNumber = map['hit'] is int ? map['hit'] : 0;
-  }
+  FunctionData.fromJson(Map<String, dynamic> map):
+    executionCount = map['count'] is int ? map['count'] : 0,
+    functionName = map['name'] != null ? map['name'].toString() : null,
+    lineNumber = map['line'] is int ? map['line'] : 0;
 
   /// The execution count.
   int executionCount;
@@ -66,7 +62,7 @@ class FunctionData {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'hit': executionCount,
+    'count': executionCount,
     'line': lineNumber,
     'name': functionName
   };

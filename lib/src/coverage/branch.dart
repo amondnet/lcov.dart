@@ -7,12 +7,10 @@ class BranchCoverage {
   BranchCoverage({this.data = const [], this.found = 0, this.hit = 0});
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
-  BranchCoverage.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    data = map['details'] is List<Map<String, int>> ? map['details'].map((map) => new BranchData.fromJson(map)).toList() : [];
-    found = map['found'] is int ? map['found'] : 0;
+  BranchCoverage.fromJson(Map<String, dynamic> map):
+    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => new BranchData.fromJson(item)).toList() : [],
+    found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
-  }
 
   /// The coverage data.
   List<BranchData> data;
@@ -25,7 +23,7 @@ class BranchCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'details': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
     'found': found,
     'hit': hit
   };
@@ -48,13 +46,11 @@ class BranchData {
   BranchData({this.branchNumber = 0, this.blockNumber = 0, this.lineNumber = 0, this.taken = 0});
 
   /// Creates a new branch data from the specified [map] in JSON format.
-  BranchData.fromJson(Map<String, int> map) {
-    assert(map != null);
-    branchNumber = map['branch'] != null ? map['branch'] : 0;
-    blockNumber = map['block'] != null ? map['block'] : 0;
-    lineNumber = map['line'] != null ? map['line'] : 0;
+  BranchData.fromJson(Map<String, int> map):
+    blockNumber = map['block'] != null ? map['block'] : 0,
+    branchNumber = map['branch'] != null ? map['branch'] : 0,
+    lineNumber = map['line'] != null ? map['line'] : 0,
     taken = map['taken'] != null ? map['taken'] : 0;
-  }
 
   /// The branch number.
   int branchNumber;
@@ -70,8 +66,8 @@ class BranchData {
 
   /// Converts this object to a map in JSON format.
   Map<String, int> toJson() => {
-    'branch': branchNumber,
     'block': blockNumber,
+    'branch': branchNumber,
     'line': lineNumber,
     'taken': taken
   };

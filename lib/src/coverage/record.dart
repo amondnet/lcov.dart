@@ -4,25 +4,26 @@ part of lcov;
 class Record {
 
   /// Creates a new record.
-  Record([this.sourceFile]);
+  Record({BranchCoverage branches, FunctionCoverage functions, LineCoverage lines, this.sourceFile}):
+    this.branches = branches != null ? branches : new BranchCoverage(),
+    this.functions = functions != null ? functions : new FunctionCoverage(),
+    this.lines = lines != null ? lines : new LineCoverage();
 
   /// Creates a new record from the specified [map] in JSON format.
-  Record.fromJson(Map<String, dynamic> map) {
-    assert(map != null);
-    branches = map['branches'] is List<Map> ? map['branches'].map((item) => new BranchCoverage.fromJson(item)).toList() : [];
-    functions = map['functions'] is List<Map> ? map['functions'].map((item) => new FunctionCoverage.fromJson(item)).toList() : [];
-    lines = map['lines'] is List<Map> ? map['lines'].map((item) => new LineCoverage.fromJson(item)).toList() : [];
+  Record.fromJson(Map<String, dynamic> map):
+    branches = map['branches'] is Map<String, dynamic> ? new BranchCoverage.fromJson(map['branches']) : null,
+    functions = map['functions'] is Map<String, dynamic> ? new FunctionCoverage.fromJson(map['functions']) : null,
+    lines = map['lines'] is Map<String, dynamic> ? new LineCoverage.fromJson(map['lines']) : null,
     sourceFile = map['file'] != null ? map['file'].toString() : null;
-  }
 
   /// The branch coverage.
-  BranchCoverage branches = new BranchCoverage();
+  BranchCoverage branches;
 
   /// The function coverage.
-  FunctionCoverage functions = new FunctionCoverage();
+  FunctionCoverage functions;
 
   /// The line coverage.
-  LineCoverage lines = new LineCoverage();
+  LineCoverage lines;
 
   /// The path to the source file.
   String sourceFile;
