@@ -4,6 +4,7 @@ class Parser {
 
   /// TODO
   Future<Map> parse(String coverage) {
+    /*
     Report report = [];
     Record record;
 
@@ -16,23 +17,23 @@ class Parser {
         report.add(record);
         record = {
           'lines': {
-            'details': [],
+            'data': [],
             'found': 0,
             'hit': 0
           },
           'functions': {
-            'details': [],
+            'data': [],
             'found': 0,
             'hit': 0
           },
           'branches': {
-            'details': [],
+            'data': [],
             'found': 0,
             'hit': 0
           }
         };
       }
-    });
+    });*/
 
     return null;
   }

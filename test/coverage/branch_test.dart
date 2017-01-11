@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = new BranchCoverage.fromJson({
-          'details': [const {}],
+          'data': const [const {}],
           'found': 3,
           'hit': 19
         });
@@ -30,7 +30,7 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new BranchCoverage().toJson();
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['details'], allOf(isList, hasLength(0)));
+        expect(map['data'], allOf(isList, hasLength(0)));
         expect(map['found'], equals(0));
         expect(map['hit'], equals(0));
       });
@@ -43,8 +43,8 @@ void main() {
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['details'], allOf(isList, hasLength(1)));
-        expect(map['details'][0], isMap);
+        expect(map['data'], allOf(isList, hasLength(1)));
+        expect(map['data'][0], isMap);
         expect(map['found'], equals(3));
         expect(map['hit'], equals(19));
       });
@@ -73,8 +73,8 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var data = new BranchData.fromJson(const {
-          'branch': 2,
           'block': 3,
+          'branch': 2,
           'line': 127,
           'taken': 1
         });
@@ -90,8 +90,8 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new BranchData().toJson();
         expect(map, allOf(isMap, hasLength(4)));
-        expect(map['branch'], equals(0));
         expect(map['block'], equals(0));
+        expect(map['branch'], equals(0));
         expect(map['line'], equals(0));
         expect(map['taken'], equals(0));
       });
@@ -105,8 +105,8 @@ void main() {
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(4)));
-        expect(map['branch'], equals(2));
         expect(map['block'], equals(3));
+        expect(map['branch'], equals(2));
         expect(map['line'], equals(127));
         expect(map['taken'], equals(1));
       });
