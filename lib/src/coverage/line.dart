@@ -48,7 +48,7 @@ class LineData {
 
   /// Creates a new line data from the specified [map] in JSON format.
   LineData.fromJson(Map<String, dynamic> map):
-    checksum = map['checksum'] != null ? map['checksum'].toString() : null,
+    checksum = map['checksum']?.toString(),
     executionCount = map['count'] is int ? map['count'] : 0,
     lineNumber = map['line'] is int ? map['line'] : 0;
 

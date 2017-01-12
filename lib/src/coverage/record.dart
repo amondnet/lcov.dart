@@ -5,16 +5,16 @@ class Record {
 
   /// Creates a new record.
   Record({BranchCoverage branches, FunctionCoverage functions, LineCoverage lines, this.sourceFile}):
-    this.branches = branches != null ? branches : new BranchCoverage(),
-    this.functions = functions != null ? functions : new FunctionCoverage(),
-    this.lines = lines != null ? lines : new LineCoverage();
+    branches = branches ?? new BranchCoverage(),
+    functions = functions ?? new FunctionCoverage(),
+    lines = lines ?? new LineCoverage();
 
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map):
     branches = map['branches'] is Map<String, dynamic> ? new BranchCoverage.fromJson(map['branches']) : null,
     functions = map['functions'] is Map<String, dynamic> ? new FunctionCoverage.fromJson(map['functions']) : null,
     lines = map['lines'] is Map<String, dynamic> ? new LineCoverage.fromJson(map['lines']) : null,
-    sourceFile = map['file'] != null ? map['file'].toString() : null;
+    sourceFile = map['file']?.toString();
 
   /// The branch coverage.
   BranchCoverage branches;

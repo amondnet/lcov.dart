@@ -9,7 +9,7 @@ class Report {
   /// Creates a new record from the specified [map] in JSON format.
   Report.fromJson(Map<String, dynamic> map):
     records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
-    testName = map['test'] != null ? map['test'].toString() : null;
+    testName = map['test']?.toString();
 
   /// The record list.
   List<Record> records;
