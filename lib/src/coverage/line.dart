@@ -31,6 +31,7 @@ class LineCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
+    // TODO: replace by a StringBuffer
     var lines = [];
     if (data != null) lines.addAll(data.map((item) => item.toString()));
     lines.add('${Token.linesFound}:$found');
@@ -70,6 +71,7 @@ class LineData {
   /// Returns a string representation of this object.
   @override
   String toString() {
+    // TODO: replace by a StringBuffer
     var value = '${Token.lineData}:$lineNumber,$executionCount';
     return checksum != null ? '$value,$checksum' : value;
   }

@@ -1,9 +1,18 @@
 part of lcov;
 
+/// Parses [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports.
 class Parser {
 
   /// TODO
   Future<Map> parse(String coverage) {
+    var report = new Report();
+    var record = new Record();
+
+    for(var line in coverage.split(new RegExp(r'\r?\n'))) {
+      var parts = line.trim().split(':', 2);
+    }
+
+
     /*
     Report report = [];
     Record record;

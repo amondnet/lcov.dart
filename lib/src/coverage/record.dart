@@ -39,6 +39,7 @@ class Record {
   /// Returns a string representation of this object.
   @override
   String toString() {
+    // TODO: replace by a StringBuffer
     var output = ['${Token.sourceFile}:$sourceFile'];
     if (functions != null) output.add(functions.toString());
     if (branches != null) output.add(branches.toString());

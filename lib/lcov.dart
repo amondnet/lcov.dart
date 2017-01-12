@@ -2,12 +2,10 @@
 library lcov;
 
 import 'dart:async';
-import 'dart:convert';
 
 part 'src/formatter.dart';
 part 'src/parser.dart';
 part 'src/token.dart';
-
 part 'src/coverage/branch.dart';
 part 'src/coverage/function.dart';
 part 'src/coverage/line.dart';
