@@ -3,47 +3,85 @@ part of lcov;
 /// Parses [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports.
 class Parser {
 
-  /// TODO
-  Future<Map> parse(String coverage) {
+  /// TODO try {} catch (e) {throw new FormatEception()}
+  /// Throws a [RangeError] or a [StateError] if an error occurred.
+  Future<Report> parse(String coverage) async {
     var report = new Report();
     var record = new Record();
 
     for(var line in coverage.split(new RegExp(r'\r?\n'))) {
-      var parts = line.trim().split(':', 2);
+      var parts = line.trim().split(':');
+      var data = parts.sublist(1).join(':').split(',');
+
+      switch (parts[0].toUpperCase()) {
+        case Token.testName:
+          report.testName = data[0];
+          break;
+
+        case Token.sourceFile:
+          record.sourceFile = data[0];
+          break;
+
+        case Token.functionName:
+          record.functions.data.add(new FunctionData(
+            functionName: data[1],
+            lineNumber: int.parse(data[0])
+          ));
+          break;
+
+        case Token.functionData:
+          var functionData = record.functions.data.firstWhere((functionData) => functionData.functionName == data[1]);
+          functionData.executionCount = int.parse(data[0]);
+          break;
+
+        case Token.functionsFound:
+          record.functions.found = int.parse(data[0]);
+          break;
+
+        case Token.functionsHit:
+          record.functions.hit = int.parse(data[0]);
+          break;
+
+        case Token.branchData:
+          record.branches.data.add(new BranchData(
+            lineNumber: int.parse(data[0]),
+            blockNumber: int.parse(data[1]),
+            branchNumber: int.parse(data[2]),
+            taken: data[3] == '-' ? 0 : int.parse(data[3])
+          ));
+          break;
+
+        case Token.branchesFound:
+          record.branches.found = int.parse(data[0]);
+          break;
+
+        case Token.branchesHit:
+          record.branches.hit = int.parse(data[0]);
+          break;
+
+        case Token.lineData:
+          record.lines.data.add(new LineData(
+            lineNumber: int.parse(data[0]),
+            executionCount: int.parse(data[1]),
+            checksum: data.length >= 3 ? data[2] : null
+          ));
+          break;
+
+        case Token.linesFound:
+          record.lines.found = int.parse(data[0]);
+          break;
+
+        case Token.linesHit:
+          record.lines.hit = int.parse(data[0]);
+          break;
+
+        case Token.endOfRecord:
+          report.records.add(record);
+          record = new Record();
+          break;
+      }
     }
 
-
-    /*
-    Report report = [];
-    Record record;
-
-    List<String> lines = ['end_of_record'];
-    lines.addAll(coverage.split(new RegExp(r'\r?\n')));
-    lines.forEach((String line) {
-      line = line.trim();
-
-      if (line.contains('end_of_record')) {
-        report.add(record);
-        record = {
-          'lines': {
-            'data': [],
-            'found': 0,
-            'hit': 0
-          },
-          'functions': {
-            'data': [],
-            'found': 0,
-            'hit': 0
-          },
-          'branches': {
-            'data': [],
-            'found': 0,
-            'hit': 0
-          }
-        };
-      }
-    });*/
-
-    return null;
+    return report;
   }
 }
