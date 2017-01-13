@@ -1,14 +1,14 @@
 part of lcov;
 
-/// Parses [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports.
-class Parser {
+/// Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format,
+/// and returns the parsing result as a [Report].
+///
+/// Throws a [FormatException] if a parsing error occurred.
+Future<Report> parse(String coverage) async {
+  var report = new Report();
+  var record = new Record();
 
-  /// TODO try {} catch (e) {throw new FormatEception()}
-  /// Throws a [RangeError] or a [StateError] if an error occurred.
-  Future<Report> parse(String coverage) async {
-    var report = new Report();
-    var record = new Record();
-
+  try {
     for(var line in coverage.split(new RegExp(r'\r?\n'))) {
       var parts = line.trim().split(':');
       var data = parts.sublist(1).join(':').split(',');
@@ -81,7 +81,11 @@ class Parser {
           break;
       }
     }
-
-    return report;
   }
+
+  catch (e) {
+    throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
+  }
+
+  return report;
 }
