@@ -31,12 +31,11 @@ class LineCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
-    var lines = [];
-    if (data != null) lines.addAll(data.map((item) => item.toString()));
-    lines.add('${Token.linesFound}:$found');
-    lines.add('${Token.linesHit}:$hit');
-    return lines.join('\n');
+    var buffer = new StringBuffer();
+    if (data != null) buffer..writeAll(data, '\n')..writeln();
+    buffer.writeln('${Token.linesFound}:$found');
+    buffer.write('${Token.linesHit}:$hit');
+    return buffer.toString();
   }
 }
 
@@ -71,7 +70,6 @@ class LineData {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
     var value = '${Token.lineData}:$lineNumber,$executionCount';
     return checksum != null ? '$value,$checksum' : value;
   }

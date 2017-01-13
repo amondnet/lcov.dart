@@ -31,12 +31,11 @@ class BranchCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
-    var lines = [];
-    if (data != null) lines.addAll(data.map((item) => item.toString()));
-    lines.add('${Token.branchesFound}:$found');
-    lines.add('${Token.branchesHit}:$hit');
-    return lines.join('\n');
+    var buffer = new StringBuffer();
+    if (data != null) buffer..writeAll(data, '\n')..writeln();
+    buffer.writeln('${Token.branchesFound}:$found');
+    buffer.write('${Token.branchesHit}:$hit');
+    return buffer.toString();
   }
 }
 
@@ -76,7 +75,6 @@ class BranchData {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
     var value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
     return taken > 0 ? '$value,$taken' : '$value,-';
   }

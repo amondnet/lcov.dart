@@ -31,12 +31,11 @@ class FunctionCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
-    var lines = [];
-    if (data != null) lines.addAll(data.map((item) => item.toString()));
-    lines.add('${Token.functionsFound}:$found');
-    lines.add('${Token.functionsHit}:$hit');
-    return lines.join('\n');
+    var buffer = new StringBuffer();
+    if (data != null) buffer..writeAll(data, '\n')..writeln();
+    buffer.writeln('${Token.functionsFound}:$found');
+    buffer.write('${Token.functionsHit}:$hit');
+    return buffer.toString();
   }
 }
 

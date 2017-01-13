@@ -26,9 +26,8 @@ class Report {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
-    var lines = ['${Token.testName}:$testName'];
-    if (records != null) lines.addAll(records.map((item) => item.toString()));
-    return lines.join('\n');
+    var buffer = new StringBuffer('${Token.testName}:$testName');
+    if (records != null) buffer..writeln()..writeAll(records, '\n');
+    return buffer.toString();
   }
 }

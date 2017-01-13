@@ -39,12 +39,11 @@ class Record {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    // TODO: replace by a StringBuffer
-    var output = ['${Token.sourceFile}:$sourceFile'];
-    if (functions != null) output.add(functions.toString());
-    if (branches != null) output.add(branches.toString());
-    if (lines != null) output.add(lines.toString());
-    output.add(Token.endOfRecord);
-    return output.join('\n');
+    var buffer = new StringBuffer('${Token.sourceFile}:$sourceFile')..writeln();
+    if (functions != null) buffer.writeln(functions);
+    if (branches != null) buffer.writeln(branches);
+    if (lines != null) buffer.writeln(lines);
+    buffer.write(Token.endOfRecord);
+    return buffer.toString();
   }
 }
