@@ -27,7 +27,7 @@ class Report {
   @override
   String toString() {
     var buffer = new StringBuffer('${Token.testName}:$testName');
-    if (records != null) buffer..writeln()..writeAll(records, '\n');
+    if (records != null && records.isNotEmpty) buffer..writeln()..writeAll(records, '\n');
     return buffer.toString();
   }
 }

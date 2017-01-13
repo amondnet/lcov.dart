@@ -32,7 +32,7 @@ class BranchCoverage {
   @override
   String toString() {
     var buffer = new StringBuffer();
-    if (data != null) buffer..writeAll(data, '\n')..writeln();
+    if (data != null && data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer.writeln('${Token.branchesFound}:$found');
     buffer.write('${Token.branchesHit}:$hit');
     return buffer.toString();

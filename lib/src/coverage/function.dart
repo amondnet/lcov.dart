@@ -32,7 +32,7 @@ class FunctionCoverage {
   @override
   String toString() {
     var buffer = new StringBuffer();
-    if (data != null) buffer..writeAll(data, '\n')..writeln();
+    if (data != null && data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer.writeln('${Token.functionsFound}:$found');
     buffer.write('${Token.functionsHit}:$hit');
     return buffer.toString();

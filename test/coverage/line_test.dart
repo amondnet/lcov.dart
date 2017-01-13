@@ -51,12 +51,12 @@ void main() {
     });
 
     group('.toString()', () {
-      test(r'should return a format like "LH:<hit>\nLF:<found>"', () {
+      test(r'should return a format like "LF:<found>\nLH:<hit>"', () {
         var data = new LineCoverage();
-        expect(data.toString(), equals('LH:0\nLF:0'));
+        expect(data.toString(), equals('LF:0\nLH:0'));
 
         data = new LineCoverage(data: [new LineData()], found: 3, hit: 19);
-        expect(data.toString(), equals('DA:0,0\nLH:19\nLF:3'));
+        expect(data.toString(), equals('DA:0,0\nLF:3\nLH:19'));
       });
     });
   });
