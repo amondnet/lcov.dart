@@ -6,7 +6,11 @@ part of lcov;
 /// Throws a [FormatException] if a parsing error occurred.
 Future<Report> parse(String coverage) async {
   var report = new Report();
-  var record = new Record();
+  var record = new Record(
+    branches: new BranchCoverage(),
+    functions: new FunctionCoverage(),
+    lines: new LineCoverage()
+  );
 
   try {
     for(var line in coverage.split(new RegExp(r'\r?\n'))) {

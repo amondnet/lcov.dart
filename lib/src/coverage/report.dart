@@ -20,14 +20,14 @@ class Report {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'test': testName,
-    'records': records
+    'records': records.map((item) => item.toJson()).toList()
   };
 
   /// Returns a string representation of this object.
   @override
   String toString() {
     var buffer = new StringBuffer('${Token.testName}:$testName');
-    if (records != null && records.isNotEmpty) buffer..writeln()..writeAll(records, '\n');
+    if (records.isNotEmpty) buffer..writeln()..writeAll(records, '\n');
     return buffer.toString();
   }
 }

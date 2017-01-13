@@ -23,7 +23,7 @@ class LineCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'data': data != null ? data.map((item) => item.toJson()).toList() : [],
+    'data': data.map((item) => item.toJson()).toList(),
     'found': found,
     'hit': hit
   };
@@ -32,7 +32,7 @@ class LineCoverage {
   @override
   String toString() {
     var buffer = new StringBuffer();
-    if (data != null && data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
+    if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer.writeln('${Token.linesFound}:$found');
     buffer.write('${Token.linesHit}:$hit');
     return buffer.toString();

@@ -4,10 +4,7 @@ part of lcov;
 class Record {
 
   /// Creates a new record.
-  Record({BranchCoverage branches, FunctionCoverage functions, LineCoverage lines, this.sourceFile}):
-    branches = branches ?? new BranchCoverage(),
-    functions = functions ?? new FunctionCoverage(),
-    lines = lines ?? new LineCoverage();
+  Record({this.branches, this.functions, this.lines, this.sourceFile});
 
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map):
@@ -31,9 +28,9 @@ class Record {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'file': sourceFile,
-    'branches': branches.toJson(),
-    'functions': functions.toJson(),
-    'lines': lines.toJson()
+    'branches': branches?.toJson(),
+    'functions': functions?.toJson(),
+    'lines': lines?.toJson()
   };
 
   /// Returns a string representation of this object.
