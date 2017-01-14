@@ -20,7 +20,7 @@ void main() {
         });
 
         expect(coverage.data, allOf(isList, hasLength(1)));
-        expect(coverage.data[0], new isInstanceOf<LineData>());
+        expect(coverage.data.first, new isInstanceOf<LineData>());
         expect(coverage.found, equals(3));
         expect(coverage.hit, equals(19));
       });
@@ -44,7 +44,7 @@ void main() {
 
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
-        expect(map['data'][0], isMap);
+        expect(map['data'].first, isMap);
         expect(map['found'], equals(3));
         expect(map['hit'], equals(19));
       });

@@ -15,35 +15,35 @@ Future<Report> parse(String coverage) async {
   try {
     for(var line in coverage.split(new RegExp(r'\r?\n'))) {
       var parts = line.trim().split(':');
-      var data = parts.sublist(1).join(':').split(',');
+      var data = parts.skip(1).join(':').split(',');
 
-      switch (parts[0].toUpperCase()) {
+      switch (parts.first.toUpperCase()) {
         case Token.testName:
-          report.testName = data[0];
+          report.testName = data.first;
           break;
 
         case Token.sourceFile:
-          record.sourceFile = data[0];
+          record.sourceFile = data.first;
           break;
 
         case Token.functionName:
           record.functions.data.add(new FunctionData(
             functionName: data[1],
-            lineNumber: int.parse(data[0])
+            lineNumber: int.parse(data.first)
           ));
           break;
 
         case Token.functionData:
-          var functionData = record.functions.data.firstWhere((functionData) => functionData.functionName == data[1]);
-          functionData.executionCount = int.parse(data[0]);
+          var functionData = record.functions.data.firstWhere((item) => item.functionName == data[1]);
+          functionData.executionCount = int.parse(data.first);
           break;
 
         case Token.functionsFound:
-          record.functions.found = int.parse(data[0]);
+          record.functions.found = int.parse(data.first);
           break;
 
         case Token.functionsHit:
-          record.functions.hit = int.parse(data[0]);
+          record.functions.hit = int.parse(data.first);
           break;
 
         case Token.branchData:
@@ -56,11 +56,11 @@ Future<Report> parse(String coverage) async {
           break;
 
         case Token.branchesFound:
-          record.branches.found = int.parse(data[0]);
+          record.branches.found = int.parse(data.first);
           break;
 
         case Token.branchesHit:
-          record.branches.hit = int.parse(data[0]);
+          record.branches.hit = int.parse(data.first);
           break;
 
         case Token.lineData:
@@ -72,11 +72,11 @@ Future<Report> parse(String coverage) async {
           break;
 
         case Token.linesFound:
-          record.lines.found = int.parse(data[0]);
+          record.lines.found = int.parse(data.first);
           break;
 
         case Token.linesHit:
-          record.lines.hit = int.parse(data[0]);
+          record.lines.hit = int.parse(data.first);
           break;
 
         case Token.endOfRecord:
@@ -92,4 +92,13 @@ Future<Report> parse(String coverage) async {
   }
 
   return report;
+}
+
+/// Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format,
+/// and returns the parsing result as a [Map].
+///
+/// Throws a [FormatException] if a parsing error occurred.
+Future<Map<String, dynamic>> parseAsHitmap(String coverage) async {
+  var report = await parse(coverage);
+  return report.toJson();
 }
