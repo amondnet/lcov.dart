@@ -1,10 +1,8 @@
 part of lcov;
 
-/// Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format,
-/// and returns the parsing result as a [Report].
-///
+/// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
 /// Throws a [FormatException] if a parsing error occurred.
-Future<Report> parse(String coverage) async {
+Report parse(String coverage) {
   var report = new Report();
   var record = new Record(
     branches: new BranchCoverage(),
@@ -13,7 +11,7 @@ Future<Report> parse(String coverage) async {
   );
 
   try {
-    for(var line in coverage.split(new RegExp(r'\r?\n'))) {
+    for (var line in coverage.split(new RegExp(r'\r?\n'))) {
       var parts = line.trim().split(':');
       var data = parts.skip(1).join(':').split(',');
 
@@ -91,14 +89,6 @@ Future<Report> parse(String coverage) async {
     throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
   }
 
+  if (report.records.isEmpty) throw new FormatException('The coverage data is empty.');
   return report;
-}
-
-/// Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format,
-/// and returns the parsing result as a [Map].
-///
-/// Throws a [FormatException] if a parsing error occurred.
-Future<Map<String, dynamic>> parseAsHitmap(String coverage) async {
-  var report = await parse(coverage);
-  return report.toJson();
 }
