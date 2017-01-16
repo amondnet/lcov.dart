@@ -1,6 +1,6 @@
-import 'coverage/branch_test.dart' as branch_test;
-import 'coverage/function_test.dart' as function_test;
-import 'coverage/line_test.dart' as line_test;
+import 'branch_test.dart' as branch_test;
+import 'function_test.dart' as function_test;
+import 'line_test.dart' as line_test;
 
 /// Tests all the features of the package.
 void main() {
