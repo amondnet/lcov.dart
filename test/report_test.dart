@@ -25,15 +25,14 @@ void main() {
     });
 
     group('.parse()', () {
-      // TODO Try to resolve the 'lcov.info' absolute path.
       var report = Report.parse(new File('test/lcov.info').readAsStringSync());
-
+      
       test('should have a test name', () {
         expect(report.testName, equals('Example'));
       });
 
       test('should contain three records', () {
-        expect(report.records.length, equals(3));
+        expect(report.records, allOf(isList, hasLength(3)));
         expect(report.records[0], new isInstanceOf<Record>());
         expect(report.records[0].sourceFile, equals('/home/cedx/lcov.dart/fixture.dart'));
         expect(report.records[1].sourceFile, equals('/home/cedx/lcov.dart/func1.dart'));
@@ -45,7 +44,7 @@ void main() {
         expect(branches.found, equals(4));
         expect(branches.hit, equals(4));
 
-        expect(branches.data.length, equals(4));
+        expect(branches.data, allOf(isList, hasLength(4)));
         expect(branches.data[0], new isInstanceOf<BranchData>());
         expect(branches.data[0].lineNumber, equals(8));
       });
@@ -55,9 +54,9 @@ void main() {
         expect(functions.found, equals(1));
         expect(functions.hit, equals(1));
 
-        expect(functions.data.length, equals(1));
+        expect(functions.data, allOf(isList, hasLength(1)));
         expect(functions.data[0], new isInstanceOf<FunctionData>());
-        expect('func1', functions.data[0].functionName);
+        expect(functions.data[0].functionName, equals('func1'));
       });
 
       test('should have detailed line coverage', () {
@@ -65,7 +64,7 @@ void main() {
         expect(lines.found, equals(9));
         expect(lines.hit, equals(9));
 
-        expect(lines.data.length, equals(9));
+        expect(lines.data, allOf(isList, hasLength(9)));
         expect(lines.data[0], new isInstanceOf<LineData>());
         expect(lines.data[0].checksum, equals('5kX7OTfHFcjnS98fjeVqNA'));
       });
