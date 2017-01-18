@@ -73,9 +73,9 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var data = new BranchData.fromJson(const {
-          'block': 3,
-          'branch': 2,
-          'line': 127,
+          'blockNumber': 3,
+          'branchNumber': 2,
+          'lineNumber': 127,
           'taken': 1
         });
 
@@ -90,9 +90,9 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new BranchData().toJson();
         expect(map, allOf(isMap, hasLength(4)));
-        expect(map['block'], equals(0));
-        expect(map['branch'], equals(0));
-        expect(map['line'], equals(0));
+        expect(map['blockNumber'], equals(0));
+        expect(map['branchNumber'], equals(0));
+        expect(map['lineNumber'], equals(0));
         expect(map['taken'], equals(0));
       });
 
@@ -105,9 +105,9 @@ void main() {
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(4)));
-        expect(map['block'], equals(3));
-        expect(map['branch'], equals(2));
-        expect(map['line'], equals(127));
+        expect(map['blockNumber'], equals(3));
+        expect(map['branchNumber'], equals(2));
+        expect(map['lineNumber'], equals(127));
         expect(map['taken'], equals(1));
       });
     });

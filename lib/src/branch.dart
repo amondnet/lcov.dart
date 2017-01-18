@@ -47,9 +47,9 @@ class BranchData {
 
   /// Creates a new branch data from the specified [map] in JSON format.
   BranchData.fromJson(Map<String, int> map):
-    blockNumber = map['block'] != null ? map['block'] : 0,
-    branchNumber = map['branch'] != null ? map['branch'] : 0,
-    lineNumber = map['line'] != null ? map['line'] : 0,
+    blockNumber = map['blockNumber'] != null ? map['blockNumber'] : 0,
+    branchNumber = map['branchNumber'] != null ? map['branchNumber'] : 0,
+    lineNumber = map['lineNumber'] != null ? map['lineNumber'] : 0,
     taken = map['taken'] != null ? map['taken'] : 0;
 
   /// The branch number.
@@ -66,9 +66,9 @@ class BranchData {
 
   /// Converts this object to a map in JSON format.
   Map<String, int> toJson() => {
-    'block': blockNumber,
-    'branch': branchNumber,
-    'line': lineNumber,
+    'blockNumber': blockNumber,
+    'branchNumber': branchNumber,
+    'lineNumber': lineNumber,
     'taken': taken
   };
 

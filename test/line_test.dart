@@ -73,8 +73,8 @@ void main() {
       test('should return an initialized instance for a non-empty map', () {
         var data = new LineData.fromJson(const {
           'checksum': 'ed076287532e86365e841e92bfc50d8c',
-          'count': 3,
-          'line': 127
+          'executionCount': 3,
+          'lineNumber': 127
         });
 
         expect(data.checksum, equals('ed076287532e86365e841e92bfc50d8c'));
@@ -88,8 +88,8 @@ void main() {
         var map = new LineData().toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['checksum'], isNull);
-        expect(map['count'], equals(0));
-        expect(map['line'], equals(0));
+        expect(map['executionCount'], equals(0));
+        expect(map['lineNumber'], equals(0));
       });
 
       test('should return a non-empty map for an initialized instance', () {
@@ -101,8 +101,8 @@ void main() {
 
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['checksum'], equals('ed076287532e86365e841e92bfc50d8c'));
-        expect(map['count'], equals(3));
-        expect(map['line'], equals(127));
+        expect(map['executionCount'], equals(3));
+        expect(map['lineNumber'], equals(127));
       });
     });
 

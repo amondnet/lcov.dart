@@ -11,7 +11,7 @@ class Record {
     branches = map['branches'] is Map<String, dynamic> ? new BranchCoverage.fromJson(map['branches']) : null,
     functions = map['functions'] is Map<String, dynamic> ? new FunctionCoverage.fromJson(map['functions']) : null,
     lines = map['lines'] is Map<String, dynamic> ? new LineCoverage.fromJson(map['lines']) : null,
-    sourceFile = map['file']?.toString();
+    sourceFile = map['sourceFile']?.toString();
 
   /// The branch coverage.
   BranchCoverage branches;
@@ -27,7 +27,7 @@ class Record {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'file': sourceFile,
+    'sourceFile': sourceFile,
     'branches': branches?.toJson(),
     'functions': functions?.toJson(),
     'lines': lines?.toJson()

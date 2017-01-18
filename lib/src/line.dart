@@ -48,8 +48,8 @@ class LineData {
   /// Creates a new line data from the specified [map] in JSON format.
   LineData.fromJson(Map<String, dynamic> map):
     checksum = map['checksum']?.toString(),
-    executionCount = map['count'] is int ? map['count'] : 0,
-    lineNumber = map['line'] is int ? map['line'] : 0;
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The data checksum.
   String checksum;
@@ -63,8 +63,8 @@ class LineData {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'checksum': checksum,
-    'count': executionCount,
-    'line': lineNumber
+    'executionCount': executionCount,
+    'lineNumber': lineNumber
   };
 
   /// Returns a string representation of this object.
