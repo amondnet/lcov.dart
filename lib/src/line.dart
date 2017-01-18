@@ -4,7 +4,7 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage({this.data = const [], this.found = 0, this.hit = 0});
+  LineCoverage({List<LineData> data, this.found = 0, this.hit = 0}): data = data ?? [];
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map):
@@ -13,7 +13,7 @@ class LineCoverage {
     hit = map['hit'] is int ? map['hit'] : 0;
 
   /// The coverage data.
-  List<LineData> data;
+  final List<LineData> data;
 
   /// The number of instrumented lines.
   int found;

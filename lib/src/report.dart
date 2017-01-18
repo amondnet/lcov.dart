@@ -4,7 +4,7 @@ part of lcov;
 class Report {
 
   /// Creates a new report.
-  Report({this.records = const [], this.testName});
+  Report({List<Record> records, this.testName}): records = records ?? [];
 
   /// Creates a new record from the specified [map] in JSON format.
   Report.fromJson(Map<String, dynamic> map):
@@ -12,7 +12,7 @@ class Report {
     testName = map['testName']?.toString();
 
   /// The record list.
-  List<Record> records;
+  final List<Record> records;
 
   /// The test name.
   String testName;
