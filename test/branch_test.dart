@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = new BranchCoverage.fromJson({
-          'data': const [const {}],
+          'data': const [const {'lineNumber': 127}],
           'found': 3,
           'hit': 19
         });
@@ -52,11 +52,17 @@ void main() {
 
     group('.toString()', () {
       test(r'should return a format like "BRF:<found>\nBRH:<hit>"', () {
-        var data = new BranchCoverage();
-        expect(data.toString(), equals('BRF:0\nBRH:0'));
+        var coverage = new BranchCoverage();
+        expect(coverage.toString(), equals('BRF:0\nBRH:0'));
 
-        data = new BranchCoverage(data: [new BranchData()], found: 3, hit: 19);
-        expect(data.toString(), equals('BRDA:0,0,0,-\nBRF:3\nBRH:19'));
+        var data = new BranchData(
+          blockNumber: 3,
+          branchNumber: 2,
+          lineNumber: 127
+        );
+
+        coverage = new BranchCoverage(data: [data], found: 3, hit: 19);
+        expect(coverage.toString(), equals('$data\nBRF:3\nBRH:19'));
       });
     });
   });

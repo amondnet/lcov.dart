@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = new LineCoverage.fromJson({
-          'data': [const {}],
+          'data': [const {'lineNumber': 127}],
           'found': 3,
           'hit': 19
         });
@@ -52,11 +52,16 @@ void main() {
 
     group('.toString()', () {
       test(r'should return a format like "LF:<found>\nLH:<hit>"', () {
-        var data = new LineCoverage();
-        expect(data.toString(), equals('LF:0\nLH:0'));
+        var coverage = new LineCoverage();
+        expect(coverage.toString(), equals('LF:0\nLH:0'));
 
-        data = new LineCoverage(data: [new LineData()], found: 3, hit: 19);
-        expect(data.toString(), equals('DA:0,0\nLF:3\nLH:19'));
+        var data = new LineData(
+          executionCount: 3,
+          lineNumber: 127
+        );
+
+        coverage = new LineCoverage(data: [data], found: 3, hit: 19);
+        expect(coverage.toString(), equals('$data\nLF:3\nLH:19'));
       });
     });
   });
