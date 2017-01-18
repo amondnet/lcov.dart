@@ -21,18 +21,23 @@ class Report {
   /// Throws a [FormatException] if a parsing error occurred.
   static Report parse(String coverage) {
     var report = new Report();
-    var record = new Record(
-      branches: new BranchCoverage(),
-      functions: new FunctionCoverage(),
-      lines: new LineCoverage()
-    );
 
     try {
-      for (var line in coverage.split(new RegExp(r'\r?\n'))) {
-        var parts = line.trim().split(':');
-        var data = parts.skip(1).join(':').split(',');
+      var record = new Record(
+        branches: new BranchCoverage(),
+        functions: new FunctionCoverage(),
+        lines: new LineCoverage()
+      );
 
-        switch (parts.first.toUpperCase()) {
+      for (var line in coverage.split(new RegExp(r'\r?\n'))) {
+        line = line.trim();
+        if (line.isEmpty) continue;
+
+        var parts = line.split(':');
+        if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new Exception('Invalid token format.');
+
+        var data = parts.skip(1).join(':').split(',');
+        switch (parts.first) {
           case Token.testName:
             report.testName = data.first;
             break;
@@ -42,6 +47,7 @@ class Report {
             break;
 
           case Token.functionName:
+            if (data.length < 2) throw new Exception('Invalid function name.');
             record.functions.data.add(new FunctionData(
               functionName: data[1],
               lineNumber: int.parse(data.first)
@@ -49,6 +55,7 @@ class Report {
             break;
 
           case Token.functionData:
+            if (data.length < 2) throw new Exception('Invalid function data.');
             var functionData = record.functions.data.firstWhere((item) => item.functionName == data[1]);
             functionData.executionCount = int.parse(data.first);
             break;
@@ -62,6 +69,7 @@ class Report {
             break;
 
           case Token.branchData:
+            if (data.length < 4) throw new Exception('Invalid branch data.');
             record.branches.data.add(new BranchData(
               lineNumber: int.parse(data[0]),
               blockNumber: int.parse(data[1]),
@@ -79,6 +87,7 @@ class Report {
             break;
 
           case Token.lineData:
+            if (data.length < 3) throw new Exception('Invalid line data.');
             record.lines.data.add(new LineData(
               lineNumber: int.parse(data[0]),
               executionCount: int.parse(data[1]),
