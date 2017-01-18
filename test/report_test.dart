@@ -19,21 +19,21 @@ void main() {
         });
 
         expect(report.records, allOf(isList, hasLength(1)));
-        expect(report.records[0], new isInstanceOf<Record>());
+        expect(report.records.first, new isInstanceOf<Record>());
         expect(report.testName, equals('LcovTest'));
       });
     });
 
     group('.parse()', () {
       var report = Report.parse(new File('test/lcov.info').readAsStringSync());
-      
+
       test('should have a test name', () {
         expect(report.testName, equals('Example'));
       });
 
       test('should contain three records', () {
         expect(report.records, allOf(isList, hasLength(3)));
-        expect(report.records[0], new isInstanceOf<Record>());
+        expect(report.records.first, new isInstanceOf<Record>());
         expect(report.records[0].sourceFile, equals('/home/cedx/lcov.dart/fixture.dart'));
         expect(report.records[1].sourceFile, equals('/home/cedx/lcov.dart/func1.dart'));
         expect(report.records[2].sourceFile, equals('/home/cedx/lcov.dart/func2.dart'));
@@ -45,8 +45,8 @@ void main() {
         expect(branches.hit, equals(4));
 
         expect(branches.data, allOf(isList, hasLength(4)));
-        expect(branches.data[0], new isInstanceOf<BranchData>());
-        expect(branches.data[0].lineNumber, equals(8));
+        expect(branches.data.first, new isInstanceOf<BranchData>());
+        expect(branches.data.first.lineNumber, equals(8));
       });
 
       test('should have detailed function coverage', () {
@@ -55,8 +55,8 @@ void main() {
         expect(functions.hit, equals(1));
 
         expect(functions.data, allOf(isList, hasLength(1)));
-        expect(functions.data[0], new isInstanceOf<FunctionData>());
-        expect(functions.data[0].functionName, equals('func1'));
+        expect(functions.data.first, new isInstanceOf<FunctionData>());
+        expect(functions.data.first.functionName, equals('func1'));
       });
 
       test('should have detailed line coverage', () {
@@ -65,8 +65,8 @@ void main() {
         expect(lines.hit, equals(9));
 
         expect(lines.data, allOf(isList, hasLength(9)));
-        expect(lines.data[0], new isInstanceOf<LineData>());
-        expect(lines.data[0].checksum, equals('5kX7OTfHFcjnS98fjeVqNA'));
+        expect(lines.data.first, new isInstanceOf<LineData>());
+        expect(lines.data.first.checksum, equals('5kX7OTfHFcjnS98fjeVqNA'));
       });
 
       test('should throw an error if the input is invalid', () {

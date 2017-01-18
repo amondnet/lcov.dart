@@ -34,7 +34,7 @@ class Report {
         if (line.isEmpty) continue;
 
         var parts = line.split(':');
-        if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new Exception('Invalid token format.');
+        if (parts.length < 2 && parts.first != Token.endOfRecord) throw new Exception('Invalid token format.');
 
         var data = parts.skip(1).join(':').split(',');
         switch (parts.first) {
