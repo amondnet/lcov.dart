@@ -1,7 +1,7 @@
 import 'package:lcov/lcov.dart';
 import 'package:test/test.dart';
 
-/// Tests the features of the line coverage.
+/// Tests the features of the [Record] class.
 void main() {
   group('Record', () {
     group('.fromJson()', () {
