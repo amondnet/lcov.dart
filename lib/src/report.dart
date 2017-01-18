@@ -9,7 +9,7 @@ class Report {
   /// Creates a new record from the specified [map] in JSON format.
   Report.fromJson(Map<String, dynamic> map):
     records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
-    testName = map['test']?.toString();
+    testName = map['testName']?.toString();
 
   /// The record list.
   List<Record> records;
@@ -96,7 +96,11 @@ class Report {
 
           case Token.endOfRecord:
             report.records.add(record);
-            record = new Record();
+            record = new Record(
+              branches: new BranchCoverage(),
+              functions: new FunctionCoverage(),
+              lines: new LineCoverage()
+            );
             break;
         }
       }
@@ -106,13 +110,13 @@ class Report {
       throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
     }
 
-    if (report.records.isEmpty) throw new FormatException('The coverage data is empty.');
+    if (report.records.isEmpty) throw new FormatException('The coverage data is empty.', coverage);
     return report;
   }
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'test': testName,
+    'testName': testName,
     'records': records.map((item) => item.toJson()).toList()
   };
 
