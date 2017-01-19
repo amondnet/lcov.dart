@@ -38,7 +38,6 @@ The [`Report`](https://github.com/cedx/lcov.dart/blob/master/lib/src/report.dart
 ### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/lcov.php) file
 The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
 
-
 ```dart
 try {
   var coverage = await new File('lcov.info').readAsString();
@@ -84,7 +83,6 @@ The `Report.toJson()` instance method will return a map like this:
     }
   ]
 }
-
 ```
 
 ### Format coverage data to the [LCOV](http://ltp.sourceforge.net/lcov.php) format
