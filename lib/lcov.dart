@@ -1,4 +1,4 @@
-/// Parse and format [LCOV](http://ltp.sourceforge.net/lcov.php) coverage reports.
+/// Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports.
 library lcov;
 
 part 'src/branch.dart';
