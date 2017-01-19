@@ -11,8 +11,6 @@ environment:
 
 dependencies:
   grinder: ^0.8.0
-  #grinder_coveralls:
-    #path: /repo/grinder-coveralls
 
 dev_dependencies:
   test: ^0.12.18
