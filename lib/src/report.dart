@@ -20,6 +20,7 @@ class Report {
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
   static Report parse(String coverage) {
+    assert(coverage != null);
     var report = new Report();
 
     try {
