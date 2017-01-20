@@ -8,7 +8,7 @@ void main() {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
         var report = new Report.fromJson(const {});
-        expect(report.records, allOf(isList, hasLength(0)));
+        expect(report.records, allOf(isList, isEmpty));
         expect(report.testName, isNull);
       });
 
@@ -78,7 +78,7 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new Report().toJson();
         expect(map, allOf(isMap, hasLength(2)));
-        expect(map['records'], allOf(isList, hasLength(0)));
+        expect(map['records'], allOf(isList, isEmpty));
         expect(map['testName'], isNull);
       });
 

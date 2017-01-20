@@ -7,7 +7,7 @@ void main() {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
         var coverage = new FunctionCoverage.fromJson(const {});
-        expect(coverage.data, allOf(isList, hasLength(0)));
+        expect(coverage.data, allOf(isList, isEmpty));
         expect(coverage.found, equals(0));
         expect(coverage.hit, equals(0));
       });
@@ -30,7 +30,7 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new FunctionCoverage().toJson();
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['data'], allOf(isList, hasLength(0)));
+        expect(map['data'], allOf(isList, isEmpty));
         expect(map['found'], equals(0));
         expect(map['hit'], equals(0));
       });
