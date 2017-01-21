@@ -36,12 +36,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new BranchCoverage()
-          ..data.add(new BranchData())
-          ..found = 3
-          ..hit = 19
-        ).toJson();
-
+        var map = (new BranchCoverage(3, 19)..data.add(new BranchData())).toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
@@ -54,16 +49,8 @@ void main() {
       test(r'should return a format like "BRF:<found>\nBRH:<hit>"', () {
         expect(new BranchCoverage().toString(), equals('BRF:0\nBRH:0'));
 
-        var data = new BranchData()
-          ..blockNumber = 3
-          ..branchNumber = 2
-          ..lineNumber = 127;
-
-        var coverage = new BranchCoverage()
-          ..data.add(data)
-          ..found = 3
-          ..hit = 19;
-
+        var data = new BranchData(127, 3, 2);
+        var coverage = new BranchCoverage(3, 19)..data.add(data);
         expect(coverage.toString(), equals('$data\nBRF:3\nBRH:19'));
       });
     });
@@ -105,13 +92,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new BranchData()
-          ..branchNumber = 2
-          ..blockNumber = 3
-          ..lineNumber = 127
-          ..taken = 1
-        ).toJson();
-
+        var map = new BranchData(127, 3, 2, 1).toJson();
         expect(map, allOf(isMap, hasLength(4)));
         expect(map['blockNumber'], equals(3));
         expect(map['branchNumber'], equals(2));
@@ -123,14 +104,7 @@ void main() {
     group('.toString()', () {
       test('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () {
         expect(new BranchData().toString(), equals('BRDA:0,0,0,-'));
-
-        var data = new BranchData()
-          ..branchNumber = 2
-          ..blockNumber = 3
-          ..lineNumber = 127
-          ..taken = 1;
-
-        expect(data.toString(), equals('BRDA:127,3,2,1'));
+        expect(new BranchData(127, 3, 2, 1).toString(), equals('BRDA:127,3,2,1'));
       });
     });
   });

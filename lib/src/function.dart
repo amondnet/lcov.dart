@@ -4,23 +4,23 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage();
+  FunctionCoverage([this.found = 0, this.hit = 0]);
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   FunctionCoverage.fromJson(Map<String, dynamic> map) {
     if (map['data'] is List<Map<String, dynamic>>) data.addAll(map['data'].map((item) => new FunctionData.fromJson(item)));
-    if (map['found'] is int) found = map['found'];
-    if (map['hit'] is int) hit = map['hit'];
+    found = map['found'] is int ? map['found'] : 0;
+    hit = map['hit'] is int ? map['hit'] : 0;
   }
 
   /// The coverage data.
   final List<FunctionData> data = [];
 
   /// The number of functions found.
-  int found = 0;
+  int found;
 
   /// The number of functions hit.
-  int hit = 0;
+  int hit;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -48,23 +48,22 @@ class FunctionCoverage {
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData();
+  FunctionData([this.functionName = '', this.lineNumber = 0, this.executionCount = 0]);
 
   /// Creates a new function data from the specified [map] in JSON format.
-  FunctionData.fromJson(Map<String, dynamic> map) {
-    if (map['executionCount'] is int) executionCount = map['executionCount'];
-    if (map['functionName'] is String) functionName = map['functionName'];
-    if (map['lineNumber'] is int) lineNumber = map['lineNumber'];
-  }
+  FunctionData.fromJson(Map<String, dynamic> map):
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    functionName = map['functionName'] is String ? map['functionName'] : '',
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The execution count.
-  int executionCount = 0;
+  int executionCount;
 
   /// The function name.
-  String functionName = '';
+  String functionName;
 
   /// The line number of the function start.
-  int lineNumber = 0;
+  int lineNumber;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

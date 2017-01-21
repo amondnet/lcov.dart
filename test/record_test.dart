@@ -39,11 +39,10 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new Record()
+        var map = (new Record('/home/cedx/lcov.dart')
           ..branches = new BranchCoverage()
           ..functions = new FunctionCoverage()
           ..lines = new LineCoverage()
-          ..sourceFile = '/home/cedx/lcov.dart'
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(4)));
@@ -58,16 +57,12 @@ void main() {
       test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
         expect(new Record().toString(), equals('SF:\nend_of_record'));
 
-        var branches = new BranchCoverage();
-        var functions = new FunctionCoverage();
-        var lines = new LineCoverage();
-        var record = new Record()
-          ..branches = branches
-          ..functions = functions
-          ..lines = lines
-          ..sourceFile = '/home/cedx/lcov.dart';
+        var record = new Record('/home/cedx/lcov.dart')
+          ..branches = new BranchCoverage()
+          ..functions = new FunctionCoverage()
+          ..lines = new LineCoverage();
 
-        expect(record.toString(), equals('SF:/home/cedx/lcov.dart\n$functions\n$branches\n$lines\nend_of_record'));
+        expect(record.toString(), equals('SF:/home/cedx/lcov.dart\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record'));
       });
     });
   });

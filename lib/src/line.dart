@@ -4,23 +4,23 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage();
+  LineCoverage([this.found = 0, this.hit = 0]);
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map) {
     if (map['data'] is List<Map<String, dynamic>>) data.addAll(map['data'].map((item) => new LineData.fromJson(item)));
-    if (map['found'] is int) found = map['found'];
-    if (map['hit'] is int) hit = map['hit'];
+    found = map['found'] is int ? map['found'] : 0;
+    hit = map['hit'] is int ? map['hit'] : 0;
   }
 
   /// The coverage data.
   final List<LineData> data = [];
 
   /// The number of instrumented lines.
-  int found = 0;
+  int found;
 
   /// The number of lines with a non-zero execution count.
-  int hit = 0;
+  int hit;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -44,23 +44,22 @@ class LineCoverage {
 class LineData {
 
   /// Creates a new line data.
-  LineData();
+  LineData([this.lineNumber = 0, this.executionCount = 0, this.checksum = '']);
 
   /// Creates a new line data from the specified [map] in JSON format.
-  LineData.fromJson(Map<String, dynamic> map) {
-    if (map['checksum'] is String) checksum = map['checksum'];
-    if (map['executionCount'] is int) executionCount = map['executionCount'];
-    if (map['lineNumber'] is int) lineNumber = map['lineNumber'];
-  }
+  LineData.fromJson(Map<String, dynamic> map):
+    checksum = map['checksum'] is String ? map['checksum'] : '',
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The data checksum.
-  String checksum = '';
+  String checksum;
 
   /// The execution count.
-  int executionCount = 0;
+  int executionCount;
 
   /// The line number.
-  int lineNumber = 0;
+  int lineNumber;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

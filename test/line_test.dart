@@ -36,12 +36,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new LineCoverage()
-          ..data.add(new LineData())
-          ..found = 3
-          ..hit = 19
-        ).toJson();
-
+        var map = (new LineCoverage(3, 19)..data.add(new LineData())).toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
@@ -54,15 +49,8 @@ void main() {
       test(r'should return a format like "LF:<found>\nLH:<hit>"', () {
         expect(new LineCoverage().toString(), equals('LF:0\nLH:0'));
 
-        var data = new LineData()
-          ..executionCount = 3
-          ..lineNumber = 127;
-
-        var coverage = new LineCoverage()
-          ..data.add(data)
-          ..found = 3
-          ..hit = 19;
-
+        var data = new LineData(127, 3);
+        var coverage = new LineCoverage(3, 19)..data.add(data);
         expect(coverage.toString(), equals('$data\nLF:3\nLH:19'));
       });
     });
@@ -100,12 +88,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new LineData()
-          ..checksum = 'ed076287532e86365e841e92bfc50d8c'
-          ..executionCount = 3
-          ..lineNumber = 127
-        ).toJson();
-
+        var map = new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c').toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['checksum'], equals('ed076287532e86365e841e92bfc50d8c'));
         expect(map['executionCount'], equals(3));
@@ -116,13 +99,7 @@ void main() {
     group('.toString()', () {
       test('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () {
         expect(new LineData().toString(), equals('DA:0,0'));
-
-        var data = new LineData()
-          ..checksum = 'ed076287532e86365e841e92bfc50d8c'
-          ..executionCount = 3
-          ..lineNumber = 127;
-
-        expect(data.toString(), equals('DA:127,3,ed076287532e86365e841e92bfc50d8c'));
+        expect(new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c').toString(), equals('DA:127,3,ed076287532e86365e841e92bfc50d8c'));
       });
     });
   });

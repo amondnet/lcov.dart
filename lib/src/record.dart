@@ -3,15 +3,15 @@ part of lcov;
 /// Provides the coverage data of a source file.
 class Record {
 
-  /// Creates a new record.
-  Record();
+  /// Creates a new record with the specified source file.
+  Record([this.sourceFile = '']);
 
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map) {
     if (map['branches'] is Map<String, dynamic>) branches = new BranchCoverage.fromJson(map['branches']);
     if (map['functions'] is Map<String, dynamic>) functions = new FunctionCoverage.fromJson(map['functions']);
     if (map['lines'] is Map<String, dynamic>) lines = new LineCoverage.fromJson(map['lines']);
-    if (map['sourceFile'] is String) sourceFile = map['sourceFile'];
+    sourceFile = map['sourceFile'] is String ? map['sourceFile'] : '';
   }
 
   /// The branch coverage.
@@ -24,7 +24,7 @@ class Record {
   LineCoverage lines;
 
   /// The path to the source file.
-  String sourceFile = '';
+  String sourceFile;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

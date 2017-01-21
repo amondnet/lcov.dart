@@ -86,48 +86,30 @@ The `Report.toJson()` instance method will return a map like this:
 
 ### Format coverage data to the [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as LCOV string.
-All you have to do is to create the adequate structure using these different classes, and to export the final result using the `Report.toString()` method:
+All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
 ```dart
-var lineData = new LineData(
-  checksum: 'PF4Rz2r7RTliO9u6bZ7h6g',
-  executionCount: 2,
-  lineNumber: 6
-);
+var lineCoverage = new LineCoverage(4, 4)
+  ..data.add(new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'));
 
-var lineCoverage = new LineCoverage(
-  data: [lineData, ...],
-  found: 4,
-  hit: 4
-);
+var record = new Record('/home/cedx/lcov.dart/fixture.dart')
+  ..functions = new FunctionCoverage(1, 1)
+  ..lines = lineCoverage;
 
-var record = new Record(
-  functions: new FunctionCoverage(data: [...], found: 1, hit: 1),
-  lines: lineCoverage,
-  sourceFile: '/home/cedx/lcov.dart/fixture.dart'
-);
-
-var report = new Report(
-  records: [record],
-  testName: 'Example'
-);
+var report = new Report('Example')
+  ..records.add(record);
 
 print(report);
 ```
 
-It will return a LCOV report formatted like this:
+The `Report.toString()` method will return a LCOV report formatted like this:
 
 ```
 TN:Example
 SF:/home/cedx/lcov.dart/fixture.dart
-FN:4,main
-FNDA:2,main
 FNF:1
 FNH:1
 DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
-DA:7,2,yGMB6FhEEAd8OyASe3Ni1w
-DA:8,2,8F2cpOfOtP7xrzoeUaNfTg
-DA:9,2,y7GE3Y4FyXCeXcrtqgSVzw
 LF:4
 LH:4
 end_of_record
