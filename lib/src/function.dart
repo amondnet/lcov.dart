@@ -4,22 +4,23 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage({List<FunctionData> data, this.found = 0, this.hit = 0}): data = data ?? [];
+  FunctionCoverage();
 
   /// Creates a new function coverage from the specified [map] in JSON format.
-  FunctionCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((item) => new FunctionData.fromJson(item)).toList() : [],
-    found = map['found'] is int ? map['found'] : 0,
-    hit = map['hit'] is int ? map['hit'] : 0;
+  FunctionCoverage.fromJson(Map<String, dynamic> map) {
+    if (map['data'] is List<Map<String, dynamic>>) data.addAll(map['data'].map((item) => new FunctionData.fromJson(item)));
+    if (map['found'] is int) found = map['found'];
+    if (map['hit'] is int) hit = map['hit'];
+  }
 
   /// The coverage data.
-  final List<FunctionData> data;
+  final List<FunctionData> data = [];
 
   /// The number of functions found.
-  int found;
+  int found = 0;
 
   /// The number of functions hit.
-  int hit;
+  int hit = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -47,22 +48,23 @@ class FunctionCoverage {
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData({this.executionCount = 0, this.functionName, this.lineNumber = 0});
+  FunctionData();
 
   /// Creates a new function data from the specified [map] in JSON format.
-  FunctionData.fromJson(Map<String, dynamic> map):
-    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
-    functionName = map['functionName']?.toString(),
-    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
+  FunctionData.fromJson(Map<String, dynamic> map) {
+    if (map['executionCount'] is int) executionCount = map['executionCount'];
+    if (map['functionName'] is String) functionName = map['functionName'];
+    if (map['lineNumber'] is int) lineNumber = map['lineNumber'];
+  }
 
   /// The execution count.
-  int executionCount;
+  int executionCount = 0;
 
   /// The function name.
-  String functionName;
+  String functionName = '';
 
   /// The line number of the function start.
-  int lineNumber;
+  int lineNumber = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

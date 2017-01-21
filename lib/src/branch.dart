@@ -4,22 +4,23 @@ part of lcov;
 class BranchCoverage {
 
   /// Creates a new branch coverage.
-  BranchCoverage({List<BranchData> data, this.found = 0, this.hit = 0}): data = data ?? [];
+  BranchCoverage();
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
-  BranchCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => new BranchData.fromJson(item)).toList() : [],
-    found = map['found'] is int ? map['found'] : 0,
-    hit = map['hit'] is int ? map['hit'] : 0;
+  BranchCoverage.fromJson(Map<String, dynamic> map) {
+    if (map['data'] is List<Map<String, int>>) data.addAll(map['data'].map((item) => new BranchData.fromJson(item)));
+    if (map['found'] is int) found = map['found'];
+    if (map['hit'] is int) hit = map['hit'];
+  }
 
   /// The coverage data.
-  final List<BranchData> data;
+  final List<BranchData> data = [];
 
   /// The number of branches found.
-  int found;
+  int found = 0;
 
   /// The number of branches hit.
-  int hit;
+  int hit = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -43,26 +44,26 @@ class BranchCoverage {
 class BranchData {
 
   /// Creates a new branch data.
-  BranchData({this.branchNumber = 0, this.blockNumber = 0, this.lineNumber = 0, this.taken = 0});
+  BranchData();
 
   /// Creates a new branch data from the specified [map] in JSON format.
   BranchData.fromJson(Map<String, int> map):
-    blockNumber = map['blockNumber'] != null ? map['blockNumber'] : 0,
-    branchNumber = map['branchNumber'] != null ? map['branchNumber'] : 0,
-    lineNumber = map['lineNumber'] != null ? map['lineNumber'] : 0,
-    taken = map['taken'] != null ? map['taken'] : 0;
+    blockNumber = map['blockNumber'] ?? 0,
+    branchNumber = map['branchNumber'] ?? 0,
+    lineNumber = map['lineNumber'] ?? 0,
+    taken = map['taken'] ?? 0;
 
   /// The branch number.
-  int branchNumber;
+  int branchNumber = 0;
 
   /// The block number.
-  int blockNumber;
+  int blockNumber = 0;
 
   /// The line number.
-  int lineNumber;
+  int lineNumber = 0;
 
   /// A number indicating how often this branch was taken.
-  int taken;
+  int taken = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, int> toJson() => {

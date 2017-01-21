@@ -36,10 +36,10 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new LineCoverage(
-          data: [new LineData()],
-          found: 3,
-          hit: 19
+        var map = (new LineCoverage()
+          ..data.add(new LineData())
+          ..found = 3
+          ..hit = 19
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
@@ -52,15 +52,17 @@ void main() {
 
     group('.toString()', () {
       test(r'should return a format like "LF:<found>\nLH:<hit>"', () {
-        var coverage = new LineCoverage();
-        expect(coverage.toString(), equals('LF:0\nLH:0'));
+        expect(new LineCoverage().toString(), equals('LF:0\nLH:0'));
 
-        var data = new LineData(
-          executionCount: 3,
-          lineNumber: 127
-        );
+        var data = new LineData()
+          ..executionCount = 3
+          ..lineNumber = 127;
 
-        coverage = new LineCoverage(data: [data], found: 3, hit: 19);
+        var coverage = new LineCoverage()
+          ..data.add(data)
+          ..found = 3
+          ..hit = 19;
+
         expect(coverage.toString(), equals('$data\nLF:3\nLH:19'));
       });
     });
@@ -70,7 +72,7 @@ void main() {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
         var data = new LineData.fromJson(const {});
-        expect(data.checksum, isNull);
+        expect(data.checksum, isEmpty);
         expect(data.executionCount, equals(0));
         expect(data.lineNumber, equals(0));
       });
@@ -92,16 +94,16 @@ void main() {
       test('should return a map with default values for a newly created instance', () {
         var map = new LineData().toJson();
         expect(map, allOf(isMap, hasLength(3)));
-        expect(map['checksum'], isNull);
+        expect(map['checksum'], isEmpty);
         expect(map['executionCount'], equals(0));
         expect(map['lineNumber'], equals(0));
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new LineData(
-          checksum: 'ed076287532e86365e841e92bfc50d8c',
-          executionCount: 3,
-          lineNumber: 127
+        var map = (new LineData()
+          ..checksum = 'ed076287532e86365e841e92bfc50d8c'
+          ..executionCount = 3
+          ..lineNumber = 127
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
@@ -113,10 +115,13 @@ void main() {
 
     group('.toString()', () {
       test('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () {
-        var data = new LineData();
-        expect(data.toString(), equals('DA:0,0'));
+        expect(new LineData().toString(), equals('DA:0,0'));
 
-        data = new LineData(checksum: 'ed076287532e86365e841e92bfc50d8c', executionCount: 3, lineNumber: 127);
+        var data = new LineData()
+          ..checksum = 'ed076287532e86365e841e92bfc50d8c'
+          ..executionCount = 3
+          ..lineNumber = 127;
+
         expect(data.toString(), equals('DA:127,3,ed076287532e86365e841e92bfc50d8c'));
       });
     });

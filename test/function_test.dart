@@ -36,10 +36,10 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new FunctionCoverage(
-          data: [new FunctionData()],
-          found: 3,
-          hit: 19
+        var map = (new FunctionCoverage()
+          ..data.add(new FunctionData())
+          ..found = 3
+          ..hit = 19
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
@@ -52,16 +52,18 @@ void main() {
 
     group('.toString()', () {
       test(r'should return a format like "FNF:<found>\n,FNH:<hit>"', () {
-        var coverage = new FunctionCoverage();
-        expect(coverage.toString(), equals('FNF:0\nFNH:0'));
+        expect(new FunctionCoverage().toString(), equals('FNF:0\nFNH:0'));
 
-        var data = new FunctionData(
-          executionCount: 3,
-          functionName: 'main',
-          lineNumber: 127
-        );
+        var data = new FunctionData()
+          ..executionCount = 3
+          ..functionName = 'main'
+          ..lineNumber = 127;
 
-        coverage = new FunctionCoverage(data: [data], found: 3, hit: 19);
+        var coverage = new FunctionCoverage()
+          ..data.add(data)
+          ..found = 3
+          ..hit = 19;
+
         expect(coverage.toString(), equals('FN:127,main\nFNDA:3,main\nFNF:3\nFNH:19'));
       });
     });
@@ -72,7 +74,7 @@ void main() {
       test('should return an instance with default values for an empty map', () {
         var data = new FunctionData.fromJson(const {});
         expect(data.executionCount, equals(0));
-        expect(data.functionName, isNull);
+        expect(data.functionName, isEmpty);
         expect(data.lineNumber, equals(0));
       });
 
@@ -94,15 +96,15 @@ void main() {
         var map = new FunctionData().toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['executionCount'], equals(0));
-        expect(map['functionName'], isNull);
+        expect(map['functionName'], isEmpty);
         expect(map['lineNumber'], equals(0));
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new FunctionData(
-          executionCount: 3,
-          functionName: 'main',
-          lineNumber: 127
+        var map = (new FunctionData()
+          ..executionCount = 3
+          ..functionName = 'main'
+          ..lineNumber = 127
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(3)));
@@ -114,18 +116,24 @@ void main() {
 
     group('.toString()', () {
       test('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () {
-        var data = new FunctionData();
-        expect(data.toString(asDefinition: true), equals('FN:0,null'));
+        expect(new FunctionData().toString(asDefinition: true), equals('FN:0,'));
 
-        data = new FunctionData(executionCount: 3, functionName: 'main', lineNumber: 127);
+        var data = new FunctionData()
+          ..executionCount = 3
+          ..functionName = 'main'
+          .. lineNumber = 127;
+
         expect(data.toString(asDefinition: true), equals('FN:127,main'));
       });
 
       test('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () {
-        var data = new FunctionData();
-        expect(data.toString(asDefinition: false), equals('FNDA:0,null'));
+        expect(new FunctionData().toString(asDefinition: false), equals('FNDA:0,'));
 
-        data = new FunctionData(executionCount: 3, functionName: 'main', lineNumber: 127);
+        var data = new FunctionData()
+          ..executionCount = 3
+          ..functionName = 'main'
+          .. lineNumber = 127;
+
         expect(data.toString(asDefinition: false), equals('FNDA:3,main'));
       });
     });

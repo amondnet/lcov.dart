@@ -10,7 +10,7 @@ void main() {
         expect(record.branches, isNull);
         expect(record.functions, isNull);
         expect(record.lines, isNull);
-        expect(record.sourceFile, isNull);
+        expect(record.sourceFile, isEmpty);
       });
 
       test('should return an initialized instance for a non-empty map', () {
@@ -35,15 +35,15 @@ void main() {
         expect(map['branches'], isNull);
         expect(map['functions'], isNull);
         expect(map['lines'], isNull);
-        expect(map['sourceFile'], isNull);
+        expect(map['sourceFile'], isEmpty);
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new Record(
-          branches: new BranchCoverage(),
-          functions: new FunctionCoverage(),
-          lines: new LineCoverage(),
-          sourceFile: '/home/cedx/lcov.dart'
+        var map = (new Record()
+          ..branches = new BranchCoverage()
+          ..functions = new FunctionCoverage()
+          ..lines = new LineCoverage()
+          ..sourceFile = '/home/cedx/lcov.dart'
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(4)));
@@ -56,13 +56,17 @@ void main() {
 
     group('.toString()', () {
       test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
-        var record = new Record();
-        expect(record.toString(), equals('SF:null\nend_of_record'));
+        expect(new Record().toString(), equals('SF:\nend_of_record'));
 
         var branches = new BranchCoverage();
         var functions = new FunctionCoverage();
         var lines = new LineCoverage();
-        record = new Record(branches: branches, functions: functions, lines: lines, sourceFile: '/home/cedx/lcov.dart');
+        var record = new Record()
+          ..branches = branches
+          ..functions = functions
+          ..lines = lines
+          ..sourceFile = '/home/cedx/lcov.dart';
+
         expect(record.toString(), equals('SF:/home/cedx/lcov.dart\n$functions\n$branches\n$lines\nend_of_record'));
       });
     });

@@ -4,22 +4,23 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage({List<LineData> data, this.found = 0, this.hit = 0}): data = data ?? [];
+  LineCoverage();
 
   /// Creates a new line coverage from the specified [map] in JSON format.
-  LineCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((item) => new LineData.fromJson(item)).toList() : [],
-    found = map['found'] is int ? map['found'] : 0,
-    hit = map['hit'] is int ? map['hit'] : 0;
+  LineCoverage.fromJson(Map<String, dynamic> map) {
+    if (map['data'] is List<Map<String, dynamic>>) data.addAll(map['data'].map((item) => new LineData.fromJson(item)));
+    if (map['found'] is int) found = map['found'];
+    if (map['hit'] is int) hit = map['hit'];
+  }
 
   /// The coverage data.
-  final List<LineData> data;
+  final List<LineData> data = [];
 
   /// The number of instrumented lines.
-  int found;
+  int found = 0;
 
   /// The number of lines with a non-zero execution count.
-  int hit;
+  int hit = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -43,22 +44,23 @@ class LineCoverage {
 class LineData {
 
   /// Creates a new line data.
-  LineData({this.checksum, this.executionCount = 0, this.lineNumber = 0});
+  LineData();
 
   /// Creates a new line data from the specified [map] in JSON format.
-  LineData.fromJson(Map<String, dynamic> map):
-    checksum = map['checksum']?.toString(),
-    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
-    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
+  LineData.fromJson(Map<String, dynamic> map) {
+    if (map['checksum'] is String) checksum = map['checksum'];
+    if (map['executionCount'] is int) executionCount = map['executionCount'];
+    if (map['lineNumber'] is int) lineNumber = map['lineNumber'];
+  }
 
   /// The data checksum.
-  String checksum;
+  String checksum = '';
 
   /// The execution count.
-  int executionCount;
+  int executionCount = 0;
 
   /// The line number.
-  int lineNumber;
+  int lineNumber = 0;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -71,6 +73,6 @@ class LineData {
   @override
   String toString() {
     var value = '${Token.lineData}:$lineNumber,$executionCount';
-    return checksum != null ? '$value,$checksum' : value;
+    return checksum.isEmpty ? value : '$value,$checksum';
   }
 }

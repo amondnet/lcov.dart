@@ -9,7 +9,7 @@ void main() {
       test('should return an instance with default values for an empty map', () {
         var report = new Report.fromJson(const {});
         expect(report.records, allOf(isList, isEmpty));
-        expect(report.testName, isNull);
+        expect(report.testName, isEmpty);
       });
 
       test('should return an initialized instance for a non-empty map', () {
@@ -79,13 +79,13 @@ void main() {
         var map = new Report().toJson();
         expect(map, allOf(isMap, hasLength(2)));
         expect(map['records'], allOf(isList, isEmpty));
-        expect(map['testName'], isNull);
+        expect(map['testName'], isEmpty);
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = new Report(
-          records: [new Record()],
-          testName: 'LcovTest'
+        var map = (new Report()
+          ..records.add(new Record())
+          ..testName = 'LcovTest'
         ).toJson();
 
         expect(map, allOf(isMap, hasLength(2)));
@@ -97,11 +97,13 @@ void main() {
 
     group('.toString()', () {
       test('should return a format like "TN:<testName>"', () {
-        var report = new Report();
-        expect(report.toString(), equals('TN:null'));
+        expect(new Report().toString(), equals('TN:'));
 
         var record = new Record();
-        report = new Report(records: [record], testName: 'LcovTest');
+        var report = new Report()
+          ..records.add(record)
+          ..testName = 'LcovTest';
+
         expect(report.toString(), equals('TN:LcovTest\n$record'));
       });
     });
