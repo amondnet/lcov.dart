@@ -13,8 +13,8 @@ void main() {
       });
 
       test('should return an initialized instance for a non-empty map', () {
-        var report = new Report.fromJson(const {
-          'records': const [const {}],
+        var report = new Report.fromJson({
+          'records': [const {}],
           'testName': 'LcovTest'
         });
 
@@ -83,7 +83,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new Report('LcovTest')..records.add(new Record())).toJson();
+        var map = new Report('LcovTest', [new Record()]).toJson();
         expect(map, allOf(isMap, hasLength(2)));
         expect(map['records'], allOf(isList, hasLength(1)));
         expect(map['records'].first, isMap);
@@ -96,8 +96,7 @@ void main() {
         expect(new Report().toString(), isEmpty);
 
         var record = new Record();
-        var report = new Report('LcovTest')..records.add(record);
-        expect(report.toString(), equals('TN:LcovTest\n$record'));
+        expect(new Report('LcovTest', [record]).toString(), equals('TN:LcovTest\n$record'));
       });
     });
   });

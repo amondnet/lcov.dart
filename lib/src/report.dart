@@ -4,16 +4,15 @@ part of lcov;
 class Report {
 
   /// Creates a new report.
-  Report([this.testName = '']);
+  Report([this.testName = '', List<Record> records]): records = records ?? [];
 
   /// Creates a new record from the specified [map] in JSON format.
-  Report.fromJson(Map<String, dynamic> map) {
-    if (map['records'] is List<Map<String, dynamic>>) records.addAll(map['records'].map((item) => new Record.fromJson(item)));
+  Report.fromJson(Map<String, dynamic> map):
+    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
     testName = map['testName'] is String ? map['testName'] : '';
-  }
 
   /// The record list.
-  final List<Record> records = [];
+  final List<Record> records;
 
   /// The test name.
   String testName;

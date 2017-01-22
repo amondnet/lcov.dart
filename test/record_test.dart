@@ -14,7 +14,7 @@ void main() {
       });
 
       test('should return an initialized instance for a non-empty map', () {
-        var record = new Record.fromJson(const {
+        var record = new Record.fromJson({
           'branches': const {},
           'functions': const {},
           'lines': const {},
