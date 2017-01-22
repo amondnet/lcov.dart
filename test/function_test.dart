@@ -36,7 +36,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new FunctionCoverage(3, 19)..data.add(new FunctionData())).toJson();
+        var map = new FunctionCoverage(3, 19, [new FunctionData()]).toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
@@ -49,7 +49,7 @@ void main() {
       test(r'should return a format like "FNF:<found>\n,FNH:<hit>"', () {
         expect(new FunctionCoverage().toString(), equals('FNF:0\nFNH:0'));
 
-        var coverage = new FunctionCoverage(3, 19)..data.add(new FunctionData('main', 127, 3));
+        var coverage = new FunctionCoverage(3, 19, [new FunctionData('main', 127, 3)]);
         expect(coverage.toString(), equals('FN:127,main\nFNDA:3,main\nFNF:3\nFNH:19'));
       });
     });

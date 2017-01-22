@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = new BranchCoverage.fromJson({
-          'data': const [const {'lineNumber': 127}],
+          'data': [const {'lineNumber': 127}],
           'found': 3,
           'hit': 19
         });
@@ -36,7 +36,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new BranchCoverage(3, 19)..data.add(new BranchData())).toJson();
+        var map = new BranchCoverage(3, 19, [new BranchData()]).toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
@@ -50,8 +50,7 @@ void main() {
         expect(new BranchCoverage().toString(), equals('BRF:0\nBRH:0'));
 
         var data = new BranchData(127, 3, 2);
-        var coverage = new BranchCoverage(3, 19)..data.add(data);
-        expect(coverage.toString(), equals('$data\nBRF:3\nBRH:19'));
+        expect(new BranchCoverage(3, 19, [data]).toString(), equals('$data\nBRF:3\nBRH:19'));
       });
     });
   });

@@ -36,7 +36,7 @@ void main() {
       });
 
       test('should return a non-empty map for an initialized instance', () {
-        var map = (new LineCoverage(3, 19)..data.add(new LineData())).toJson();
+        var map = new LineCoverage(3, 19, [new LineData()]).toJson();
         expect(map, allOf(isMap, hasLength(3)));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
@@ -50,8 +50,7 @@ void main() {
         expect(new LineCoverage().toString(), equals('LF:0\nLH:0'));
 
         var data = new LineData(127, 3);
-        var coverage = new LineCoverage(3, 19)..data.add(data);
-        expect(coverage.toString(), equals('$data\nLF:3\nLH:19'));
+        expect(new LineCoverage(3, 19, [data]).toString(), equals('$data\nLF:3\nLH:19'));
       });
     });
   });

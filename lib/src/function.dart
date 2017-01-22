@@ -4,17 +4,16 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0]);
+  FunctionCoverage([this.found = 0, this.hit = 0, List<FunctionData> data]): data = data ?? [];
 
   /// Creates a new function coverage from the specified [map] in JSON format.
-  FunctionCoverage.fromJson(Map<String, dynamic> map) {
-    if (map['data'] is List<Map<String, dynamic>>) data.addAll(map['data'].map((item) => new FunctionData.fromJson(item)));
-    found = map['found'] is int ? map['found'] : 0;
+  FunctionCoverage.fromJson(Map<String, dynamic> map):
+    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => new FunctionData.fromJson(item)).toList() : [],
+    found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
-  }
 
   /// The coverage data.
-  final List<FunctionData> data = [];
+  final List<FunctionData> data;
 
   /// The number of functions found.
   int found;
