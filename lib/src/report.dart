@@ -130,8 +130,12 @@ class Report {
   @override
   String toString() {
     var buffer = new StringBuffer();
-    if (testName.isNotEmpty) buffer.write('${Token.testName}:$testName');
-    if (records.isNotEmpty) buffer..writeln()..writeAll(records, '\n');
+    if (testName.isNotEmpty) {
+      buffer.write('${Token.testName}:$testName');
+      if (records.isNotEmpty) buffer.writeln();
+    }
+
+    buffer.writeAll(records, '\n');
     return buffer.toString();
   }
 }
