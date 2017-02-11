@@ -31,4 +31,11 @@ void lint() => Analyzer.analyze(_sources);
 /// Runs all the test suites.
 @Task('Run the tests')
 // TODO Future test() => collectCoverage('test/all.dart', 'var/lcov.info');
-void test() => new TestRunner().test();
+Future test() async {
+  await Future.wait([
+    Dart.runAsync('test/all.dart', vmArgs: const ['--checked', '--enable-vm-service', '--pause-isolates-on-exit']),
+    Pub.runAsync('coverage', script: 'collect_coverage', arguments: const ['--out=var/coverage.json', '--resume-isolates'])
+  ]);
+
+  await Pub.runAsync('coverage', script: 'format_coverage', arguments: const ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info']);
+}
