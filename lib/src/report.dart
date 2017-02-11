@@ -84,7 +84,7 @@ class Report {
             break;
 
           case Token.lineData:
-            if (data.length < 3) throw new Exception('Invalid line data.');
+            if (data.length < 2) throw new Exception('Invalid line data.');
             record.lines.data.add(new LineData(
               int.parse(data[0], radix: 10),
               int.parse(data[1], radix: 10),
