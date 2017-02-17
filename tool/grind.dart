@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:grinder/grinder.dart';
-// TODO import 'package:grinder_coveralls/grinder_coveralls.dart';
 
 /// The list of source directories.
 const List<String> _sources = const ['lib', 'test', 'tool'];
@@ -13,8 +12,10 @@ Future main(List<String> args) => grind(args);
 void clean() => defaultClean();
 
 /// Uploads the code coverage report.
-// @Task('Upload the code coverage')
-// TODO Future coverage() => uploadCoverage('var/lcov.info');
+@Task('Upload the code coverage')
+void coverage() {
+  Pub.run('coveralls', arguments: ['--file=var/lcov.info']);
+}
 
 /// Builds the documentation.
 @Task('Build the documentation')
@@ -30,12 +31,12 @@ void lint() => Analyzer.analyze(_sources);
 
 /// Runs all the test suites.
 @Task('Run the tests')
-// TODO Future test() => collectCoverage('test/all.dart', 'var/lcov.info');
 Future test() async {
   await Future.wait([
     Dart.runAsync('test/all.dart', vmArgs: const ['--checked', '--enable-vm-service', '--pause-isolates-on-exit']),
     Pub.runAsync('coverage', script: 'collect_coverage', arguments: const ['--out=var/coverage.json', '--resume-isolates'])
   ]);
 
-  await Pub.runAsync('coverage', script: 'format_coverage', arguments: const ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info']);
+  var args = const ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=lib'];
+  return Pub.runAsync('coverage', script: 'format_coverage', arguments: args);
 }
