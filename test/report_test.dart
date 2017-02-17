@@ -25,7 +25,7 @@ void main() {
     });
 
     group('.parse()', () {
-      var report = Report.parse(new File('test/lcov.info').readAsStringSync());
+      var report = Report.parse(new File('test/fixtures/lcov.info').readAsStringSync());
 
       test('should have a test name', () {
         expect(report.testName, equals('Example'));
