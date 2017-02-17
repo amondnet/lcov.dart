@@ -1,5 +1,5 @@
 name: lcov
-version: 0.3.1
+version: 0.4.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Parse and format LCOV coverage reports.
@@ -7,7 +7,7 @@ documentation: https://cedx.github.io/lcov.dart
 homepage: https://github.com/cedx/lcov.dart
 
 environment:
-  sdk: '>=1.21.0 <2.0.0'
+  sdk: '>=1.22.0'
 
 dev_dependencies:
   coverage: ^0.9.2
