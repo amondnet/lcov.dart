@@ -118,6 +118,7 @@ end_of_record
 
 ## See also
 - [API reference](https://cedx.github.io/lcov.dart)
+- [Code coverage](https://coveralls.io/github/cedx/lcov.dart)
 - [Continuous integration](https://travis-ci.org/cedx/lcov.dart)
 
 ## License
