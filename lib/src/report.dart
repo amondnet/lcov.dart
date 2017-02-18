@@ -111,7 +111,7 @@ class Report {
       }
     }
 
-    catch (e) {
+    on Exception {
       throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
     }
 
