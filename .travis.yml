@@ -2,6 +2,9 @@ language: dart
 dart: stable
 sudo: false
 
+notifications:
+  email: false
+
 before_script: pub global activate coveralls
 script: pub run grinder test
 after_script: pub global run coveralls --file=var/lcov.info
