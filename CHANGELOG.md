@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for Dart](https://github.com/cedx/lcov.dart) project.
 
+## Version 1.0.0
+- First stable release.
+
 ## Version 0.4.0
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
 - Updated the package dependencies.
