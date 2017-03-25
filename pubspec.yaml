@@ -1,5 +1,5 @@
 name: lcov
-version: 0.4.0
+version: 1.0.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Parse and format LCOV coverage reports.
