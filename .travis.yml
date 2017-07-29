@@ -1,9 +1,10 @@
-language: dart
-dart: stable
+dist: trusty
 sudo: false
-
 notifications:
   email: false
+
+language: dart
+dart: stable
 
 before_script: pub global activate coveralls
 script: pub run grinder test
