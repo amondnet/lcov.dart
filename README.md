@@ -53,7 +53,7 @@ on FormatException {
 
 The `Report.toJson()` instance method will return a map like this:
 
-```json
+```dart
 {
   "testName": "Example",
   "records": [
