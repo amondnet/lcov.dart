@@ -6,22 +6,10 @@ class Report {
   /// Creates a new report.
   Report([this.testName = '', List<Record> records]): records = records ?? [];
 
-  /// Creates a new record from the specified [map] in JSON format.
-  Report.fromJson(Map<String, dynamic> map):
-    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
-    testName = map['testName'] is String ? map['testName'] : '';
-
-  /// The record list.
-  final List<Record> records;
-
-  /// The test name.
-  String testName;
-
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
-  static Report parse(String coverage) {
+  Report.fromCoverage(String coverage): records = [] {
     assert(coverage != null);
-    var report = new Report();
 
     try {
       var record = new Record()
@@ -39,7 +27,7 @@ class Report {
         var data = parts.skip(1).join(':').split(',');
         switch (parts.first) {
           case Token.testName:
-            report.testName = data.first;
+            testName = data.first;
             break;
 
           case Token.sourceFile:
@@ -101,7 +89,7 @@ class Report {
             break;
 
           case Token.endOfRecord:
-            report.records.add(record);
+            records.add(record);
             record = new Record()
               ..branches = new BranchCoverage()
               ..functions = new FunctionCoverage()
@@ -115,9 +103,19 @@ class Report {
       throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
     }
 
-    if (report.records.isEmpty) throw new FormatException('The coverage data is empty.', coverage);
-    return report;
+    if (records.isEmpty) throw new FormatException('The coverage data is empty.', coverage);
   }
+
+  /// Creates a new record from the specified [map] in JSON format.
+  Report.fromJson(Map<String, dynamic> map):
+    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => new Record.fromJson(item)).toList() : [],
+    testName = map['testName'] is String ? map['testName'] : '';
+
+  /// The record list.
+  final List<Record> records;
+
+  /// The test name.
+  String testName;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

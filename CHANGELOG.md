@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for Dart](https://github.com/cedx/lcov.dart) project.
 
+## Version 2.0.0
+- Breaking change: changed the `Report.parse` static method to the `fromCoverage` constructor.
+- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Updated the package dependencies.
+
 ## Version 1.0.0
 - First stable release.
 

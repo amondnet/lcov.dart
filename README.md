@@ -36,12 +36,12 @@ This package provides a set of classes representing a coverage report and its da
 The [`Report`](https://github.com/cedx/lcov.dart/blob/master/lib/src/report.dart) class, the main one, provides the parsing and formatting features.
 
 ### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) file
-The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
+The `Report.fromCoverage()` constructor parses a coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ```dart
 try {
   var coverage = await new File('lcov.info').readAsString();
-  var report = Report.parse(coverage);
+  var report = new Report.fromCoverage(coverage);
   print('The coverage report contains ${report.records.length} records:');
   print(report.toJson());
 }
