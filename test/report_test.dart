@@ -4,26 +4,7 @@ import 'package:test/test.dart';
 
 /// Tests the features of the [Report] class.
 void main() => group('Report', () {
-  group('.fromJson()', () {
-    test('should return an instance with default values for an empty map', () {
-      var report = new Report.fromJson(const {});
-      expect(report.records, allOf(isList, isEmpty));
-      expect(report.testName, isEmpty);
-    });
-
-    test('should return an initialized instance for a non-empty map', () {
-      var report = new Report.fromJson({
-        'records': [const {}],
-        'testName': 'LcovTest'
-      });
-
-      expect(report.records, allOf(isList, hasLength(1)));
-      expect(report.records.first, const isInstanceOf<Record>());
-      expect(report.testName, equals('LcovTest'));
-    });
-  });
-
-  group('.parse()', () {
+  group('.fromCoverage()', () {
     var report = new Report.fromCoverage(new File('test/fixtures/lcov.info').readAsStringSync());
 
     test('should have a test name', () {
@@ -70,6 +51,25 @@ void main() => group('Report', () {
 
     test('should throw an error if the input is invalid', () {
       expect(() => new Report.fromCoverage('TN:Example'), throwsFormatException);
+    });
+  });
+
+  group('.fromJson()', () {
+    test('should return an instance with default values for an empty map', () {
+      var report = new Report.fromJson(const {});
+      expect(report.records, allOf(isList, isEmpty));
+      expect(report.testName, isEmpty);
+    });
+
+    test('should return an initialized instance for a non-empty map', () {
+      var report = new Report.fromJson({
+        'records': [const {}],
+        'testName': 'LcovTest'
+      });
+
+      expect(report.records, allOf(isList, hasLength(1)));
+      expect(report.records.first, const isInstanceOf<Record>());
+      expect(report.testName, equals('LcovTest'));
     });
   });
 
