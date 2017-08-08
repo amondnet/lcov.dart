@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for Dart](https://github.com/cedx/lcov.dart) project.
 
+## Version 2.0.1
+- Fixed a bug: a parsing error occurs when the coverage data does not include a test name.
+
 ## Version 2.0.0
 - Breaking change: changed the `Report.parse()` static method to the `fromCoverage` constructor.
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
