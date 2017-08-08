@@ -8,7 +8,7 @@ class Report {
 
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
-  Report.fromCoverage(String coverage): records = [] {
+  Report.fromCoverage(String coverage): records = [], testName = '' {
     assert(coverage != null);
 
     try {
