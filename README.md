@@ -1,5 +1,5 @@
 # LCOV Reports for Dart
-![Runtime](https://img.shields.io/badge/dart-%3E%3D1.24-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://travis-ci.org/cedx/lcov.dart.svg)
+![Runtime](https://img.shields.io/badge/dart-%3E%3D1.24-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://travis-ci.org/cedx/lcov.dart.svg)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://www.dartlang.org).
 
@@ -122,4 +122,4 @@ end_of_record
 - [Continuous integration](https://travis-ci.org/cedx/lcov.dart)
 
 ## License
-[LCOV Reports for Dart](https://github.com/cedx/lcov.dart) is distributed under the Apache License, version 2.0.
+[LCOV Reports for Dart](https://github.com/cedx/lcov.dart) is distributed under the MIT License.
