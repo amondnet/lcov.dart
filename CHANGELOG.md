@@ -1,6 +1,8 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for Dart](https://github.com/cedx/lcov.dart) project.
 
+## Version 3.0.0
+
 ## Version 2.1.0
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
