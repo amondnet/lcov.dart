@@ -25,14 +25,16 @@ void main() => group('FunctionData', () {
   });
 
   group('.toJson()', () {
-    test('should return a map corresponding to the instance properties', () {
-      var map = const FunctionData('', 0, 0).toJson();
+    test('should return a map with default values for a newly created instance', () {
+      var map = new FunctionData('', 0).toJson();
       expect(map, hasLength(3));
       expect(map['executionCount'], equals(0));
       expect(map['functionName'], isEmpty);
       expect(map['lineNumber'], equals(0));
+    });
 
-      map = const FunctionData('main', 127, 3).toJson();
+    test('should return a non-empty map for an initialized instance', () {
+      var map = new FunctionData('main', 127, executionCount: 3).toJson();
       expect(map, hasLength(3));
       expect(map['executionCount'], equals(3));
       expect(map['functionName'], equals('main'));
@@ -42,13 +44,13 @@ void main() => group('FunctionData', () {
 
   group('.toString()', () {
     test('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () {
-      expect(const FunctionData('', 0, 0).toString(asDefinition: true), equals('FN:0,'));
-      expect(const FunctionData('main', 127, 3).toString(asDefinition: true), equals('FN:127,main'));
+      expect(new FunctionData('', 0).toString(asDefinition: true), equals('FN:0,'));
+      expect(new FunctionData('main', 127, executionCount: 3).toString(asDefinition: true), equals('FN:127,main'));
     });
 
     test('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () {
-      expect(const FunctionData('', 0, 0).toString(asDefinition: false), equals('FNDA:0,'));
-      expect(const FunctionData('main', 127, 3).toString(asDefinition: false), equals('FNDA:3,main'));
+      expect(new FunctionData('', 0).toString(asDefinition: false), equals('FNDA:0,'));
+      expect(new FunctionData('main', 127, executionCount: 3).toString(asDefinition: false), equals('FNDA:3,main'));
     });
   });
 });

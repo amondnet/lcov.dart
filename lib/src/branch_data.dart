@@ -4,7 +4,7 @@ part of lcov;
 class BranchData {
 
   /// Creates a new branch data.
-  const BranchData(this.lineNumber, this.blockNumber, this.branchNumber, this.taken);
+  BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0});
 
   /// Creates a new branch data from the specified [map] in JSON format.
   BranchData.fromJson(Map<String, int> map):
@@ -23,7 +23,7 @@ class BranchData {
   final int lineNumber;
 
   /// A number indicating how often this branch was taken.
-  final int taken;
+  int taken;
 
   /// Converts this object to a map in JSON format.
   Map<String, int> toJson() => {

@@ -4,7 +4,7 @@ part of lcov;
 class LineData {
 
   /// Creates a new line data.
-  const LineData(this.lineNumber, this.executionCount, {this.checksum = ''});
+  LineData(this.lineNumber, {this.executionCount = 0, this.checksum = ''});
 
   /// Creates a new line data from the specified [map] in JSON format.
   LineData.fromJson(Map<String, dynamic> map):
@@ -16,7 +16,7 @@ class LineData {
   final String checksum;
 
   /// The execution count.
-  final int executionCount;
+  int executionCount;
 
   /// The line number.
   final int lineNumber;
