@@ -4,7 +4,7 @@ part of lcov;
 class Record {
 
   /// Creates a new record with the specified source file.
-  Record([this.sourceFile = '']);
+  Record(this.sourceFile, {this.branches, this.functions, this.lines});
 
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map):
@@ -23,7 +23,7 @@ class Record {
   LineCoverage lines;
 
   /// The path to the source file.
-  String sourceFile;
+  final String sourceFile;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
