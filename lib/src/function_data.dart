@@ -4,7 +4,7 @@ part of lcov;
 class FunctionData {
 
   /// Creates a new function data.
-  const FunctionData([this.functionName = '', this.lineNumber = 0, this.executionCount = 0]);
+  const FunctionData(this.functionName, this.lineNumber, this.executionCount);
 
   /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map):

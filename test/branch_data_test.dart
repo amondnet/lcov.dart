@@ -28,18 +28,16 @@ void main() => group('BranchData', () {
   });
 
   group('.toJson()', () {
-    test('should return a map with default values for a newly created instance', () {
-      var map = new BranchData().toJson();
-      expect(map, allOf(isMap, hasLength(4)));
+    test('should return a map corresponding to the instance properties', () {
+      var map = const BranchData(0, 0, 0, 0).toJson();
+      expect(map, hasLength(4));
       expect(map['blockNumber'], equals(0));
       expect(map['branchNumber'], equals(0));
       expect(map['lineNumber'], equals(0));
       expect(map['taken'], equals(0));
-    });
 
-    test('should return a non-empty map for an initialized instance', () {
-      var map = new BranchData(127, 3, 2, 1).toJson();
-      expect(map, allOf(isMap, hasLength(4)));
+      map = const BranchData(127, 3, 2, 1).toJson();
+      expect(map, hasLength(4));
       expect(map['blockNumber'], equals(3));
       expect(map['branchNumber'], equals(2));
       expect(map['lineNumber'], equals(127));
@@ -49,8 +47,8 @@ void main() => group('BranchData', () {
 
   group('.toString()', () {
     test('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () {
-      expect(new BranchData().toString(), equals('BRDA:0,0,0,-'));
-      expect(new BranchData(127, 3, 2, 1).toString(), equals('BRDA:127,3,2,1'));
+      expect(const BranchData(0, 0, 0, 0).toString(), equals('BRDA:0,0,0,-'));
+      expect(const BranchData(127, 3, 2, 1).toString(), equals('BRDA:127,3,2,1'));
     });
   });
 });
