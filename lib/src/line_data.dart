@@ -4,22 +4,22 @@ part of lcov;
 class LineData {
 
   /// Creates a new line data.
-  LineData([this.lineNumber = 0, this.executionCount = 0, this.checksum = '']);
+  const LineData(this.lineNumber, this.executionCount, {this.checksum = ''});
 
   /// Creates a new line data from the specified [map] in JSON format.
   LineData.fromJson(Map<String, dynamic> map):
-      checksum = map['checksum'] is String ? map['checksum'] : '',
-      executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
-      lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
+    checksum = map['checksum'] is String ? map['checksum'] : '',
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The data checksum.
-  String checksum;
+  final String checksum;
 
   /// The execution count.
-  int executionCount;
+  final int executionCount;
 
   /// The line number.
-  int lineNumber;
+  final int lineNumber;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {

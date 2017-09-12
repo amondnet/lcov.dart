@@ -4,22 +4,22 @@ part of lcov;
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData([this.functionName = '', this.lineNumber = 0, this.executionCount = 0]);
+  const FunctionData([this.functionName = '', this.lineNumber = 0, this.executionCount = 0]);
 
   /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map):
-      executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
-      functionName = map['functionName'] is String ? map['functionName'] : '',
-      lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    functionName = map['functionName'] is String ? map['functionName'] : '',
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The execution count.
-  int executionCount;
+  final int executionCount;
 
   /// The function name.
-  String functionName;
+  final String functionName;
 
   /// The line number of the function start.
-  int lineNumber;
+  final int lineNumber;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
