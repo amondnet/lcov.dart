@@ -76,14 +76,14 @@ void main() => group('Report', () {
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
       var map = new Report().toJson();
-      expect(map, allOf(isMap, hasLength(2)));
+      expect(map, hasLength(2));
       expect(map['records'], allOf(isList, isEmpty));
       expect(map['testName'], isEmpty);
     });
 
     test('should return a non-empty map for an initialized instance', () {
-      var map = new Report('LcovTest', [new Record()]).toJson();
-      expect(map, allOf(isMap, hasLength(2)));
+      var map = new Report('LcovTest', [new Record('')]).toJson();
+      expect(map, hasLength(2));
       expect(map['records'], allOf(isList, hasLength(1)));
       expect(map['records'].first, isMap);
       expect(map['testName'], 'LcovTest');
@@ -94,7 +94,7 @@ void main() => group('Report', () {
     test('should return a format like "TN:<testName>"', () {
       expect(new Report().toString(), isEmpty);
 
-      var record = new Record();
+      var record = new Record('');
       expect(new Report('LcovTest', [record]).toString(), equals('TN:LcovTest\n$record'));
     });
   });

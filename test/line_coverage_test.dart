@@ -28,15 +28,15 @@ void main() => group('LineCoverage', () {
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
       var map = new LineCoverage().toJson();
-      expect(map, allOf(isMap, hasLength(3)));
+      expect(map, hasLength(3));
       expect(map['data'], allOf(isList, isEmpty));
       expect(map['found'], equals(0));
       expect(map['hit'], equals(0));
     });
 
     test('should return a non-empty map for an initialized instance', () {
-      var map = new LineCoverage(3, 19, [new LineData()]).toJson();
-      expect(map, allOf(isMap, hasLength(3)));
+      var map = new LineCoverage(3, 19, [new LineData(0)]).toJson();
+      expect(map, hasLength(3));
       expect(map['data'], allOf(isList, hasLength(1)));
       expect(map['data'].first, isMap);
       expect(map['found'], equals(3));
@@ -48,7 +48,7 @@ void main() => group('LineCoverage', () {
     test(r'should return a format like "LF:<found>\nLH:<hit>"', () {
       expect(new LineCoverage().toString(), equals('LF:0\nLH:0'));
 
-      var data = new LineData(127, 3);
+      var data = new LineData(127, executionCount: 3);
       expect(new LineCoverage(3, 19, [data]).toString(), equals('$data\nLF:3\nLH:19'));
     });
   });

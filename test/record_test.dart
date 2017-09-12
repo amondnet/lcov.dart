@@ -29,8 +29,8 @@ void main() => group('Record', () {
 
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
-      var map = new Record().toJson();
-      expect(map, allOf(isMap, hasLength(4)));
+      var map = new Record('').toJson();
+      expect(map, hasLength(4));
       expect(map['branches'], isNull);
       expect(map['functions'], isNull);
       expect(map['lines'], isNull);
@@ -44,7 +44,7 @@ void main() => group('Record', () {
         ..lines = new LineCoverage()
       ).toJson();
 
-      expect(map, allOf(isMap, hasLength(4)));
+      expect(map, hasLength(4));
       expect(map['branches'], isMap);
       expect(map['functions'], isMap);
       expect(map['lines'], isMap);
@@ -54,7 +54,7 @@ void main() => group('Record', () {
 
   group('.toString()', () {
     test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
-      expect(new Record().toString(), equals('SF:\nend_of_record'));
+      expect(new Record('').toString(), equals('SF:\nend_of_record'));
 
       var record = new Record('/home/cedx/lcov.dart')
         ..branches = new BranchCoverage()

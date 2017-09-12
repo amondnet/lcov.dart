@@ -28,15 +28,15 @@ void main() => group('BranchCoverage', () {
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
       var map = new BranchCoverage().toJson();
-      expect(map, allOf(isMap, hasLength(3)));
+      expect(map, hasLength(3));
       expect(map['data'], allOf(isList, isEmpty));
       expect(map['found'], equals(0));
       expect(map['hit'], equals(0));
     });
 
     test('should return a non-empty map for an initialized instance', () {
-      var map = new BranchCoverage(3, 19, [new BranchData()]).toJson();
-      expect(map, allOf(isMap, hasLength(3)));
+      var map = new BranchCoverage(3, 19, [new BranchData(0, 0, 0)]).toJson();
+      expect(map, hasLength(3));
       expect(map['data'], allOf(isList, hasLength(1)));
       expect(map['data'].first, isMap);
       expect(map['found'], equals(3));
