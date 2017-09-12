@@ -60,24 +60,24 @@ The `Report.toJson()` instance method will return a map like this:
     {
       "sourceFile": "/home/cedx/lcov.dart/fixture.dart",
       "branches": {
-        "data": [],
         "found": 0,
-        "hit": 0
+        "hit": 0,
+        "data": []
       },
       "functions": {
+        "found": 1,
+        "hit": 1,
         "data": [
           {"executionCount": 2, "functionName": "main", "lineNumber": 4}
-        ],
-        "found": 1,
-        "hit": 1
+        ]
       },
       "lines": {
+        "found": 2,
+        "hit": 2,
         "data": [
           {"checksum": "PF4Rz2r7RTliO9u6bZ7h6g", "executionCount": 2, "lineNumber": 6},
           {"checksum": "y7GE3Y4FyXCeXcrtqgSVzw", "executionCount": 2, "lineNumber": 9}
-        ],
-        "found": 2,
-        "hit": 2
+        ]
       }
     }
   ]
@@ -90,8 +90,8 @@ All you have to do is to create the adequate structure using these different cla
 
 ```dart
 var lineCoverage = new LineCoverage(2, 2, [
-  new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
-  new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+  new LineData(6, executionCount: 2, checksum: 'PF4Rz2r7RTliO9u6bZ7h6g'),
+  new LineData(7, executionCount: 2, checksum: 'yGMB6FhEEAd8OyASe3Ni1w')
 ]);
 
 var record = new Record('/home/cedx/lcov.dart/fixture.dart')
