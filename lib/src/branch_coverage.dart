@@ -23,9 +23,9 @@ class BranchCoverage {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'data': data.map((item) => item.toJson()).toList(),
     'found': found,
-    'hit': hit
+    'hit': hit,
+    'data': data.map((item) => item.toJson()).toList()
   };
 
   /// Returns a string representation of this object.

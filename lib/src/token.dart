@@ -21,11 +21,11 @@ abstract class Token {
   /// A function name.
   static const String functionName = 'FN';
 
-  /// The number of functions hit.
-  static const String functionsHit = 'FNH';
-
   /// The number of functions found.
   static const String functionsFound = 'FNF';
+
+  /// The number of functions hit.
+  static const String functionsHit = 'FNH';
 
   /// The coverage data of a line.
   static const String lineData = 'DA';
