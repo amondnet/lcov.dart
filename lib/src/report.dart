@@ -87,10 +87,6 @@ class Report {
 
           case Token.endOfRecord:
             records.add(record);
-            record = new Record('')
-              ..branches = new BranchCoverage()
-              ..functions = new FunctionCoverage()
-              ..lines = new LineCoverage();
             break;
         }
       }
