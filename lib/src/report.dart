@@ -10,11 +10,7 @@ class Report {
   /// Throws a [FormatException] if a parsing error occurred.
   Report.fromCoverage(String coverage): records = [], testName = '' {
     try {
-      var record = new Record()
-        ..branches = new BranchCoverage()
-        ..functions = new FunctionCoverage()
-        ..lines = new LineCoverage();
-
+      var record;
       for (var line in coverage.split(new RegExp(r'\r?\n'))) {
         line = line.trim();
         if (line.isEmpty) continue;
@@ -29,7 +25,10 @@ class Report {
             break;
 
           case Token.sourceFile:
-            record.sourceFile = data.first;
+            record = new Record(data.first)
+              ..branches = new BranchCoverage()
+              ..functions = new FunctionCoverage()
+              ..lines = new LineCoverage();
             break;
 
           case Token.functionName:
@@ -57,7 +56,7 @@ class Report {
               int.parse(data[0], radix: 10),
               int.parse(data[1], radix: 10),
               int.parse(data[2], radix: 10),
-              data[3] == '-' ? 0 : int.parse(data[3], radix: 10)
+              taken: data[3] == '-' ? 0 : int.parse(data[3], radix: 10)
             ));
             break;
 
@@ -73,8 +72,8 @@ class Report {
             if (data.length < 2) throw new Exception('Invalid line data.');
             record.lines.data.add(new LineData(
               int.parse(data[0], radix: 10),
-              int.parse(data[1], radix: 10),
-              data.length >= 3 ? data[2] : ''
+              executionCount: int.parse(data[1], radix: 10),
+              checksum: data.length >= 3 ? data[2] : ''
             ));
             break;
 
@@ -88,7 +87,7 @@ class Report {
 
           case Token.endOfRecord:
             records.add(record);
-            record = new Record()
+            record = new Record('')
               ..branches = new BranchCoverage()
               ..functions = new FunctionCoverage()
               ..lines = new LineCoverage();
