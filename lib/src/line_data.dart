@@ -23,9 +23,9 @@ class LineData {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'checksum': checksum,
+    'lineNumber': lineNumber,
     'executionCount': executionCount,
-    'lineNumber': lineNumber
+    'checksum': checksum
   };
 
   /// Returns a string representation of this object.

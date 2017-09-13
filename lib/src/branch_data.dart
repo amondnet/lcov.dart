@@ -27,9 +27,9 @@ class BranchData {
 
   /// Converts this object to a map in JSON format.
   Map<String, int> toJson() => {
+    'lineNumber': lineNumber,
     'blockNumber': blockNumber,
     'branchNumber': branchNumber,
-    'lineNumber': lineNumber,
     'taken': taken
   };
 

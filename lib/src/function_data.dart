@@ -23,9 +23,9 @@ class FunctionData {
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
-    'executionCount': executionCount,
     'functionName': functionName,
-    'lineNumber': lineNumber
+    'lineNumber': lineNumber,
+    'executionCount': executionCount
   };
 
   /// Returns a string representation of this object.
