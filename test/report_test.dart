@@ -1,8 +1,9 @@
 import 'package:lcov/lcov.dart';
 import 'package:test/test.dart';
 
-/// A sample coverage report.
-const String coverage = '''
+/// Tests the features of the [Report] class.
+void main() => group('Report', () {
+  var coverage = '''
 TN:Example
 
 SF:/home/cedx/lcov.dart/fixture.dart
@@ -67,8 +68,6 @@ LH:7
 end_of_record
 ''';
 
-/// Tests the features of the [Report] class.
-void main() => group('Report', () {
   group('.fromCoverage()', () {
     var report = new Report.fromCoverage(coverage);
 
