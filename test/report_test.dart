@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 /// Tests the features of the [Report] class.
 void main() => group('Report', () {
-  var coverage = '''
+  final coverage = '''
 TN:Example
 
 SF:/home/cedx/lcov.dart/fixture.dart
