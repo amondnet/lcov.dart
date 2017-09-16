@@ -1,0 +1,6 @@
+js_trace: true
+
+platforms:
+- chrome
+- firefox
+- vm
