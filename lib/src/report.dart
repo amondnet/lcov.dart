@@ -4,7 +4,7 @@ part of lcov;
 class Report {
 
   /// Creates a new report.
-  Report([this.testName = '', List<Record> records]): records = records ?? [];
+  Report([this.testName = '', List<Record> records]): records = new List.from(records ?? const []);
 
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
