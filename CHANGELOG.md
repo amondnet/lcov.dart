@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for Dart](https://github.com/cedx/lcov.dart) project.
 
+## Version [3.1.0](https://github.com/cedx/lcov.dart/compare/v3.0.0...v3.1.0)
+- Updated the package dependencies.
+
 ## Version [3.0.0](https://github.com/cedx/lcov.dart/compare/v2.1.0...v3.0.0)
 - Breaking change: changed the signature of most constructors.
 - Breaking change: most properties of data classes are now `final`.
