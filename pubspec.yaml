@@ -10,9 +10,9 @@ environment:
   sdk: '>=1.24.0 <2.0.0'
 
 dev_dependencies:
-  coverage: ^0.9.2
+  coverage: ^0.9.3
   grinder: ^0.8.0
-  test: ^0.12.24
+  test: ^0.12.27
 
 transformers:
 - test/pub_serve:
