@@ -12,4 +12,4 @@ environment:
 dev_dependencies:
   coverage: ^0.9.3
   grinder: ^0.8.0
-  test: ^0.12.28
+  test: ^0.12.29
