@@ -52,9 +52,9 @@ class FunctionData {
 
   /// Creates a new function data from the specified [map] in JSON format.
   FunctionData.fromJson(Map<String, dynamic> map):
-      executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
-      functionName = map['functionName'] is String ? map['functionName'] : '',
-      lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
+    executionCount = map['executionCount'] is int ? map['executionCount'] : 0,
+    functionName = map['functionName'] is String ? map['functionName'] : '',
+    lineNumber = map['lineNumber'] is int ? map['lineNumber'] : 0;
 
   /// The execution count.
   int executionCount;

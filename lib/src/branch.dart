@@ -49,10 +49,10 @@ class BranchData {
 
   /// Creates a new branch data from the specified [map] in JSON format.
   BranchData.fromJson(Map<String, int> map):
-      blockNumber = map['blockNumber'] ?? 0,
-      branchNumber = map['branchNumber'] ?? 0,
-      lineNumber = map['lineNumber'] ?? 0,
-      taken = map['taken'] ?? 0;
+    blockNumber = map['blockNumber'] ?? 0,
+    branchNumber = map['branchNumber'] ?? 0,
+    lineNumber = map['lineNumber'] ?? 0,
+    taken = map['taken'] ?? 0;
 
   /// The branch number.
   final int branchNumber;
