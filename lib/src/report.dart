@@ -1,16 +1,17 @@
 part of lcov;
+// ignore_for_file: invariant_booleans
 
 /// Represents a trace file, that is a coverage report.
 class Report {
 
   /// Creates a new report.
-  Report([this.testName = '', List<Record> records]): records = new List.from(records ?? const []);
+  Report([this.testName = '', List<Record> records]): records = new List.from(records ?? const <Record>[]);
 
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
   Report.fromCoverage(String coverage): records = [], testName = '' {
     try {
-      var record;
+      Record record;
       for (var line in coverage.split(new RegExp(r'\r?\n'))) {
         line = line.trim();
         if (line.isEmpty) continue;
@@ -111,7 +112,7 @@ class Report {
   String testName;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'testName': testName,
     'records': records.map((item) => item.toJson()).toList()
   };

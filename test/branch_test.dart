@@ -6,14 +6,14 @@ void main() {
   group('BranchCoverage', () {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
-        var coverage = new BranchCoverage.fromJson(const {});
+        var coverage = new BranchCoverage.fromJson(const <String, dynamic>{});
         expect(coverage.data, allOf(isList, isEmpty));
         expect(coverage.found, equals(0));
         expect(coverage.hit, equals(0));
       });
 
       test('should return an initialized instance for a non-empty map', () {
-        var coverage = new BranchCoverage.fromJson({
+        var coverage = new BranchCoverage.fromJson(<String, dynamic>{
           'data': [const {'lineNumber': 127}],
           'found': 3,
           'hit': 19

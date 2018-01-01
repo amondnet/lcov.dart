@@ -4,7 +4,7 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0, List<FunctionData> data]): data = new List.from(data ?? const []);
+  FunctionCoverage([this.found = 0, this.hit = 0, List<FunctionData> data]): data = new List.from(data ?? const <FunctionData>[]);
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   FunctionCoverage.fromJson(Map<String, dynamic> map):
@@ -22,7 +22,7 @@ class FunctionCoverage {
   int hit;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'found': found,
     'hit': hit,
     'data': data.map((item) => item.toJson()).toList()
@@ -33,8 +33,8 @@ class FunctionCoverage {
   String toString() {
     var buffer = new StringBuffer();
     if (data.isNotEmpty) buffer
-      ..writeAll(data.map((item) => item.toString(asDefinition: true)), '\n')..writeln()
-      ..writeAll(data.map((item) => item.toString(asDefinition: false)), '\n')..writeln();
+      ..writeAll(data.map<String>((item) => item.toString(asDefinition: true)), '\n')..writeln()
+      ..writeAll(data.map<String>((item) => item.toString(asDefinition: false)), '\n')..writeln();
 
     buffer
       ..writeln('${Token.functionsFound}:$found')
@@ -66,7 +66,7 @@ class FunctionData {
   final int lineNumber;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'functionName': functionName,
     'lineNumber': lineNumber,
     'executionCount': executionCount

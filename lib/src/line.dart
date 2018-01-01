@@ -4,7 +4,7 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, List<LineData> data]): data = new List.from(data ?? const []);
+  LineCoverage([this.found = 0, this.hit = 0, List<LineData> data]): data = new List.from(data ?? const <LineData>[]);
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map):
@@ -22,7 +22,7 @@ class LineCoverage {
   int hit;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'found': found,
     'hit': hit,
     'data': data.map((item) => item.toJson()).toList()
@@ -63,7 +63,7 @@ class LineData {
   final int lineNumber;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'lineNumber': lineNumber,
     'executionCount': executionCount,
     'checksum': checksum

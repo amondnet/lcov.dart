@@ -26,7 +26,7 @@ class Record {
   final String sourceFile;
 
   /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
     'sourceFile': sourceFile,
     'branches': branches?.toJson(),
     'functions': functions?.toJson(),
