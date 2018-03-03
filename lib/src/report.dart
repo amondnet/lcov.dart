@@ -17,7 +17,7 @@ class Report {
         if (line.isEmpty) continue;
 
         var parts = line.split(':');
-        if (parts.length < 2 && parts.first != Token.endOfRecord) throw new Exception('Invalid token format.');
+        if (parts.length < 2 && parts.first != Token.endOfRecord) throw new Exception('Invalid token format');
 
         var data = parts.skip(1).join(':').split(',');
         switch (parts.first) {
@@ -33,12 +33,12 @@ class Report {
             break;
 
           case Token.functionName:
-            if (data.length < 2) throw new Exception('Invalid function name.');
+            if (data.length < 2) throw new Exception('Invalid function name');
             record.functions.data.add(new FunctionData(data[1], int.parse(data.first, radix: 10)));
             break;
 
           case Token.functionData:
-            if (data.length < 2) throw new Exception('Invalid function data.');
+            if (data.length < 2) throw new Exception('Invalid function data');
             record.functions.data.firstWhere((item) => item.functionName == data[1])
               .executionCount = int.parse(data.first, radix: 10);
             break;
@@ -52,7 +52,7 @@ class Report {
             break;
 
           case Token.branchData:
-            if (data.length < 4) throw new Exception('Invalid branch data.');
+            if (data.length < 4) throw new Exception('Invalid branch data');
             record.branches.data.add(new BranchData(
               int.parse(data[0], radix: 10),
               int.parse(data[1], radix: 10),
@@ -70,7 +70,7 @@ class Report {
             break;
 
           case Token.lineData:
-            if (data.length < 2) throw new Exception('Invalid line data.');
+            if (data.length < 2) throw new Exception('Invalid line data');
             record.lines.data.add(new LineData(
               int.parse(data[0], radix: 10),
               executionCount: int.parse(data[1], radix: 10),
@@ -94,7 +94,7 @@ class Report {
     }
 
     on Exception {
-      throw new FormatException('The coverage data has an invalid LCOV format.', coverage);
+      throw new FormatException('The coverage data has an invalid LCOV format', coverage);
     }
 
     if (records.isEmpty) throw new FormatException('The coverage data is empty.', coverage);
