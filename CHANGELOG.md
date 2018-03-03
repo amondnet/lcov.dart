@@ -2,6 +2,7 @@
 
 ## Version [4.0.0](https://github.com/cedx/lcov.dart/compare/v3.1.0...v4.0.0)
 - Breaking change: starting to use and support the [Dart 2 SDK](https://www.dartlang.org/tools/sdk).
+- Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Updated the package dependencies.
 
 ## Version [3.1.0](https://github.com/cedx/lcov.dart/compare/v3.0.0...v3.1.0)
