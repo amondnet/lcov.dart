@@ -114,7 +114,11 @@ end_of_record
     });
 
     test('should throw an error if the input is invalid', () {
-      expect(() => new Report.fromCoverage('TN:Example'), throwsFormatException);
+      expect(() => new Report.fromCoverage('ZZ'), throwsA(const isInstanceOf<LcovException>()));
+    });
+
+    test('should throw an error if the report is empty', () {
+      expect(() => new Report.fromCoverage('TN:Example'), throwsA(const isInstanceOf<LcovException>()));
     });
   });
 

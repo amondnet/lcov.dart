@@ -1,6 +1,13 @@
 part of lcov;
 // ignore_for_file: invariant_booleans
 
+/// An exception caused by a parsing error.
+class LcovException extends FormatException {
+
+  /// Creates a new LCOV exception.
+  LcovException(String message, [source, int offset]): super(message, source, offset);
+}
+
 /// Represents a trace file, that is a coverage report.
 class Report {
 
@@ -94,10 +101,10 @@ class Report {
     }
 
     on Exception {
-      throw new FormatException('The coverage data has an invalid LCOV format', coverage);
+      throw new LcovException('The coverage data has an invalid LCOV format', coverage);
     }
 
-    if (records.isEmpty) throw new FormatException('The coverage data is empty.', coverage);
+    if (records.isEmpty) throw new LcovException('The coverage data is empty', coverage);
   }
 
   /// Creates a new record from the specified [map] in JSON format.

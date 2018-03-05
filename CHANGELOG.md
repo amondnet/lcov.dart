@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.1.0](https://github.com/cedx/lcov.dart/compare/v4.0.0...v4.1.0)
+- Added the `LcovException` class.
+
 ## Version [4.0.0](https://github.com/cedx/lcov.dart/compare/v3.1.0...v4.0.0)
 - Breaking change: starting to use and support the [Dart 2 SDK](https://www.dartlang.org/tools/sdk).
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
