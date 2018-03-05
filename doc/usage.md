@@ -21,7 +21,7 @@ Future<Null> main() async {
     print(report.toJson());
   }
 
-  on LcovException catch (err)
+  on LcovException catch (err) {
     print('An error occurred: ${err.message}');
   }
 }
