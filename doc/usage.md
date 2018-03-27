@@ -12,7 +12,7 @@ The `Report.fromCoverage()` constructor parses a [LCOV](http://ltp.sourceforge.n
 import 'dart:async';
 import 'package:lcov/lcov.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   var coverage = await new File('lcov.info').readAsString();
 
   try {
