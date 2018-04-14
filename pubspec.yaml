@@ -10,6 +10,6 @@ environment:
   sdk: '>=2.0.0-dev <2.0.0'
 
 dev_dependencies:
-  coverage: ^0.10.0
+  coverage: ^0.11.0
   grinder: ^0.8.1
-  test: ^0.12.33
+  test: ^0.12.34
