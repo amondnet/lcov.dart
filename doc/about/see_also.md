@@ -1,7 +1,7 @@
 # See also
 
 ## Development
-- [API reference](https://cedx.github.io/lcov.dart/api)
+- [API reference](https://dev.belin.io/lcov.dart/api)
 - [Pub package](https://pub.dartlang.org/packages/lcov)
 
 ## Testing
@@ -9,5 +9,5 @@
 - [Code coverage](https://coveralls.io/github/cedx/lcov.dart)
 
 ## Other implementations
-- JavaScript: [LCOV Reports for JS](https://cedx.github.io/lcov.js)
-- PHP: [LCOV Reports for PHP](https://cedx.github.io/lcov.php)
+- JavaScript: [LCOV Reports for JS](https://dev.belin.io/lcov.js)
+- PHP: [LCOV Reports for PHP](https://dev.belin.io/lcov.php)

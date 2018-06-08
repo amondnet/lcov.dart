@@ -3,8 +3,8 @@ version: 4.1.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Parse and format LCOV coverage reports.
-documentation: https://cedx.github.io/lcov.dart/api
-homepage: https://cedx.github.io/lcov.dart
+documentation: https://dev.belin.io/lcov.dart/api
+homepage: https://dev.belin.io/lcov.dart
 
 environment:
   sdk: '>=2.0.0-dev.55 <2.0.0'

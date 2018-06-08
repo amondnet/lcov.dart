@@ -1,7 +1,7 @@
 site_name: LCOV Reports for Dart
 site_description: Parse and format LCOV coverage reports, in Dart.
 site_author: Cédric Belin - cedric@belin.io
-site_url: https://cedx.github.io/lcov.dart
+site_url: https://dev.belin.io/lcov.dart
 
 docs_dir: doc
 site_dir: web
