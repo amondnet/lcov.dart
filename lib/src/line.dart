@@ -4,11 +4,11 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, List<LineData> data]): data = new List.from(data ?? const <LineData>[]);
+  LineCoverage([this.found = 0, this.hit = 0, List<LineData> data]): data = List.from(data ?? const <LineData>[]);
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => new LineData.fromJson(item)).toList() : [],
+    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => LineData.fromJson(item)).toList() : [],
     found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
 
@@ -31,7 +31,7 @@ class LineCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    var buffer = StringBuffer();
     if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer
       ..writeln('${Token.linesFound}:$found')

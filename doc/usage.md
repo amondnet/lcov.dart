@@ -71,13 +71,13 @@ All you have to do is to create the adequate structure using these different cla
 import 'package:lcov/lcov.dart';
 
 void main() {
-  var lineCoverage = new LineCoverage(2, 2, [
-    new LineData(6, executionCount: 2, checksum: 'PF4Rz2r7RTliO9u6bZ7h6g'),
-    new LineData(7, executionCount: 2, checksum: 'yGMB6FhEEAd8OyASe3Ni1w')
+  var lineCoverage = LineCoverage(2, 2, [
+    LineData(6, executionCount: 2, checksum: 'PF4Rz2r7RTliO9u6bZ7h6g'),
+    LineData(7, executionCount: 2, checksum: 'yGMB6FhEEAd8OyASe3Ni1w')
   ]);
 
-  var record = new Record('/home/cedx/lcov.dart/fixture.dart')
-    ..functions = new FunctionCoverage(1, 1)
+  var record = Record('/home/cedx/lcov.dart/fixture.dart')
+    ..functions = FunctionCoverage(1, 1)
     ..lines = lineCoverage;
 
   var report = new Report('Example', [record]);

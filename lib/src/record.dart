@@ -8,9 +8,9 @@ class Record {
 
   /// Creates a new record from the specified [map] in JSON format.
   Record.fromJson(Map<String, dynamic> map):
-    branches = map['branches'] is Map<String, dynamic> ? new BranchCoverage.fromJson(map['branches']) : null,
-    functions = map['functions'] is Map<String, dynamic> ? new FunctionCoverage.fromJson(map['functions']) : null,
-    lines = map['lines'] is Map<String, dynamic> ? new LineCoverage.fromJson(map['lines']) : null,
+    branches = map['branches'] is Map<String, dynamic> ? BranchCoverage.fromJson(map['branches']) : null,
+    functions = map['functions'] is Map<String, dynamic> ? FunctionCoverage.fromJson(map['functions']) : null,
+    lines = map['lines'] is Map<String, dynamic> ? LineCoverage.fromJson(map['lines']) : null,
     sourceFile = map['sourceFile'] is String ? map['sourceFile'] : '';
 
   /// The branch coverage.
@@ -36,7 +36,7 @@ class Record {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = new StringBuffer('${Token.sourceFile}:$sourceFile')..writeln();
+    var buffer = StringBuffer('${Token.sourceFile}:$sourceFile')..writeln();
     if (functions != null) buffer.writeln(functions);
     if (branches != null) buffer.writeln(branches);
     if (lines != null) buffer.writeln(lines);

@@ -4,11 +4,11 @@ part of lcov;
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0, List<FunctionData> data]): data = new List.from(data ?? const <FunctionData>[]);
+  FunctionCoverage([this.found = 0, this.hit = 0, List<FunctionData> data]): data = List.from(data ?? const <FunctionData>[]);
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   FunctionCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => new FunctionData.fromJson(item)).toList() : [],
+    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => FunctionData.fromJson(item)).toList() : [],
     found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
 
@@ -31,7 +31,7 @@ class FunctionCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    var buffer = StringBuffer();
     if (data.isNotEmpty) buffer
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: true)), '\n')..writeln()
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: false)), '\n')..writeln();

@@ -7,9 +7,9 @@ documentation: https://dev.belin.io/lcov.dart/api
 homepage: https://dev.belin.io/lcov.dart
 
 environment:
-  sdk: '>=2.0.0-dev.60 <2.0.0'
+  sdk: '>=2.0.0-dev.63 <2.0.0'
 
 dev_dependencies:
   coverage: ^0.11.0
   grinder: ^0.8.2
-  test: ^0.12.40
+  test: ^0.12.42
