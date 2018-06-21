@@ -124,14 +124,14 @@ end_of_record
 
   group('.fromJson()', () {
     test('should return an instance with default values for an empty map', () {
-      var report = Report.fromJson(const <String, dynamic>{});
+      var report = Report.fromJson(<String, dynamic>{});
       expect(report.records, allOf(isList, isEmpty));
       expect(report.testName, isEmpty);
     });
 
     test('should return an initialized instance for a non-empty map', () {
       var report = Report.fromJson(<String, dynamic>{
-        'records': [const <String, dynamic>{}],
+        'records': [<String, dynamic>{}],
         'testName': 'LcovTest'
       });
 

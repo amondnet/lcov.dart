@@ -6,7 +6,7 @@ void main() {
   group('BranchCoverage', () {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
-        var coverage = BranchCoverage.fromJson(const <String, dynamic>{});
+        var coverage = BranchCoverage.fromJson(<String, dynamic>{});
         expect(coverage.data, allOf(isList, isEmpty));
         expect(coverage.found, equals(0));
         expect(coverage.hit, equals(0));
@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = BranchCoverage.fromJson(<String, dynamic>{
-          'data': [const {'lineNumber': 127}],
+          'data': [{'lineNumber': 127}],
           'found': 3,
           'hit': 19
         });
@@ -58,7 +58,7 @@ void main() {
   group('BranchData', () {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
-        var data = BranchData.fromJson(const {});
+        var data = BranchData.fromJson({});
         expect(data.branchNumber, equals(0));
         expect(data.blockNumber, equals(0));
         expect(data.lineNumber, equals(0));
@@ -66,7 +66,7 @@ void main() {
       });
 
       test('should return an initialized instance for a non-empty map', () {
-        var data = BranchData.fromJson(const {
+        var data = BranchData.fromJson({
           'blockNumber': 3,
           'branchNumber': 2,
           'lineNumber': 127,

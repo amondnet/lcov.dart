@@ -6,7 +6,7 @@ void main() {
   group('FunctionCoverage', () {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
-        var coverage = FunctionCoverage.fromJson(const <String, dynamic>{});
+        var coverage = FunctionCoverage.fromJson(<String, dynamic>{});
         expect(coverage.data, allOf(isList, isEmpty));
         expect(coverage.found, equals(0));
         expect(coverage.hit, equals(0));
@@ -14,7 +14,7 @@ void main() {
 
       test('should return an initialized instance for a non-empty map', () {
         var coverage = FunctionCoverage.fromJson(<String, dynamic>{
-          'data': [const {'lineNumber': 127}],
+          'data': [{'lineNumber': 127}],
           'found': 3,
           'hit': 19
         });
@@ -58,14 +58,14 @@ void main() {
   group('FunctionData', () {
     group('.fromJson()', () {
       test('should return an instance with default values for an empty map', () {
-        var data = FunctionData.fromJson(const <String, dynamic>{});
+        var data = FunctionData.fromJson(<String, dynamic>{});
         expect(data.executionCount, equals(0));
         expect(data.functionName, isEmpty);
         expect(data.lineNumber, equals(0));
       });
 
       test('should return an initialized instance for a non-empty map', () {
-        var data = FunctionData.fromJson(const <String, dynamic>{
+        var data = FunctionData.fromJson(<String, dynamic>{
           'executionCount': 3,
           'functionName': 'main',
           'lineNumber': 127

@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() => group('Record', () {
   group('.fromJson()', () {
     test('should return an instance with default values for an empty map', () {
-      var record = Record.fromJson(const <String, dynamic>{});
+      var record = Record.fromJson(<String, dynamic>{});
       expect(record.branches, isNull);
       expect(record.functions, isNull);
       expect(record.lines, isNull);
@@ -14,9 +14,9 @@ void main() => group('Record', () {
 
     test('should return an initialized instance for a non-empty map', () {
       var record = Record.fromJson(<String, dynamic>{
-        'branches': const <String, dynamic>{},
-        'functions': const <String, dynamic>{},
-        'lines': const <String, dynamic>{},
+        'branches': <String, dynamic>{},
+        'functions': <String, dynamic>{},
+        'lines': <String, dynamic>{},
         'sourceFile': '/home/cedx/lcov.dart'
       });
 
