@@ -4,11 +4,11 @@ part of lcov;
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, List<LineData> data]): data = List.from(data ?? const <LineData>[]);
+  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]): data = List<LineData>.from(data ?? const <LineData>[]);
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   LineCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => LineData.fromJson(item)).toList() : [],
+    data = map['data'] is List<Map<String, dynamic>> ? map['data'].map((item) => LineData.fromJson(item)).cast<LineData>().toList() : <LineData>[],
     found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
 

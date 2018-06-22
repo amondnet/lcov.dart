@@ -4,11 +4,11 @@ part of lcov;
 class BranchCoverage {
 
   /// Creates a new branch coverage.
-  BranchCoverage([this.found = 0, this.hit = 0, List<BranchData> data]): data = List.from(data ?? const <BranchData>[]);
+  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]): data = List<BranchData>.from(data ?? const <BranchData>[]);
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
   BranchCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => BranchData.fromJson(item)).toList() : [],
+    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => BranchData.fromJson(item)).cast<BranchData>().toList() : <BranchData>[],
     found = map['found'] is int ? map['found'] : 0,
     hit = map['hit'] is int ? map['hit'] : 0;
 

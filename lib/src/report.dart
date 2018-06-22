@@ -12,7 +12,7 @@ class LcovException extends FormatException {
 class Report {
 
   /// Creates a new report.
-  Report([this.testName = '', List<Record> records]): records = List.from(records ?? const <Record>[]);
+  Report([this.testName = '', Iterable<Record> records]): records = List<Record>.from(records ?? const <Record>[]);
 
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [FormatException] if a parsing error occurred.
@@ -109,7 +109,7 @@ class Report {
 
   /// Creates a new record from the specified [map] in JSON format.
   Report.fromJson(Map<String, dynamic> map):
-    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => Record.fromJson(item)).toList() : [],
+    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => Record.fromJson(item)).cast<Record>().toList() : <Record>[],
     testName = map['testName'] is String ? map['testName'] : '';
 
   /// The record list.
