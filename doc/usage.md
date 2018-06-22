@@ -13,10 +13,10 @@ import 'dart:async';
 import 'package:lcov/lcov.dart';
 
 Future<void> main() async {
-  var coverage = await new File('lcov.info').readAsString();
+  var coverage = await File('lcov.info').readAsString();
 
   try {
-    var report = new Report.fromCoverage(coverage);
+    var report = Report.fromCoverage(coverage);
     print('The coverage report contains ${report.records.length} records:');
     print(report.toJson());
   }
@@ -80,7 +80,7 @@ void main() {
     ..functions = FunctionCoverage(1, 1)
     ..lines = lineCoverage;
 
-  var report = new Report('Example', [record]);
+  var report = Report('Example', [record]);
   print(report);
 }
 ```
