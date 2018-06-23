@@ -5,7 +5,7 @@
 - [Pub package](https://pub.dartlang.org/packages/lcov)
 
 ## Testing
-- [Continuous integration](https://travis-ci.org/cedx/lcov.dart)
+- [Continuous integration](https://travis-ci.com/cedx/lcov.dart)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.dart)
 
 ## Other implementations
