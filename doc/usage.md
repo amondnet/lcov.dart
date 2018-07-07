@@ -10,6 +10,7 @@ The `Report.fromCoverage()` constructor parses a [LCOV](http://ltp.sourceforge.n
 
 ```dart
 import 'dart:async';
+import 'dart:io';
 import 'package:lcov/lcov.dart';
 
 Future<void> main() async {
