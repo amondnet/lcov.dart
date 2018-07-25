@@ -1,37 +1,36 @@
 part of lcov;
 
+/// Converts the specified coverage data to a JSON object.
+Map<String, dynamic> _coverageToJson(coverage) => coverage.toJson();
+
 /// Provides the coverage data of a source file.
+@JsonSerializable()
 class Record {
 
   /// Creates a new record with the specified source file.
   Record(this.sourceFile, {this.branches, this.functions, this.lines});
 
   /// Creates a new record from the specified [map] in JSON format.
-  Record.fromJson(Map<String, dynamic> map):
-    branches = map['branches'] is Map<String, dynamic> ? BranchCoverage.fromJson(map['branches']) : null,
-    functions = map['functions'] is Map<String, dynamic> ? FunctionCoverage.fromJson(map['functions']) : null,
-    lines = map['lines'] is Map<String, dynamic> ? LineCoverage.fromJson(map['lines']) : null,
-    sourceFile = map['sourceFile'] is String ? map['sourceFile'] : '';
+  factory Record.fromJson(Map<String, dynamic> map) => _$RecordFromJson(map);
 
   /// The branch coverage.
+  @JsonKey(toJson: _coverageToJson)
   BranchCoverage branches;
 
   /// The function coverage.
+  @JsonKey(toJson: _coverageToJson)
   FunctionCoverage functions;
 
   /// The line coverage.
+  @JsonKey(toJson: _coverageToJson)
   LineCoverage lines;
 
   /// The path to the source file.
+  @JsonKey(defaultValue: '')
   final String sourceFile;
 
-  /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => <String, dynamic>{
-    'sourceFile': sourceFile,
-    'branches': branches?.toJson(),
-    'functions': functions?.toJson(),
-    'lines': lines?.toJson()
-  };
+  /// Converts this object to a [Map] in JSON format.
+  Map<String, dynamic> toJson() => _$RecordToJson(this);
 
   /// Returns a string representation of this object.
   @override

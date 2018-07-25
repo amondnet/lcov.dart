@@ -1,32 +1,32 @@
 part of lcov;
 
+/// Converts the specified list of [BranchData] instances to a list of JSON objects.
+List<Map<String, dynamic>> _branchDataToJson(List<BranchData> items) => items.map((item) => item.toJson()).toList();
+
 /// Provides the coverage data of branches.
+@JsonSerializable()
 class BranchCoverage {
 
   /// Creates a new branch coverage.
   BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]): data = List<BranchData>.from(data ?? const <BranchData>[]);
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
-  BranchCoverage.fromJson(Map<String, dynamic> map):
-    data = map['data'] is List<Map<String, int>> ? map['data'].map((item) => BranchData.fromJson(item)).cast<BranchData>().toList() : <BranchData>[],
-    found = map['found'] is int ? map['found'] : 0,
-    hit = map['hit'] is int ? map['hit'] : 0;
+  factory BranchCoverage.fromJson(Map<String, dynamic> map) => _$BranchCoverageFromJson(map);
 
   /// The coverage data.
+  @JsonKey(toJson: _branchDataToJson)
   final List<BranchData> data;
 
   /// The number of branches found.
+  @JsonKey(defaultValue: 0)
   int found;
 
   /// The number of branches hit.
+  @JsonKey(defaultValue: 0)
   int hit;
 
-  /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => <String, dynamic>{
-    'found': found,
-    'hit': hit,
-    'data': data.map((item) => item.toJson()).toList()
-  };
+  /// Converts this object to a [Map] in JSON format.
+  Map<String, dynamic> toJson() => _$BranchCoverageToJson(this);
 
   /// Returns a string representation of this object.
   @override
@@ -42,37 +42,33 @@ class BranchCoverage {
 }
 
 /// Provides details for branch coverage.
+@JsonSerializable()
 class BranchData {
 
   /// Creates a new branch data.
   BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0});
 
   /// Creates a new branch data from the specified [map] in JSON format.
-  BranchData.fromJson(Map<String, int> map):
-    blockNumber = map['blockNumber'] ?? 0,
-    branchNumber = map['branchNumber'] ?? 0,
-    lineNumber = map['lineNumber'] ?? 0,
-    taken = map['taken'] ?? 0;
-
-  /// The branch number.
-  final int branchNumber;
+  factory BranchData.fromJson(Map<String, dynamic> map) => _$BranchDataFromJson(map);
 
   /// The block number.
+  @JsonKey(defaultValue: 0)
   final int blockNumber;
 
+  /// The branch number.
+  @JsonKey(defaultValue: 0)
+  final int branchNumber;
+
   /// The line number.
+  @JsonKey(defaultValue: 0)
   final int lineNumber;
 
   /// A number indicating how often this branch was taken.
+  @JsonKey(defaultValue: 0)
   int taken;
 
-  /// Converts this object to a map in JSON format.
-  Map<String, int> toJson() => {
-    'lineNumber': lineNumber,
-    'blockNumber': blockNumber,
-    'branchNumber': branchNumber,
-    'taken': taken
-  };
+  /// Converts this object to a [Map] in JSON format.
+  Map<String, dynamic> toJson() => _$BranchDataToJson(this);
 
   /// Returns a string representation of this object.
   @override

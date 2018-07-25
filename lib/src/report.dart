@@ -1,6 +1,9 @@
 part of lcov;
 // ignore_for_file: invariant_booleans
 
+/// Converts the specified list of [Record] instances to a list of JSON objects.
+List<Map<String, dynamic>> _recordsToJson(List<Record> items) => items.map((item) => item.toJson()).toList();
+
 /// An exception caused by a parsing error.
 class LcovException extends FormatException {
 
@@ -9,6 +12,7 @@ class LcovException extends FormatException {
 }
 
 /// Represents a trace file, that is a coverage report.
+@JsonSerializable()
 class Report {
 
   /// Creates a new report.
@@ -107,22 +111,19 @@ class Report {
     if (records.isEmpty) throw LcovException('The coverage data is empty', coverage);
   }
 
-  /// Creates a new record from the specified [map] in JSON format.
-  Report.fromJson(Map<String, dynamic> map):
-    records = map['records'] is List<Map<String, dynamic>> ? map['records'].map((item) => Record.fromJson(item)).cast<Record>().toList() : <Record>[],
-    testName = map['testName'] is String ? map['testName'] : '';
+  /// Creates a new report from the specified [map] in JSON format.
+  factory Report.fromJson(Map<String, dynamic> map) => _$ReportFromJson(map);
 
   /// The record list.
+  @JsonKey(toJson: _recordsToJson)
   final List<Record> records;
 
   /// The test name.
+  @JsonKey(defaultValue: '')
   String testName;
 
-  /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => <String, dynamic>{
-    'testName': testName,
-    'records': records.map((item) => item.toJson()).toList()
-  };
+  /// Converts this object to a [Map] in JSON format.
+  Map<String, dynamic> toJson() => _$ReportToJson(this);
 
   /// Returns a string representation of this object.
   @override
