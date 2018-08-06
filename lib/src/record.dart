@@ -35,7 +35,7 @@ class Record {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = StringBuffer('${Token.sourceFile}:$sourceFile')..writeln();
+    final buffer = StringBuffer('${Token.sourceFile}:$sourceFile')..writeln();
     if (functions != null) buffer.writeln(functions);
     if (branches != null) buffer.writeln(branches);
     if (lines != null) buffer.writeln(lines);

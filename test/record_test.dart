@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() => group('Record', () {
   group('.fromJson()', () {
     test('should return an instance with default values for an empty map', () {
-      var record = Record.fromJson(<String, dynamic>{});
+      final record = Record.fromJson(<String, dynamic>{});
       expect(record.branches, isNull);
       expect(record.functions, isNull);
       expect(record.lines, isNull);
@@ -13,7 +13,7 @@ void main() => group('Record', () {
     });
 
     test('should return an initialized instance for a non-empty map', () {
-      var record = Record.fromJson(<String, dynamic>{
+      final record = Record.fromJson(<String, dynamic>{
         'branches': <String, dynamic>{},
         'functions': <String, dynamic>{},
         'lines': <String, dynamic>{},
@@ -29,7 +29,7 @@ void main() => group('Record', () {
 
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
-      var map = Record('').toJson();
+      final map = Record('').toJson();
       expect(map, hasLength(4));
       expect(map['branches'], isNull);
       expect(map['functions'], isNull);
@@ -38,7 +38,7 @@ void main() => group('Record', () {
     });
 
     test('should return a non-empty map for an initialized instance', () {
-      var map = (Record('/home/cedx/lcov.dart')
+      final map = (Record('/home/cedx/lcov.dart')
         ..branches = BranchCoverage()
         ..functions = FunctionCoverage()
         ..lines = LineCoverage()
@@ -56,7 +56,7 @@ void main() => group('Record', () {
     test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
       expect(Record('').toString(), equals('SF:\nend_of_record'));
 
-      var record = Record('/home/cedx/lcov.dart')
+      final record = Record('/home/cedx/lcov.dart')
         ..branches = BranchCoverage()
         ..functions = FunctionCoverage()
         ..lines = LineCoverage();

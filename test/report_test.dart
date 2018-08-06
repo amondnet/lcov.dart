@@ -69,7 +69,7 @@ end_of_record
 ''';
 
   group('.fromCoverage()', () {
-    var report = Report.fromCoverage(coverage);
+    final report = Report.fromCoverage(coverage);
 
     test('should have a test name', () {
       expect(report.testName, equals('Example'));
@@ -84,7 +84,7 @@ end_of_record
     });
 
     test('should have detailed branch coverage', () {
-      var branches = report.records[1].branches;
+      final branches = report.records[1].branches;
       expect(branches.found, equals(4));
       expect(branches.hit, equals(4));
 
@@ -94,7 +94,7 @@ end_of_record
     });
 
     test('should have detailed function coverage', () {
-      var functions = report.records[1].functions;
+      final functions = report.records[1].functions;
       expect(functions.found, equals(1));
       expect(functions.hit, equals(1));
 
@@ -104,7 +104,7 @@ end_of_record
     });
 
     test('should have detailed line coverage', () {
-      var lines = report.records[1].lines;
+      final lines = report.records[1].lines;
       expect(lines.found, equals(9));
       expect(lines.hit, equals(9));
 
@@ -124,13 +124,13 @@ end_of_record
 
   group('.fromJson()', () {
     test('should return an instance with default values for an empty map', () {
-      var report = Report.fromJson(<String, dynamic>{});
+      final report = Report.fromJson(<String, dynamic>{});
       expect(report.records, allOf(isList, isEmpty));
       expect(report.testName, isEmpty);
     });
 
     test('should return an initialized instance for a non-empty map', () {
-      var report = Report.fromJson(<String, dynamic>{
+      final report = Report.fromJson(<String, dynamic>{
         'records': [<String, dynamic>{}],
         'testName': 'LcovTest'
       });
@@ -143,14 +143,14 @@ end_of_record
 
   group('.toJson()', () {
     test('should return a map with default values for a newly created instance', () {
-      var map = Report().toJson();
+      final map = Report().toJson();
       expect(map, hasLength(2));
       expect(map['records'], allOf(isList, isEmpty));
       expect(map['testName'], isEmpty);
     });
 
     test('should return a non-empty map for an initialized instance', () {
-      var map = Report('LcovTest', [Record('')]).toJson();
+      final map = Report('LcovTest', [Record('')]).toJson();
       expect(map, hasLength(2));
       expect(map['records'], allOf(isList, hasLength(1)));
       expect(map['records'].first, isMap);
@@ -162,7 +162,7 @@ end_of_record
     test('should return a format like "TN:<testName>"', () {
       expect(Report().toString(), isEmpty);
 
-      var record = Record('');
+      final record = Record('');
       expect(Report('LcovTest', [record]).toString(), equals('TN:LcovTest\n$record'));
     });
   });

@@ -31,7 +31,7 @@ class LineCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer
       ..writeln('${Token.linesFound}:$found')
@@ -69,7 +69,7 @@ class LineData {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var value = '${Token.lineData}:$lineNumber,$executionCount';
+    final value = '${Token.lineData}:$lineNumber,$executionCount';
     return checksum.isEmpty ? value : '$value,$checksum';
   }
 }

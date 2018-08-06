@@ -27,10 +27,10 @@ class Report {
         line = line.trim();
         if (line.isEmpty) continue;
 
-        var parts = line.split(':');
+        final parts = line.split(':');
         if (parts.length < 2 && parts.first != Token.endOfRecord) throw Exception('Invalid token format');
 
-        var data = parts.skip(1).join(':').split(',');
+        final data = parts.skip(1).join(':').split(',');
         switch (parts.first) {
           case Token.testName:
             testName = data.first;
@@ -128,7 +128,7 @@ class Report {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     if (testName.isNotEmpty) {
       buffer.write('${Token.testName}:$testName');
       if (records.isNotEmpty) buffer.writeln();

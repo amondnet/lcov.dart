@@ -31,7 +31,7 @@ class BranchCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
     buffer
       ..writeln('${Token.branchesFound}:$found')
@@ -73,7 +73,7 @@ class BranchData {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
+    final value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
     return taken > 0 ? '$value,$taken' : '$value,-';
   }
 }

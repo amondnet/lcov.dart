@@ -31,7 +31,7 @@ class FunctionCoverage {
   /// Returns a string representation of this object.
   @override
   String toString() {
-    var buffer = StringBuffer();
+    final buffer = StringBuffer();
     if (data.isNotEmpty) buffer
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: true)), '\n')..writeln()
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: false)), '\n')..writeln();
@@ -75,8 +75,8 @@ class FunctionData {
   /// instead of its data (e.g. name and execution count).
   @override
   String toString({bool asDefinition = false}) {
-    var token = asDefinition ? Token.functionName : Token.functionData;
-    var number = asDefinition ? lineNumber : executionCount;
+    final token = asDefinition ? Token.functionName : Token.functionData;
+    final number = asDefinition ? lineNumber : executionCount;
     return '$token:$number,$functionName';
   }
 }
