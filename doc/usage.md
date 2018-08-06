@@ -14,10 +14,10 @@ import 'dart:io';
 import 'package:lcov/lcov.dart';
 
 Future<void> main() async {
-  var coverage = await File('lcov.info').readAsString();
+  final coverage = await File('lcov.info').readAsString();
 
   try {
-    var report = Report.fromCoverage(coverage);
+    final report = Report.fromCoverage(coverage);
     print('The coverage report contains ${report.records.length} records:');
     print(report.toJson());
   }
@@ -72,16 +72,16 @@ All you have to do is to create the adequate structure using these different cla
 import 'package:lcov/lcov.dart';
 
 void main() {
-  var lineCoverage = LineCoverage(2, 2, [
+  final lineCoverage = LineCoverage(2, 2, [
     LineData(6, executionCount: 2, checksum: 'PF4Rz2r7RTliO9u6bZ7h6g'),
     LineData(7, executionCount: 2, checksum: 'yGMB6FhEEAd8OyASe3Ni1w')
   ]);
 
-  var record = Record('/home/cedx/lcov.dart/fixture.dart')
+  final record = Record('/home/cedx/lcov.dart/fixture.dart')
     ..functions = FunctionCoverage(1, 1)
     ..lines = lineCoverage;
 
-  var report = Report('Example', [record]);
+  final report = Report('Example', [record]);
   print(report);
 }
 ```
