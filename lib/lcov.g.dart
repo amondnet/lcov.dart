@@ -7,12 +7,11 @@ part of lcov;
 // **************************************************************************
 
 BranchCoverage _$BranchCoverageFromJson(Map<String, dynamic> json) {
-  return new BranchCoverage(
+  return BranchCoverage(
       json['found'] as int ?? 0,
       json['hit'] as int ?? 0,
-      (json['data'] as List)?.map((e) => e == null
-          ? null
-          : new BranchData.fromJson(e as Map<String, dynamic>)));
+      (json['data'] as List)?.map((e) =>
+          e == null ? null : BranchData.fromJson(e as Map<String, dynamic>)));
 }
 
 Map<String, dynamic> _$BranchCoverageToJson(BranchCoverage instance) =>
@@ -23,7 +22,7 @@ Map<String, dynamic> _$BranchCoverageToJson(BranchCoverage instance) =>
     };
 
 BranchData _$BranchDataFromJson(Map<String, dynamic> json) {
-  return new BranchData(json['lineNumber'] as int ?? 0,
+  return BranchData(json['lineNumber'] as int ?? 0,
       json['blockNumber'] as int ?? 0, json['branchNumber'] as int ?? 0,
       taken: json['taken'] as int ?? 0);
 }
@@ -37,12 +36,11 @@ Map<String, dynamic> _$BranchDataToJson(BranchData instance) =>
     };
 
 FunctionCoverage _$FunctionCoverageFromJson(Map<String, dynamic> json) {
-  return new FunctionCoverage(
+  return FunctionCoverage(
       json['found'] as int ?? 0,
       json['hit'] as int ?? 0,
-      (json['data'] as List)?.map((e) => e == null
-          ? null
-          : new FunctionData.fromJson(e as Map<String, dynamic>)));
+      (json['data'] as List)?.map((e) =>
+          e == null ? null : FunctionData.fromJson(e as Map<String, dynamic>)));
 }
 
 Map<String, dynamic> _$FunctionCoverageToJson(FunctionCoverage instance) =>
@@ -53,7 +51,7 @@ Map<String, dynamic> _$FunctionCoverageToJson(FunctionCoverage instance) =>
     };
 
 FunctionData _$FunctionDataFromJson(Map<String, dynamic> json) {
-  return new FunctionData(
+  return FunctionData(
       json['functionName'] as String ?? '', json['lineNumber'] as int ?? 0,
       executionCount: json['executionCount'] as int ?? 0);
 }
@@ -66,11 +64,11 @@ Map<String, dynamic> _$FunctionDataToJson(FunctionData instance) =>
     };
 
 LineCoverage _$LineCoverageFromJson(Map<String, dynamic> json) {
-  return new LineCoverage(
+  return LineCoverage(
       json['found'] as int ?? 0,
       json['hit'] as int ?? 0,
       (json['data'] as List)?.map((e) =>
-          e == null ? null : new LineData.fromJson(e as Map<String, dynamic>)));
+          e == null ? null : LineData.fromJson(e as Map<String, dynamic>)));
 }
 
 Map<String, dynamic> _$LineCoverageToJson(LineCoverage instance) =>
@@ -81,7 +79,7 @@ Map<String, dynamic> _$LineCoverageToJson(LineCoverage instance) =>
     };
 
 LineData _$LineDataFromJson(Map<String, dynamic> json) {
-  return new LineData(json['lineNumber'] as int ?? 0,
+  return LineData(json['lineNumber'] as int ?? 0,
       executionCount: json['executionCount'] as int ?? 0,
       checksum: json['checksum'] as String ?? '');
 }
@@ -93,18 +91,17 @@ Map<String, dynamic> _$LineDataToJson(LineData instance) => <String, dynamic>{
     };
 
 Record _$RecordFromJson(Map<String, dynamic> json) {
-  return new Record(json['sourceFile'] as String ?? '',
+  return Record(json['sourceFile'] as String ?? '',
       branches: json['branches'] == null
           ? null
-          : new BranchCoverage.fromJson(
-              json['branches'] as Map<String, dynamic>),
+          : BranchCoverage.fromJson(json['branches'] as Map<String, dynamic>),
       functions: json['functions'] == null
           ? null
-          : new FunctionCoverage.fromJson(
+          : FunctionCoverage.fromJson(
               json['functions'] as Map<String, dynamic>),
       lines: json['lines'] == null
           ? null
-          : new LineCoverage.fromJson(json['lines'] as Map<String, dynamic>));
+          : LineCoverage.fromJson(json['lines'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$RecordToJson(Record instance) => <String, dynamic>{
@@ -118,10 +115,10 @@ Map<String, dynamic> _$RecordToJson(Record instance) => <String, dynamic>{
     };
 
 Report _$ReportFromJson(Map<String, dynamic> json) {
-  return new Report(
+  return Report(
       json['testName'] as String ?? '',
       (json['records'] as List)?.map((e) =>
-          e == null ? null : new Record.fromJson(e as Map<String, dynamic>)));
+          e == null ? null : Record.fromJson(e as Map<String, dynamic>)));
 }
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
