@@ -1,4 +1,4 @@
-part of lcov;
+part of '../lcov.dart';
 
 /// Converts the specified list of [FunctionData] instances to a list of JSON objects.
 List<Map<String, dynamic>> _functionDataToJson(List<FunctionData> items) => items.map((item) => item.toJson()).toList();

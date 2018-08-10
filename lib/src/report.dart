@@ -1,4 +1,4 @@
-part of lcov;
+part of '../lcov.dart';
 // ignore_for_file: invariant_booleans
 
 /// Converts the specified list of [Record] instances to a list of JSON objects.

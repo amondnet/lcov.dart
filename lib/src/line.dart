@@ -1,4 +1,4 @@
-part of lcov;
+part of '../lcov.dart';
 
 /// Converts the specified list of [LineData] instances to a list of JSON objects.
 List<Map<String, dynamic>> _lineDataToJson(List<LineData> items) => items.map((item) => item.toJson()).toList();

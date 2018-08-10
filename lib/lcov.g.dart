@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of lcov;
+part of 'lcov.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
