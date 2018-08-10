@@ -8,7 +8,7 @@ List<Map<String, dynamic>> _lineDataToJson(List<LineData> items) => items.map((i
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]): data = List<LineData>.from(data ?? const <LineData>[]);
+  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]): data = data?.toList() ?? <LineData>[];
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   factory LineCoverage.fromJson(Map<String, dynamic> map) => _$LineCoverageFromJson(map);

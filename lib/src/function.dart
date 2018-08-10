@@ -8,7 +8,7 @@ List<Map<String, dynamic>> _functionDataToJson(List<FunctionData> items) => item
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]): data = List<FunctionData>.from(data ?? const <FunctionData>[]);
+  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]): data = data?.toList() ?? <FunctionData>[];
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   factory FunctionCoverage.fromJson(Map<String, dynamic> map) => _$FunctionCoverageFromJson(map);

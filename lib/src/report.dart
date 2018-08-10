@@ -16,7 +16,7 @@ class LcovException extends FormatException {
 class Report {
 
   /// Creates a new report.
-  Report([this.testName = '', Iterable<Record> records]): records = List<Record>.from(records ?? const <Record>[]);
+  Report([this.testName = '', Iterable<Record> records]): records = records?.toList() ?? <Record>[];
 
   /// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
   /// Throws a [LcovException] if a parsing error occurred.

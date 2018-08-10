@@ -8,7 +8,7 @@ List<Map<String, dynamic>> _branchDataToJson(List<BranchData> items) => items.ma
 class BranchCoverage {
 
   /// Creates a new branch coverage.
-  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]): data = List<BranchData>.from(data ?? const <BranchData>[]);
+  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]): data = data?.toList() ?? <BranchData>[];
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
   factory BranchCoverage.fromJson(Map<String, dynamic> map) => _$BranchCoverageFromJson(map);
