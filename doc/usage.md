@@ -1,5 +1,5 @@
-path: blob/master/lib
-source: src/report.dart
+path: blob/master
+source: lib/src/report.dart
 
 # Usage
 **LCOV Reports for Dart** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
