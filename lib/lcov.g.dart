@@ -16,7 +16,9 @@ BranchCoverage _$BranchCoverageFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$BranchCoverageToJson(BranchCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data == null ? null : _branchDataToJson(instance.data),
+      'data': instance.data == null
+          ? null
+          : BranchCoverage._branchDataToJson(instance.data),
       'found': instance.found,
       'hit': instance.hit
     };
@@ -45,7 +47,9 @@ FunctionCoverage _$FunctionCoverageFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$FunctionCoverageToJson(FunctionCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data == null ? null : _functionDataToJson(instance.data),
+      'data': instance.data == null
+          ? null
+          : FunctionCoverage._functionDataToJson(instance.data),
       'found': instance.found,
       'hit': instance.hit
     };
@@ -73,7 +77,9 @@ LineCoverage _$LineCoverageFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$LineCoverageToJson(LineCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data == null ? null : _lineDataToJson(instance.data),
+      'data': instance.data == null
+          ? null
+          : LineCoverage._lineDataToJson(instance.data),
       'found': instance.found,
       'hit': instance.hit
     };
@@ -105,12 +111,15 @@ Record _$RecordFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RecordToJson(Record instance) => <String, dynamic>{
-      'branches':
-          instance.branches == null ? null : _coverageToJson(instance.branches),
+      'branches': instance.branches == null
+          ? null
+          : Record._coverageToJson(instance.branches),
       'functions': instance.functions == null
           ? null
-          : _coverageToJson(instance.functions),
-      'lines': instance.lines == null ? null : _coverageToJson(instance.lines),
+          : Record._coverageToJson(instance.functions),
+      'lines': instance.lines == null
+          ? null
+          : Record._coverageToJson(instance.lines),
       'sourceFile': instance.sourceFile
     };
 
@@ -122,7 +131,8 @@ Report _$ReportFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
-      'records':
-          instance.records == null ? null : _recordsToJson(instance.records),
+      'records': instance.records == null
+          ? null
+          : Report._recordsToJson(instance.records),
       'testName': instance.testName
     };

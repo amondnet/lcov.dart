@@ -1,8 +1,5 @@
 part of '../lcov.dart';
 
-/// Converts the specified list of [BranchData] instances to a list of JSON objects.
-List<Map<String, dynamic>> _branchDataToJson(List<BranchData> items) => items.map((item) => item.toJson()).toList();
-
 /// Provides the coverage data of branches.
 @JsonSerializable()
 class BranchCoverage {
@@ -39,6 +36,9 @@ class BranchCoverage {
 
     return buffer.toString();
   }
+
+  /// Converts the specified list of [BranchData] instances to a list of JSON objects.
+  static List<Map<String, dynamic>> _branchDataToJson(List<BranchData> items) => items.map((item) => item.toJson()).toList();
 }
 
 /// Provides details for branch coverage.

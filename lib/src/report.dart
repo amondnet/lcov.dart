@@ -1,9 +1,6 @@
 part of '../lcov.dart';
 // ignore_for_file: invariant_booleans
 
-/// Converts the specified list of [Record] instances to a list of JSON objects.
-List<Map<String, dynamic>> _recordsToJson(List<Record> items) => items.map((item) => item.toJson()).toList();
-
 /// An exception caused by a parsing error.
 class LcovException extends FormatException {
 
@@ -137,4 +134,7 @@ class Report {
     buffer.writeAll(records, '\n');
     return buffer.toString();
   }
+
+  /// Converts the specified list of [Record] instances to a list of JSON objects.
+  static List<Map<String, dynamic>> _recordsToJson(List<Record> items) => items.map((item) => item.toJson()).toList();
 }

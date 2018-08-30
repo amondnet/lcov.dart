@@ -1,8 +1,5 @@
 part of '../lcov.dart';
 
-/// Converts the specified coverage data to a JSON object.
-Map<String, dynamic> _coverageToJson(coverage) => coverage.toJson();
-
 /// Provides the coverage data of a source file.
 @JsonSerializable()
 class Record {
@@ -42,4 +39,7 @@ class Record {
     buffer.write(Token.endOfRecord);
     return buffer.toString();
   }
+
+  /// Converts the specified coverage data to a JSON object.
+  static Map<String, dynamic> _coverageToJson(coverage) => coverage.toJson();
 }

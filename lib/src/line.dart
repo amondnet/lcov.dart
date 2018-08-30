@@ -1,8 +1,5 @@
 part of '../lcov.dart';
 
-/// Converts the specified list of [LineData] instances to a list of JSON objects.
-List<Map<String, dynamic>> _lineDataToJson(List<LineData> items) => items.map((item) => item.toJson()).toList();
-
 /// Provides the coverage data of lines.
 @JsonSerializable()
 class LineCoverage {
@@ -39,6 +36,9 @@ class LineCoverage {
 
     return buffer.toString();
   }
+
+  /// Converts the specified list of [LineData] instances to a list of JSON objects.
+  static List<Map<String, dynamic>> _lineDataToJson(List<LineData> items) => items.map((item) => item.toJson()).toList();
 }
 
 /// Provides details for line coverage.
