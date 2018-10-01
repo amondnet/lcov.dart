@@ -1,5 +1,5 @@
 name: lcov
-version: 4.3.0
+version: 4.4.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.
