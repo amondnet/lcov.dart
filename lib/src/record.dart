@@ -39,7 +39,4 @@ class Record {
     buffer.write(Token.endOfRecord);
     return buffer.toString();
   }
-
-  /// Converts the specified coverage data to a JSON object.
-  static Map<String, dynamic> _coverageToJson(coverage) => coverage.toJson();
 }

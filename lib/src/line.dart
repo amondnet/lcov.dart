@@ -36,9 +36,6 @@ class LineCoverage {
 
     return buffer.toString();
   }
-
-  /// Converts the specified list of [LineData] instances to a list of JSON objects.
-  static List<Map<String, dynamic>> _lineDataToJson(List<LineData> items) => items.map((item) => item.toJson()).toList();
 }
 
 /// Provides details for line coverage.

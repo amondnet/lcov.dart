@@ -39,9 +39,6 @@ class FunctionCoverage {
 
     return buffer.toString();
   }
-
-  /// Converts the specified list of [FunctionData] instances to a list of JSON objects.
-  static List<Map<String, dynamic>> _functionDataToJson(List<FunctionData> items) => items.map((item) => item.toJson()).toList();
 }
 
 /// Provides details for function coverage.

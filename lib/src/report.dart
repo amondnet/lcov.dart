@@ -134,7 +134,4 @@ class Report {
     buffer.writeAll(records, '\n');
     return buffer.toString();
   }
-
-  /// Converts the specified list of [Record] instances to a list of JSON objects.
-  static List<Map<String, dynamic>> _recordsToJson(List<Record> items) => items.map((item) => item.toJson()).toList();
 }
