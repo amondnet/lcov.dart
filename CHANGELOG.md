@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.5.0](https://github.com/cedx/lcov.dart/compare/v4.4.0...v4.5.0)
+- Updated the package dependencies.
+
 ## Version [4.4.0](https://github.com/cedx/lcov.dart/compare/v4.3.0...v4.4.0)
 - Updated the package dependencies.
 
