@@ -1,7 +1,7 @@
 part of '../lcov.dart';
 
 /// Provides the coverage data of functions.
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class FunctionCoverage {
 
   /// Creates a new function coverage.
@@ -11,7 +11,7 @@ class FunctionCoverage {
   factory FunctionCoverage.fromJson(Map<String, dynamic> map) => _$FunctionCoverageFromJson(map);
 
   /// The coverage data.
-  @JsonKey(toJson: _functionDataToJson)
+  @JsonKey(defaultValue: [])
   final List<FunctionData> data;
 
   /// The number of functions found.

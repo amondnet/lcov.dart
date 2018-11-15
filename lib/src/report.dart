@@ -9,7 +9,7 @@ class LcovException extends FormatException {
 }
 
 /// Represents a trace file, that is a coverage report.
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Report {
 
   /// Creates a new report.
@@ -112,7 +112,7 @@ class Report {
   factory Report.fromJson(Map<String, dynamic> map) => _$ReportFromJson(map);
 
   /// The record list.
-  @JsonKey(toJson: _recordsToJson)
+  @JsonKey(defaultValue: [])
   final List<Record> records;
 
   /// The test name.

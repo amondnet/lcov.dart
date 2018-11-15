@@ -1,7 +1,7 @@
 part of '../lcov.dart';
 
 /// Provides the coverage data of branches.
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class BranchCoverage {
 
   /// Creates a new branch coverage.
@@ -11,7 +11,7 @@ class BranchCoverage {
   factory BranchCoverage.fromJson(Map<String, dynamic> map) => _$BranchCoverageFromJson(map);
 
   /// The coverage data.
-  @JsonKey(toJson: _branchDataToJson)
+  @JsonKey(defaultValue: [])
   final List<BranchData> data;
 
   /// The number of branches found.
@@ -36,9 +36,6 @@ class BranchCoverage {
 
     return buffer.toString();
   }
-
-  /// Converts the specified list of [BranchData] instances to a list of JSON objects.
-  static List<Map<String, dynamic>> _branchDataToJson(List<BranchData> items) => items.map((item) => item.toJson()).toList();
 }
 
 /// Provides details for branch coverage.
