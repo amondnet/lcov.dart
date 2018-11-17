@@ -7,7 +7,7 @@ Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage r
 - [Documentation](https://dev.belin.io/lcov.dart)
 - [API reference](https://dev.belin.io/lcov.dart/api)
 - [Pub package](https://pub.dartlang.org/packages/lcov)
-- [GitHub repository](https://github.com/cedx/lcov.dart)
+- [Git repository](https://git.belin.io/cedx/lcov.dart)
 
 ## License
 [LCOV Reports for Dart](https://dev.belin.io/lcov.dart) is distributed under the MIT License.
