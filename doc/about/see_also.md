@@ -3,7 +3,7 @@
 ## Development
 - [API reference](https://dev.belin.io/lcov.dart/api)
 - [Pub package](https://pub.dartlang.org/packages/lcov)
-- [Submit an issue](https://git.belin.io/cedx/lcov.dart/issues)
+- [Submit an issue](https://github.com/cedx/lcov.dart/issues)
 
 ## Testing
 - [Continuous integration](https://travis-ci.com/cedx/lcov.dart)
