@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [5.0.0](https://github.com/cedx/lcov.dart/compare/v4.5.0...v5.0.0)
+- Breaking change: raised the [Dart SDK](https://www.dartlang.org/tools/sdk) constraint.
+- Updated the package dependencies.
+
 ## Version [4.5.0](https://github.com/cedx/lcov.dart/compare/v4.4.0...v4.5.0)
 - Updated the package dependencies.
 
