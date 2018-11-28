@@ -9,7 +9,6 @@ The `Report` class, the main one, provides the parsing and formatting features.
 The `Report.fromCoverage()` constructor parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ```dart
-import 'dart:async';
 import 'dart:io';
 import 'package:lcov/lcov.dart';
 
