@@ -72,15 +72,15 @@ end_of_record
     final report = Report.fromCoverage(coverage);
 
     test('should have a test name', () {
-      expect(report.testName, equals('Example'));
+      expect(report.testName, 'Example');
     });
 
     test('should contain three records', () {
       expect(report.records, allOf(isList, hasLength(3)));
       expect(report.records.first, const TypeMatcher<Record>());
-      expect(report.records[0].sourceFile, equals('/home/cedx/lcov.dart/fixture.dart'));
-      expect(report.records[1].sourceFile, equals('/home/cedx/lcov.dart/func1.dart'));
-      expect(report.records[2].sourceFile, equals('/home/cedx/lcov.dart/func2.dart'));
+      expect(report.records[0].sourceFile, '/home/cedx/lcov.dart/fixture.dart');
+      expect(report.records[1].sourceFile, '/home/cedx/lcov.dart/func1.dart');
+      expect(report.records[2].sourceFile, '/home/cedx/lcov.dart/func2.dart');
     });
 
     test('should have detailed branch coverage', () {
@@ -90,7 +90,7 @@ end_of_record
 
       expect(branches.data, allOf(isList, hasLength(4)));
       expect(branches.data.first, const TypeMatcher<BranchData>());
-      expect(branches.data.first.lineNumber, equals(8));
+      expect(branches.data.first.lineNumber, 8);
     });
 
     test('should have detailed function coverage', () {
@@ -100,17 +100,17 @@ end_of_record
 
       expect(functions.data, allOf(isList, hasLength(1)));
       expect(functions.data.first, const TypeMatcher<FunctionData>());
-      expect(functions.data.first.functionName, equals('func1'));
+      expect(functions.data.first.functionName, 'func1');
     });
 
     test('should have detailed line coverage', () {
       final lines = report.records[1].lines;
-      expect(lines.found, equals(9));
-      expect(lines.hit, equals(9));
+      expect(lines.found, 9);
+      expect(lines.hit, 9);
 
       expect(lines.data, allOf(isList, hasLength(9)));
       expect(lines.data.first, const TypeMatcher<LineData>());
-      expect(lines.data.first.checksum, equals('5kX7OTfHFcjnS98fjeVqNA'));
+      expect(lines.data.first.checksum, '5kX7OTfHFcjnS98fjeVqNA');
     });
 
     test('should throw an error if the input is invalid', () {
@@ -137,7 +137,7 @@ end_of_record
 
       expect(report.records, allOf(isList, hasLength(1)));
       expect(report.records.first, const TypeMatcher<Record>());
-      expect(report.testName, equals('LcovTest'));
+      expect(report.testName, 'LcovTest');
     });
   });
 
@@ -163,7 +163,7 @@ end_of_record
       expect(Report().toString(), isEmpty);
 
       final record = Record('');
-      expect(Report('LcovTest', [record]).toString(), equals('TN:LcovTest\n$record'));
+      expect(Report('LcovTest', [record]).toString(), 'TN:LcovTest\n$record');
     });
   });
 });

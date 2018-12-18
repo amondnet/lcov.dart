@@ -23,7 +23,7 @@ void main() => group('Record', () {
       expect(record.branches, const TypeMatcher<BranchCoverage>());
       expect(record.functions, const TypeMatcher<FunctionCoverage>());
       expect(record.lines, const TypeMatcher<LineCoverage>());
-      expect(record.sourceFile, equals('/home/cedx/lcov.dart'));
+      expect(record.sourceFile, '/home/cedx/lcov.dart');
     });
   });
 
@@ -54,14 +54,14 @@ void main() => group('Record', () {
 
   group('.toString()', () {
     test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
-      expect(Record('').toString(), equals('SF:\nend_of_record'));
+      expect(Record('').toString(), 'SF:\nend_of_record');
 
       final record = Record('/home/cedx/lcov.dart')
         ..branches = BranchCoverage()
         ..functions = FunctionCoverage()
         ..lines = LineCoverage();
 
-      expect(record.toString(), equals('SF:/home/cedx/lcov.dart\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record'));
+      expect(record.toString(), 'SF:/home/cedx/lcov.dart\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record');
     });
   });
 });
