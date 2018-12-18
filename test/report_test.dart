@@ -85,8 +85,8 @@ end_of_record
 
     test('should have detailed branch coverage', () {
       final branches = report.records[1].branches;
-      expect(branches.found, equals(4));
-      expect(branches.hit, equals(4));
+      expect(branches.found, 4);
+      expect(branches.hit, 4);
 
       expect(branches.data, allOf(isList, hasLength(4)));
       expect(branches.data.first, const TypeMatcher<BranchData>());
@@ -95,8 +95,8 @@ end_of_record
 
     test('should have detailed function coverage', () {
       final functions = report.records[1].functions;
-      expect(functions.found, equals(1));
-      expect(functions.hit, equals(1));
+      expect(functions.found, 1);
+      expect(functions.hit, 1);
 
       expect(functions.data, allOf(isList, hasLength(1)));
       expect(functions.data.first, const TypeMatcher<FunctionData>());

@@ -21,7 +21,7 @@ void main() {
 
         expect(coverage.data, allOf(isList, hasLength(1)));
         expect(coverage.data.first, const TypeMatcher<LineData>());
-        expect(coverage.found, equals(3));
+        expect(coverage.found, 3);
         expect(coverage.hit, equals(19));
       });
     });
@@ -40,7 +40,7 @@ void main() {
         expect(map, hasLength(3));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
-        expect(map['found'], equals(3));
+        expect(map['found'], 3);
         expect(map['hit'], equals(19));
       });
     });
@@ -72,7 +72,7 @@ void main() {
         });
 
         expect(data.checksum, equals('ed076287532e86365e841e92bfc50d8c'));
-        expect(data.executionCount, equals(3));
+        expect(data.executionCount, 3);
         expect(data.lineNumber, equals(127));
       });
     });
@@ -90,7 +90,7 @@ void main() {
         final map = LineData(127, executionCount: 3, checksum: 'ed076287532e86365e841e92bfc50d8c').toJson();
         expect(map, hasLength(3));
         expect(map['checksum'], equals('ed076287532e86365e841e92bfc50d8c'));
-        expect(map['executionCount'], equals(3));
+        expect(map['executionCount'], 3);
         expect(map['lineNumber'], equals(127));
       });
     });

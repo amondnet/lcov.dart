@@ -21,7 +21,7 @@ void main() {
 
         expect(coverage.data, allOf(isList, hasLength(1)));
         expect(coverage.data.first, const TypeMatcher<BranchData>());
-        expect(coverage.found, equals(3));
+        expect(coverage.found, 3);
         expect(coverage.hit, equals(19));
       });
     });
@@ -40,7 +40,7 @@ void main() {
         expect(map, hasLength(3));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
-        expect(map['found'], equals(3));
+        expect(map['found'], 3);
         expect(map['hit'], equals(19));
       });
     });
@@ -73,10 +73,10 @@ void main() {
           'taken': 1
         });
 
-        expect(data.branchNumber, equals(2));
-        expect(data.blockNumber, equals(3));
+        expect(data.branchNumber, 2);
+        expect(data.blockNumber, 3);
         expect(data.lineNumber, equals(127));
-        expect(data.taken, equals(1));
+        expect(data.taken, 1);
       });
     });
 
@@ -93,10 +93,10 @@ void main() {
       test('should return a non-empty map for an initialized instance', () {
         final map = BranchData(127, 3, 2, taken: 1).toJson();
         expect(map, hasLength(4));
-        expect(map['blockNumber'], equals(3));
-        expect(map['branchNumber'], equals(2));
+        expect(map['blockNumber'], 3);
+        expect(map['branchNumber'], 2);
         expect(map['lineNumber'], equals(127));
-        expect(map['taken'], equals(1));
+        expect(map['taken'], 1);
       });
     });
 

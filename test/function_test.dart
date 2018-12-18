@@ -21,7 +21,7 @@ void main() {
 
         expect(coverage.data, allOf(isList, hasLength(1)));
         expect(coverage.data.first, const TypeMatcher<FunctionData>());
-        expect(coverage.found, equals(3));
+        expect(coverage.found, 3);
         expect(coverage.hit, equals(19));
       });
     });
@@ -40,7 +40,7 @@ void main() {
         expect(map, hasLength(3));
         expect(map['data'], allOf(isList, hasLength(1)));
         expect(map['data'].first, isMap);
-        expect(map['found'], equals(3));
+        expect(map['found'], 3);
         expect(map['hit'], equals(19));
       });
     });
@@ -71,7 +71,7 @@ void main() {
           'lineNumber': 127
         });
 
-        expect(data.executionCount, equals(3));
+        expect(data.executionCount, 3);
         expect(data.functionName, equals('main'));
         expect(data.lineNumber, equals(127));
       });
@@ -89,7 +89,7 @@ void main() {
       test('should return a non-empty map for an initialized instance', () {
         final map = FunctionData('main', 127, executionCount: 3).toJson();
         expect(map, hasLength(3));
-        expect(map['executionCount'], equals(3));
+        expect(map['executionCount'], 3);
         expect(map['functionName'], equals('main'));
         expect(map['lineNumber'], equals(127));
       });
