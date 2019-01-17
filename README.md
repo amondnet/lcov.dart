@@ -8,7 +8,7 @@ Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage r
 - [API reference](https://dev.belin.io/lcov.dart/api)
 
 ## Development
-- [Git repository](https://git.belin.io/cedx/lcov.dart)
+- [Git repository](https://github.com/cedx/lcov.dart)
 - [Pub package](https://pub.dartlang.org/packages/lcov)
 - [Submit an issue](https://github.com/cedx/lcov.dart/issues)
 
