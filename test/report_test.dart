@@ -76,8 +76,8 @@ end_of_record
     });
 
     test('should contain three records', () {
-      expect(report.records, allOf(isList, hasLength(3)));
-      expect(report.records.first, const TypeMatcher<Record>());
+      expect(report.records, hasLength(3));
+      expect(report.records.first, isNotNull);
       expect(report.records[0].sourceFile, '/home/cedx/lcov.dart/fixture.dart');
       expect(report.records[1].sourceFile, '/home/cedx/lcov.dart/func1.dart');
       expect(report.records[2].sourceFile, '/home/cedx/lcov.dart/func2.dart');
@@ -88,8 +88,8 @@ end_of_record
       expect(branches.found, 4);
       expect(branches.hit, 4);
 
-      expect(branches.data, allOf(isList, hasLength(4)));
-      expect(branches.data.first, const TypeMatcher<BranchData>());
+      expect(branches.data, hasLength(4));
+      expect(branches.data.first, isNotNull);
       expect(branches.data.first.lineNumber, 8);
     });
 
@@ -98,8 +98,8 @@ end_of_record
       expect(functions.found, 1);
       expect(functions.hit, 1);
 
-      expect(functions.data, allOf(isList, hasLength(1)));
-      expect(functions.data.first, const TypeMatcher<FunctionData>());
+      expect(functions.data, hasLength(1));
+      expect(functions.data.first, isNotNull);
       expect(functions.data.first.functionName, 'func1');
     });
 
@@ -108,8 +108,8 @@ end_of_record
       expect(lines.found, 9);
       expect(lines.hit, 9);
 
-      expect(lines.data, allOf(isList, hasLength(9)));
-      expect(lines.data.first, const TypeMatcher<LineData>());
+      expect(lines.data, hasLength(9));
+      expect(lines.data.first, isNotNull);
       expect(lines.data.first.checksum, '5kX7OTfHFcjnS98fjeVqNA');
     });
 
@@ -135,8 +135,8 @@ end_of_record
         'testName': 'LcovTest'
       });
 
-      expect(report.records, allOf(isList, hasLength(1)));
-      expect(report.records.first, const TypeMatcher<Record>());
+      expect(report.records, hasLength(1));
+      expect(report.records.first, isNotNull);
       expect(report.testName, 'LcovTest');
     });
   });

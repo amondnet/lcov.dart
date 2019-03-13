@@ -19,8 +19,8 @@ void main() {
           'hit': 19
         });
 
-        expect(coverage.data, allOf(isList, hasLength(1)));
-        expect(coverage.data.first, const TypeMatcher<BranchData>());
+        expect(coverage.data, hasLength(1));
+        expect(coverage.data.first, isNotNull);
         expect(coverage.found, 3);
         expect(coverage.hit, 19);
       });

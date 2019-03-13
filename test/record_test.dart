@@ -20,9 +20,9 @@ void main() => group('Record', () {
         'sourceFile': '/home/cedx/lcov.dart'
       });
 
-      expect(record.branches, const TypeMatcher<BranchCoverage>());
-      expect(record.functions, const TypeMatcher<FunctionCoverage>());
-      expect(record.lines, const TypeMatcher<LineCoverage>());
+      expect(record.branches, isNotNull);
+      expect(record.functions, isNotNull);
+      expect(record.lines, isNotNull);
       expect(record.sourceFile, '/home/cedx/lcov.dart');
     });
   });
