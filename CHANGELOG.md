@@ -1,11 +1,15 @@
 # Changelog
 
+## Version [5.2.0](https://github.com/cedx/lcov.dart/compare/v5.1.0...v5.2.0)
+- Raised the [Dart SDK](https://www.dartlang.org/tools/sdk) constraint.
+- Updated the package dependencies.
+
 ## Version [5.1.0](https://github.com/cedx/lcov.dart/compare/v5.0.0...v5.1.0)
 - Updated the package dependencies.
 - Updated the URL of the Git repository.
 
 ## Version [5.0.0](https://github.com/cedx/lcov.dart/compare/v4.5.0...v5.0.0)
-- Breaking change: raised the [Dart SDK](https://www.dartlang.org/tools/sdk) constraint.
+- Raised the [Dart SDK](https://www.dartlang.org/tools/sdk) constraint.
 - Updated the package dependencies.
 
 ## Version [4.5.0](https://github.com/cedx/lcov.dart/compare/v4.4.0...v4.5.0)
@@ -49,14 +53,14 @@
 
 ## Version [2.0.0](https://github.com/cedx/lcov.dart/compare/v1.0.0...v2.0.0)
 - Breaking change: changed the `Report.parse()` static method to the `fromCoverage` constructor.
-- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Raised the required [Dart](https://www.dartlang.org) version.
 - Updated the package dependencies.
 
 ## Version [1.0.0](https://github.com/cedx/lcov.dart/compare/v0.4.0...v1.0.0)
 - First stable release.
 
 ## Version [0.4.0](https://github.com/cedx/lcov.dart/compare/v0.3.1...v0.4.0)
-- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Raised the required [Dart](https://www.dartlang.org) version.
 - Updated the package dependencies.
 
 ## Version [0.3.1](https://github.com/cedx/lcov.dart/compare/v0.3.0...v0.3.1)
