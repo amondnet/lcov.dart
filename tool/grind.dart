@@ -36,6 +36,9 @@ void lint() => Analyzer.analyze(existingSourceDirs);
 
 @Task('Runs the test suites')
 Future<void> test() async {
+  final args = context.invocation.arguments;
+  final platform = args.hasOption('platform') ? args.getOption('platform') : 'vm';
+
   await Pub.runAsync('coverage', script: 'collect_coverage', arguments: [
     '--out=var/coverage.json',
     '--resume-isolates',
