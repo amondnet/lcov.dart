@@ -40,8 +40,7 @@ void lint() => Analyzer.analyze(existingSourceDirs);
 @Task('Runs the test suites')
 Future<void> test() async {
   final args = context.invocation.arguments;
-  final platform = args.hasOption('platform') ? args.getOption('platform') : 'vm';
-  return platform == 'browser'
+  return (args.hasOption('platform') ? args.getOption('platform') : 'vm') == 'browser'
     ? Pub.runAsync('build_runner', arguments: ['test', '--delete-conflicting-outputs', '--', '--platform=firefox'])
     : _collectCoverage(getFile('test/all.dart'));
 }
