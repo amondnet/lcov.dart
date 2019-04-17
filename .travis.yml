@@ -1,6 +1,7 @@
 addons: {firefox: latest}
 dart: [dev, stable]
 dist: xenial
+env: [PLATFORM=browser, PLATFORM=vm]
 language: dart
 notifications: {email: false}
 
@@ -8,5 +9,5 @@ install:
   - pub global activate coveralls
   - pub get
 
-script: pub run grinder test
+script: pub run grinder test --platform=${PLATFORM}
 after_success: pub run grinder coverage
