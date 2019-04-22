@@ -4,6 +4,7 @@ dist: xenial
 env: [PLATFORM=browser, PLATFORM=vm]
 language: dart
 notifications: {email: false}
+os: [linux, osx, windows]
 
 install:
   - pub global activate coveralls
