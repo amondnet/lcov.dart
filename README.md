@@ -1,7 +1,7 @@
 # LCOV Reports for Dart
-![Runtime](https://img.shields.io/badge/dart-%3E%3D2.2-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://travis-ci.com/cedx/lcov.dart.svg)
+![Runtime](https://img.shields.io/badge/dart-%3E%3D2.3-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://travis-ci.com/cedx/lcov.dart.svg)
 
-Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://www.dartlang.org).
+Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://dart.dev).
 
 ## Documentation
 - [User guide](https://dev.belin.io/lcov.dart)
@@ -9,7 +9,7 @@ Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage r
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.dart)
-- [Pub package](https://pub.dartlang.org/packages/lcov)
+- [Pub package](https://pub.dev/packages/lcov)
 - [Submit an issue](https://github.com/cedx/lcov.dart/issues)
 
 ## License

@@ -33,10 +33,7 @@ class FunctionCoverage {
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: true)), '\n')..writeln()
       ..writeAll(data.map<String>((item) => item.toString(asDefinition: false)), '\n')..writeln();
 
-    buffer
-      ..writeln('${Token.functionsFound}:$found')
-      ..write('${Token.functionsHit}:$hit');
-
+    buffer..writeln('${Token.functionsFound}:$found')..write('${Token.functionsHit}:$hit');
     return buffer.toString();
   }
 }
