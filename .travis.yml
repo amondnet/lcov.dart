@@ -1,6 +1,4 @@
-addons: {chrome: latest}
 dist: xenial
-env: [PLATFORM=browser, PLATFORM=vm]
 language: dart
 notifications: {email: false}
 
@@ -8,5 +6,5 @@ install:
   - pub global activate coveralls
   - pub get
 
-script: pub run grinder test --platform=${PLATFORM}
+script: pub run grinder test
 after_success: pub run grinder coverage
