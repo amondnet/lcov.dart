@@ -5,7 +5,7 @@ part of '../lcov.dart';
 class LcovException extends FormatException {
 
   /// Creates a new LCOV exception.
-  LcovException(String message, [source, int offset]): super(message, source, offset);
+  LcovException(String message, [String source = '', int offset = -1]): super(message, source, offset);
 }
 
 /// Represents a trace file, that is a coverage report.
