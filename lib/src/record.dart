@@ -11,15 +11,12 @@ class Record {
   factory Record.fromJson(Map<String, dynamic> map) => _$RecordFromJson(map);
 
   /// The branch coverage.
-  @JsonKey()
   BranchCoverage branches;
 
   /// The function coverage.
-  @JsonKey()
   FunctionCoverage functions;
 
   /// The line coverage.
-  @JsonKey()
   LineCoverage lines;
 
   /// The path to the source file.
