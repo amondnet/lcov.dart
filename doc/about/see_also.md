@@ -6,7 +6,7 @@
 - [Submit an issue](https://github.com/cedx/lcov.dart/issues)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/lcov.dart)
+- [Continuous integration](https://github.com/cedx/lcov.dart/actions)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.dart)
 
 ## Other implementations
