@@ -1,5 +1,5 @@
 # LCOV Reports for Dart
-![Runtime](https://img.shields.io/badge/dart-%3E%3D2.5-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://github.com/cedx/lcov.dart/workflows/Continuous%20integration/badge.svg)
+![Runtime](https://img.shields.io/badge/dart-%3E%3D2.5-brightgreen.svg) ![Release](https://img.shields.io/pub/v/lcov.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.dart/badge.svg) ![Build](https://github.com/cedx/lcov.dart/workflows/build/badge.svg)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://dart.dev).
 
