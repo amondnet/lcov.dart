@@ -30,7 +30,7 @@ Future<void> main() async {
 !!! info
     A `LcovException` is thrown if any error occurred while parsing the coverage report.
 
-The `Report.toJson()` instance method will return a [Map](https://api.dartlang.org/stable/dart-core/Map-class.html) like this:
+The `Report.toJson()` instance method will return a [Map](https://api.dart.dev/stable/dart-core/Map-class.html) like this:
 
 ```json
 {
