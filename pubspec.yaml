@@ -9,7 +9,7 @@ issue_tracker: https://github.com/cedx/lcov.dart/issues
 repository: https://github.com/cedx/lcov.dart
 
 environment:
-  sdk: '>=2.5.0 <3.0.0'
+  sdk: '>=2.6.0 <3.0.0'
 
 dependencies:
   json_annotation: ^3.0.0
