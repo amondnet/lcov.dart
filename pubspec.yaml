@@ -1,7 +1,6 @@
 name: lcov
 version: 5.5.0
 
-author: Cédric Belin <cedric@belin.io>
 description: Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.
 documentation: https://dev.belin.io/lcov.dart/api
 homepage: https://dev.belin.io/lcov.dart
