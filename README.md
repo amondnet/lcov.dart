@@ -5,7 +5,7 @@ Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage r
 
 ## Documentation
 - [User guide](https://dev.belin.io/lcov.dart)
-- [API reference](https://dev.belin.io/lcov.dart/api)
+- [API reference](https://pub.dev/documentation/lcov)
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.dart)
