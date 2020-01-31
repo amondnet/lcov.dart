@@ -5,7 +5,10 @@ part of '../lcov.dart';
 class BranchCoverage {
 
   /// Creates a new branch coverage.
-  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]): data = data?.toList() ?? <BranchData>[];
+  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]):
+    assert(found >= 0),
+    assert(hit >= 0),
+    data = data?.toList() ?? <BranchData>[];
 
   /// Creates a new branch coverage from the specified [map] in JSON format.
   factory BranchCoverage.fromJson(Map<String, dynamic> map) => _$BranchCoverageFromJson(map);
@@ -43,7 +46,11 @@ class BranchCoverage {
 class BranchData {
 
   /// Creates a new branch data.
-  BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0});
+  BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0}):
+    assert(lineNumber >= 0),
+    assert(blockNumber >= 0),
+    assert(branchNumber >= 0),
+    assert(taken >= 0);
 
   /// Creates a new branch data from the specified [map] in JSON format.
   factory BranchData.fromJson(Map<String, dynamic> map) => _$BranchDataFromJson(map);

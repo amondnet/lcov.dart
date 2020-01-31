@@ -5,7 +5,10 @@ part of '../lcov.dart';
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]): data = data?.toList() ?? <LineData>[];
+  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]):
+    assert(found >= 0),
+    assert(hit >= 0),
+    data = data?.toList() ?? <LineData>[];
 
   /// Creates a new line coverage from the specified [map] in JSON format.
   factory LineCoverage.fromJson(Map<String, dynamic> map) => _$LineCoverageFromJson(map);
@@ -43,7 +46,9 @@ class LineCoverage {
 class LineData {
 
   /// Creates a new line data.
-  LineData(this.lineNumber, {this.executionCount = 0, this.checksum = ''});
+  LineData(this.lineNumber, {this.executionCount = 0, this.checksum = ''}):
+    assert(lineNumber >= 0),
+    assert(executionCount >= 0);
 
   /// Creates a new line data from the specified [map] in JSON format.
   factory LineData.fromJson(Map<String, dynamic> map) => _$LineDataFromJson(map);

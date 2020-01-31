@@ -5,7 +5,10 @@ part of '../lcov.dart';
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]): data = data?.toList() ?? <FunctionData>[];
+  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]):
+    assert(found >= 0),
+    assert(hit >= 0),
+    data = data?.toList() ?? <FunctionData>[];
 
   /// Creates a new function coverage from the specified [map] in JSON format.
   factory FunctionCoverage.fromJson(Map<String, dynamic> map) => _$FunctionCoverageFromJson(map);
@@ -43,7 +46,9 @@ class FunctionCoverage {
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0});
+  FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0}):
+    assert(lineNumber >= 0),
+    assert(executionCount >= 0);
 
   /// Creates a new function data from the specified [map] in JSON format.
   factory FunctionData.fromJson(Map<String, dynamic> map) => _$FunctionDataFromJson(map);
