@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [5.6.0](https://github.com/cedx/lcov.dart/compare/v5.5.0...v5.6.0)
+- Raised the [Dart SDK](https://dart.dev/tools/sdk) constraint.
+- Updated the package dependencies.
+
 ## Version [5.5.0](https://github.com/cedx/lcov.dart/compare/v5.4.0...v5.5.0)
 - Raised the [Dart SDK](https://dart.dev/tools/sdk) constraint.
 - Updated the package dependencies.
