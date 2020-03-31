@@ -46,7 +46,7 @@ void main() {
     });
 
     group('.toString()', () {
-      test(r'should return a format like "FNF:<found>\n,FNH:<hit>"', () {
+      test(r'should return a format like "FNF:<found>\nFNH:<hit>"', () {
         expect(FunctionCoverage().toString(), 'FNF:0\nFNH:0');
 
         final coverage = FunctionCoverage(3, 19, [FunctionData('main', 127, executionCount: 3)]);

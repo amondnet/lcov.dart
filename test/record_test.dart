@@ -53,7 +53,7 @@ void main() => group('Record', () {
   });
 
   group('.toString()', () {
-    test(r'should return a format like "SF:<sourceFile>\n,end_of_record"', () {
+    test(r'should return a format like "SF:<sourceFile>\nend_of_record"', () {
       expect(Record('').toString(), 'SF:\nend_of_record');
 
       final record = Record('/home/cedx/lcov.dart')
