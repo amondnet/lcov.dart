@@ -47,6 +47,7 @@ class FunctionData {
 
   /// Creates a new function data.
   FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0}):
+    assert(functionName.isNotEmpty),
     assert(lineNumber >= 0),
     assert(executionCount >= 0);
 
