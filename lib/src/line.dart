@@ -33,10 +33,7 @@ class LineCoverage {
   String toString() {
     final buffer = StringBuffer();
     if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
-    buffer
-      ..writeln('${Token.linesFound}:$found')
-      ..write('${Token.linesHit}:$hit');
-
+    buffer..writeln('${Token.linesFound}:$found')..write('${Token.linesHit}:$hit');
     return buffer.toString();
   }
 }

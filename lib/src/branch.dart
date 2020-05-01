@@ -33,10 +33,7 @@ class BranchCoverage {
   String toString() {
     final buffer = StringBuffer();
     if (data.isNotEmpty) buffer..writeAll(data, '\n')..writeln();
-    buffer
-      ..writeln('${Token.branchesFound}:$found')
-      ..write('${Token.branchesHit}:$hit');
-
+    buffer..writeln('${Token.branchesFound}:$found')..write('${Token.branchesHit}:$hit');
     return buffer.toString();
   }
 }
