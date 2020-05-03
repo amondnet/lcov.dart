@@ -49,7 +49,8 @@ class Report {
 
           case Token.functionData:
             if (data.length < 2) throw Exception('Invalid function data');
-            record.functions.data.firstWhere((item) => item.functionName == data[1])
+            record.functions.data
+              .firstWhere((item) => item.functionName == data[1])
               .executionCount = int.parse(data.first, radix: 10);
             break;
 
