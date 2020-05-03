@@ -21,7 +21,7 @@ class Report {
   /// Throws a [LcovException] if a parsing error occurred.
   Report.fromCoverage(String coverage): records = <Record>[], testName = '' {
     try {
-      Record record;
+      var record = Record('');
       for (var line in coverage.split(RegExp(r'\r?\n'))) {
         line = line.trim();
         if (line.isEmpty) continue;
