@@ -21,13 +21,15 @@ class Report {
   /// Throws a [LcovException] if a parsing error occurred.
   Report.fromCoverage(String coverage): records = <Record>[], testName = '' {
     try {
+      var offset = 0;
       Record record;
       for (var line in coverage.split(RegExp(r'\r?\n'))) {
+        offset += line.length;
         line = line.trim();
         if (line.isEmpty) continue;
 
         final parts = line.split(':');
-        if (parts.length < 2 && parts.first != Token.endOfRecord) throw Exception('Invalid token format');
+        if (parts.length < 2 && parts.first != Token.endOfRecord) throw LcovException('Invalid token format.', coverage, offset);
 
         final data = parts.skip(1).join(':').split(',');
         switch (parts.first) {
@@ -43,12 +45,12 @@ class Report {
             break;
 
           case Token.functionName:
-            if (data.length < 2) throw Exception('Invalid function name');
+            if (data.length < 2) throw LcovException('Invalid function name.', coverage, offset);
             record.functions.data.add(FunctionData(data[1], int.parse(data.first, radix: 10)));
             break;
 
           case Token.functionData:
-            if (data.length < 2) throw Exception('Invalid function data');
+            if (data.length < 2) throw LcovException('Invalid function data.', coverage, offset);
             record.functions.data
               .firstWhere((item) => item.functionName == data[1])
               .executionCount = int.parse(data.first, radix: 10);
@@ -63,7 +65,7 @@ class Report {
             break;
 
           case Token.branchData:
-            if (data.length < 4) throw Exception('Invalid branch data');
+            if (data.length < 4) throw LcovException('Invalid branch data.', coverage, offset);
             record.branches.data.add(BranchData(
               int.parse(data[0], radix: 10),
               int.parse(data[1], radix: 10),
@@ -81,7 +83,7 @@ class Report {
             break;
 
           case Token.lineData:
-            if (data.length < 2) throw Exception('Invalid line data');
+            if (data.length < 2) throw LcovException('Invalid line data.', coverage, offset);
             record.lines.data.add(LineData(
               int.parse(data[0], radix: 10),
               executionCount: int.parse(data[1], radix: 10),
@@ -104,11 +106,9 @@ class Report {
       }
     }
 
-    on Exception {
-      throw LcovException('The coverage data has an invalid LCOV format', coverage);
-    }
-
-    if (records.isEmpty) throw LcovException('The coverage data is empty', coverage);
+    on LcovException { rethrow; }
+    on Exception  { throw LcovException('The coverage data has an invalid LCOV format.', coverage); }
+    if (records.isEmpty) throw LcovException('The coverage data is empty.', coverage);
   }
 
   /// Creates a new report from the specified [map] in JSON format.
