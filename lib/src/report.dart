@@ -102,6 +102,9 @@ class Report {
           case Token.endOfRecord:
             records.add(record);
             break;
+
+          default:
+            throw LcovException('Unknown token.', coverage, offset);
         }
       }
     }
