@@ -1,7 +1,7 @@
 # See also
 
 ## Development
-- [API reference](https://pub.dev/documentation/lcov)
+- [API reference](https://api.belin.io/lcov.dart)
 - [Pub package](https://pub.dev/packages/lcov)
 - [Submit an issue](https://git.belin.io/cedx/lcov.dart/issues)
 
