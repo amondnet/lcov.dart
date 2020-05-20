@@ -10,58 +10,58 @@ The `Report` class, the main one, provides the parsing and formatting features.
 ## Parse coverage data from a LCOV file
 The `Report.fromCoverage()` constructor parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
-```dart
-import 'dart:io';
-import 'package:lcov/lcov.dart';
+``` dart
+import "dart:io";
+import "package:lcov/lcov.dart";
 
 Future<void> main() async {
-  final coverage = await File('lcov.info').readAsString();
+	final coverage = await File("lcov.info").readAsString();
 
-  try {
-    final report = Report.fromCoverage(coverage);
-    print('The coverage report contains ${report.records.length} records:');
-    print(report.toJson());
-  }
+	try {
+		final report = Report.fromCoverage(coverage);
+		print("The coverage report contains ${report.records.length} records:");
+		print(report.toJson());
+	}
 
-  on LcovException catch (err) {
-    print('An error occurred: ${err.message}');
-  }
+	on LcovException catch (err) {
+		print("An error occurred: ${err.message}");
+	}
 }
 ```
 
 !!! info
-    A `LcovException` is thrown if any error occurred while parsing the coverage report.
+	A `LcovException` is thrown if any error occurred while parsing the coverage report.
 
 The `Report.toJson()` instance method will return a [Map](https://api.dart.dev/stable/dart-core/Map-class.html) like this:
 
-```json
+``` json
 {
-  "testName": "Example",
-  "records": [
-    {
-      "sourceFile": "/home/cedx/lcov.dart/fixture.dart",
-      "branches": {
-        "found": 0,
-        "hit": 0,
-        "data": []
-      },
-      "functions": {
-        "found": 1,
-        "hit": 1,
-        "data": [
-          {"functionName": "main", "lineNumber": 4, "executionCount": 2}
-        ]
-      },
-      "lines": {
-        "found": 2,
-        "hit": 2,
-        "data": [
-          {"lineNumber": 6, "executionCount": 2, "checksum": "PF4Rz2r7RTliO9u6bZ7h6g"},
-          {"lineNumber": 9, "executionCount": 2, "checksum": "y7GE3Y4FyXCeXcrtqgSVzw"}
-        ]
-      }
-    }
-  ]
+	"testName": "Example",
+	"records": [
+		{
+			"sourceFile": "/home/cedx/lcov.dart/fixture.dart",
+			"branches": {
+				"found": 0,
+				"hit": 0,
+				"data": []
+			},
+			"functions": {
+				"found": 1,
+				"hit": 1,
+				"data": [
+					{"functionName": "main", "lineNumber": 4, "executionCount": 2}
+				]
+			},
+			"lines": {
+				"found": 2,
+				"hit": 2,
+				"data": [
+					{"lineNumber": 6, "executionCount": 2, "checksum": "PF4Rz2r7RTliO9u6bZ7h6g"},
+					{"lineNumber": 9, "executionCount": 2, "checksum": "y7GE3Y4FyXCeXcrtqgSVzw"}
+				]
+			}
+		}
+	]
 }
 ```
 
@@ -69,21 +69,21 @@ The `Report.toJson()` instance method will return a [Map](https://api.dart.dev/s
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
-```dart
-import 'package:lcov/lcov.dart';
+``` dart
+import "package:lcov/lcov.dart";
 
 void main() {
-  final lineCoverage = LineCoverage(2, 2, [
-    LineData(6, executionCount: 2, checksum: 'PF4Rz2r7RTliO9u6bZ7h6g'),
-    LineData(7, executionCount: 2, checksum: 'yGMB6FhEEAd8OyASe3Ni1w')
-  ]);
+	final lineCoverage = LineCoverage(2, 2, [
+		LineData(6, executionCount: 2, checksum: "PF4Rz2r7RTliO9u6bZ7h6g"),
+		LineData(7, executionCount: 2, checksum: "yGMB6FhEEAd8OyASe3Ni1w")
+	]);
 
-  final record = Record('/home/cedx/lcov.dart/fixture.dart')
-    ..functions = FunctionCoverage(1, 1)
-    ..lines = lineCoverage;
+	final record = Record("/home/cedx/lcov.dart/fixture.dart")
+		..functions = FunctionCoverage(1, 1)
+		..lines = lineCoverage;
 
-  final report = Report('Example', [record]);
-  print(report);
+	final report = Report("Example", [record]);
+	print(report);
 }
 ```
 
