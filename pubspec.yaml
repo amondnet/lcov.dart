@@ -1,5 +1,5 @@
 name: lcov
-version: 5.7.0
+version: 6.0.0
 
 description: Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.
 homepage: https://docs.belin.io/lcov.dart
