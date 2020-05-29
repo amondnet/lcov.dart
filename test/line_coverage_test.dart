@@ -3,28 +3,6 @@ import "package:test/test.dart";
 
 /// Tests the features of the [LineCoverage] class.
 void main() => group("LineCoverage", () {
-  group(".fromJson()", () {
-    test("should return an instance with default values for an empty map", () {
-      final coverage = LineCoverage.fromJson(<String, dynamic>{});
-      expect(coverage.data, allOf(isList, isEmpty));
-      expect(coverage.found, 0);
-      expect(coverage.hit, 0);
-    });
-
-    test("should return an initialized instance for a non-empty map", () {
-      final coverage = LineCoverage.fromJson(<String, dynamic>{
-        "data": [{"lineNumber": 127}],
-        "found": 3,
-        "hit": 19
-      });
-
-      expect(coverage.data, hasLength(1));
-      expect(coverage.data.first, isNotNull);
-      expect(coverage.found, 3);
-      expect(coverage.hit, 19);
-    });
-  });
-
   group(".toJson()", () {
     test("should return a map with default values for a newly created instance", () {
       final map = LineCoverage().toJson();

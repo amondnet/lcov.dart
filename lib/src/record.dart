@@ -1,14 +1,11 @@
 part of "../lcov.dart";
 
 /// Provides the coverage data of a source file.
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createFactory: false, explicitToJson: true)
 class Record {
 
 	/// Creates a new record with the specified source file.
 	Record(this.sourceFile, {this.branches, this.functions, this.lines});
-
-	/// Creates a new record from the specified [map] in JSON format.
-	factory Record.fromJson(Map<String, dynamic> map) => _$RecordFromJson(map);
 
 	/// The branch coverage.
 	BranchCoverage branches;

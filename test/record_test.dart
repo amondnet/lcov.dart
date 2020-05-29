@@ -3,30 +3,6 @@ import "package:test/test.dart";
 
 /// Tests the features of the [Record] class.
 void main() => group("Record", () {
-	group(".fromJson()", () {
-		test("should return an instance with default values for an empty map", () {
-			final record = Record.fromJson(<String, dynamic>{});
-			expect(record.branches, isNull);
-			expect(record.functions, isNull);
-			expect(record.lines, isNull);
-			expect(record.sourceFile, isEmpty);
-		});
-
-		test("should return an initialized instance for a non-empty map", () {
-			final record = Record.fromJson(<String, dynamic>{
-				"branches": <String, dynamic>{},
-				"functions": <String, dynamic>{},
-				"lines": <String, dynamic>{},
-				"sourceFile": "/home/cedx/lcov.dart"
-			});
-
-			expect(record.branches, isNotNull);
-			expect(record.functions, isNotNull);
-			expect(record.lines, isNotNull);
-			expect(record.sourceFile, "/home/cedx/lcov.dart");
-		});
-	});
-
 	group(".toJson()", () {
 		test("should return a map with default values for a newly created instance", () {
 			final map = Record("").toJson();

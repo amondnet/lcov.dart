@@ -3,27 +3,6 @@ import "package:test/test.dart";
 
 /// Tests the features of the [LineData] class.
 void main() => group("LineData", () {
-  group(".fromJson()", () {
-    test("should return an instance with default values for an empty map", () {
-      final data = LineData.fromJson(<String, dynamic>{});
-      expect(data.checksum, isEmpty);
-      expect(data.executionCount, 0);
-      expect(data.lineNumber, 0);
-    });
-
-    test("should return an initialized instance for a non-empty map", () {
-      final data = LineData.fromJson(<String, dynamic>{
-        "checksum": "ed076287532e86365e841e92bfc50d8c",
-        "executionCount": 3,
-        "lineNumber": 127
-      });
-
-      expect(data.checksum, "ed076287532e86365e841e92bfc50d8c");
-      expect(data.executionCount, 3);
-      expect(data.lineNumber, 127);
-    });
-  });
-
   group(".toJson()", () {
     test("should return a map with default values for a newly created instance", () {
       final map = LineData(0).toJson();

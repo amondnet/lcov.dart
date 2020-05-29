@@ -11,7 +11,7 @@ class LcovException extends FormatException {
 }
 
 /// Represents a trace file, that is a coverage report.
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createFactory: false, explicitToJson: true)
 class Report {
 
 	/// Creates a new report.
@@ -113,9 +113,6 @@ class Report {
 		on Exception  { throw LcovException("The coverage data has an invalid LCOV format.", coverage); }
 		if (records.isEmpty) throw LcovException("The coverage data is empty.", coverage);
 	}
-
-	/// Creates a new report from the specified [map] in JSON format.
-	factory Report.fromJson(Map<String, dynamic> map) => _$ReportFromJson(map);
 
 	/// The record list.
 	@JsonKey(defaultValue: [])

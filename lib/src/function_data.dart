@@ -1,16 +1,13 @@
 part of "../lcov.dart";
 
 /// Provides details for function coverage.
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class FunctionData {
 
   /// Creates a new function data.
   FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0}):
     assert(lineNumber >= 0),
     assert(executionCount >= 0);
-
-  /// Creates a new function data from the specified [map] in JSON format.
-  factory FunctionData.fromJson(Map<String, dynamic> map) => _$FunctionDataFromJson(map);
 
   /// The execution count.
   @JsonKey(defaultValue: 0)

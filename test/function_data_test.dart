@@ -3,27 +3,6 @@ import "package:test/test.dart";
 
 /// Tests the features of the [FunctionData] class.
 void main() => group("FunctionData", () {
-  group(".fromJson()", () {
-    test("should return an instance with default values for an empty map", () {
-      final data = FunctionData.fromJson(<String, dynamic>{});
-      expect(data.executionCount, 0);
-      expect(data.functionName, isEmpty);
-      expect(data.lineNumber, 0);
-    });
-
-    test("should return an initialized instance for a non-empty map", () {
-      final data = FunctionData.fromJson(<String, dynamic>{
-        "executionCount": 3,
-        "functionName": "main",
-        "lineNumber": 127
-      });
-
-      expect(data.executionCount, 3);
-      expect(data.functionName, "main");
-      expect(data.lineNumber, 127);
-    });
-  });
-
   group(".toJson()", () {
     test("should return a map with default values for a newly created instance", () {
       final map = FunctionData("", 0).toJson();

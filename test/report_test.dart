@@ -58,25 +58,6 @@ void main() => group("Report", () {
 		});
 	});
 
-	group(".fromJson()", () {
-		test("should return an instance with default values for an empty map", () {
-			final report = Report.fromJson(<String, dynamic>{});
-			expect(report.records, allOf(isList, isEmpty));
-			expect(report.testName, isEmpty);
-		});
-
-		test("should return an initialized instance for a non-empty map", () {
-			final report = Report.fromJson(<String, dynamic>{
-				"records": [<String, dynamic>{}],
-				"testName": "LcovTest"
-			});
-
-			expect(report.records, hasLength(1));
-			expect(report.records.first, isNotNull);
-			expect(report.testName, "LcovTest");
-		});
-	});
-
 	group(".toJson()", () {
 		test("should return a map with default values for a newly created instance", () {
 			final map = Report().toJson();

@@ -1,7 +1,7 @@
 part of "../lcov.dart";
 
 /// Provides details for branch coverage.
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class BranchData {
 
   /// Creates a new branch data.
@@ -10,9 +10,6 @@ class BranchData {
     assert(blockNumber >= 0),
     assert(branchNumber >= 0),
     assert(taken >= 0);
-
-  /// Creates a new branch data from the specified [map] in JSON format.
-  factory BranchData.fromJson(Map<String, dynamic> map) => _$BranchDataFromJson(map);
 
   /// The block number.
   @JsonKey(defaultValue: 0)

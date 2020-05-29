@@ -1,7 +1,7 @@
 part of "../lcov.dart";
 
 /// Provides the coverage data of lines.
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createFactory: false, explicitToJson: true)
 class LineCoverage {
 
   /// Creates a new line coverage.
@@ -9,9 +9,6 @@ class LineCoverage {
     assert(found >= 0),
     assert(hit >= 0),
     data = data?.toList() ?? <LineData>[];
-
-  /// Creates a new line coverage from the specified [map] in JSON format.
-  factory LineCoverage.fromJson(Map<String, dynamic> map) => _$LineCoverageFromJson(map);
 
   /// The coverage data.
   @JsonKey(defaultValue: [])
