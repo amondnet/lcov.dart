@@ -8,23 +8,25 @@ source: lib/src/report.dart
 The `Report` class, the main one, provides the parsing and formatting features.
 
 ## Parse coverage data from a LCOV file
-The `Report.fromCoverage()` constructor parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
+The `Report.fromCoverage()` factory parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ``` dart
+import "dart:convert";
 import "dart:io";
 import "package:lcov/lcov.dart";
 
 Future<void> main() async {
-	final coverage = await File("lcov.info").readAsString();
-
 	try {
+		final coverage = await File("/path/to/lcov.info").readAsString();
 		final report = Report.fromCoverage(coverage);
-		print("The coverage report contains ${report.records.length} records:");
-		print(report.toJson());
+
+		final count = report.records.length;
+		print("The coverage report contains $count records:");
+		print(const JsonEncoder.withIndent("\t").convert(report));
 	}
 
-	on LcovException catch (err) {
-		print("An error occurred: ${err.message}");
+	on LcovException catch (e) {
+		print("An error occurred: ${e.message}");
 	}
 }
 ```
@@ -32,7 +34,7 @@ Future<void> main() async {
 !!! info
 	A `LcovException` is thrown if any error occurred while parsing the coverage report.
 
-The `Report.toJson()` instance method will return a [Map](https://api.dart.dev/stable/dart-core/Map-class.html) like this:
+Converting the `Report` instance to [JSON](https://www.json.org) format will return a map like this:
 
 ``` json
 {
@@ -64,6 +66,8 @@ The `Report.toJson()` instance method will return a [Map](https://api.dart.dev/s
 	]
 }
 ```
+!!! tip
+	See the [API reference](https://api.belin.io/lcov.dart) of this library for more information on the `Report` class.
 
 ## Format coverage data to the LCOV format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
@@ -100,3 +104,6 @@ LF:2
 LH:2
 end_of_record
 ```
+
+!!! tip
+	See the [API reference](https://api.belin.io/lcov.dart) of this library for detailed information on the available classes.

@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import "dart:convert";
 import "dart:io";
 import "package:lcov/lcov.dart";
 
@@ -19,15 +20,14 @@ void formatReport() {
 
 /// Parses a LCOV report to coverage data.
 Future<void> parseReport() async {
-	final coverage = await File("lcov.info").readAsString();
-
 	try {
+		final coverage = await File("/path/to/lcov.info").readAsString();
 		final report = Report.fromCoverage(coverage);
 		print("The coverage report contains ${report.records.length} records:");
-		print(report.toJson());
+		print(const JsonEncoder.withIndent("\t").convert(report));
 	}
 
-	on LcovException catch (err) {
-		print("An error occurred: ${err.message}");
+	on LcovException catch (e) {
+		print("An error occurred: ${e.message}");
 	}
 }

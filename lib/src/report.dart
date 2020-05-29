@@ -1,5 +1,5 @@
-part of "../lcov.dart";
 // ignore_for_file: invariant_booleans
+part of "../lcov.dart";
 
 /// Represents a trace file, that is a coverage report.
 @JsonSerializable(createFactory: false, explicitToJson: true)
