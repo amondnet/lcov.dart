@@ -6,8 +6,6 @@ class LineCoverage {
 
   /// Creates a new line coverage.
   LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]):
-    assert(found >= 0),
-    assert(hit >= 0),
     data = data?.toList() ?? <LineData>[];
 
   /// The coverage data.

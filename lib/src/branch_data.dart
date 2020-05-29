@@ -5,23 +5,19 @@ part of "../lcov.dart";
 class BranchData {
 
   /// Creates a new branch data.
-  BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0}):
-    assert(lineNumber >= 0),
-    assert(blockNumber >= 0),
-    assert(branchNumber >= 0),
-    assert(taken >= 0);
+  BranchData(this.lineNumber, this.blockNumber, this.branchNumber, {this.taken = 0});
 
   /// The block number.
   @JsonKey(defaultValue: 0)
-  final int blockNumber;
+  int blockNumber;
 
   /// The branch number.
   @JsonKey(defaultValue: 0)
-  final int branchNumber;
+  int branchNumber;
 
   /// The line number.
   @JsonKey(defaultValue: 0)
-  final int lineNumber;
+  int lineNumber;
 
   /// A number indicating how often this branch was taken.
   @JsonKey(defaultValue: 0)

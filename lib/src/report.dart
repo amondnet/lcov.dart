@@ -1,15 +1,6 @@
 part of "../lcov.dart";
 // ignore_for_file: invariant_booleans
 
-/// An exception caused by a parsing error.
-class LcovException extends FormatException {
-
-	/// Creates a new LCOV exception.
-	LcovException(String message, [String source = "", int offset = 0]):
-		assert(offset >= 0),
-		super(message, source, offset);
-}
-
 /// Represents a trace file, that is a coverage report.
 @JsonSerializable(createFactory: false, explicitToJson: true)
 class Report {
@@ -20,8 +11,9 @@ class Report {
 	/// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
 	/// Throws a [LcovException] if a parsing error occurred.
 	Report.fromCoverage(String coverage): records = <Record>[], testName = "" {
+		var offset = 0;
+
 		try {
-			var offset = 0;
 			Record record;
 			for (var line in coverage.split(RegExp(r"\r?\n"))) {
 				offset += line.length;
@@ -34,7 +26,7 @@ class Report {
 				final data = parts.skip(1).join(":").split(",");
 				switch (parts.first) {
 					case Token.testName:
-						testName = data.first;
+						if (testName.isEmpty) testName = data.first;
 						break;
 
 					case Token.sourceFile:
@@ -110,7 +102,7 @@ class Report {
 		}
 
 		on LcovException { rethrow; }
-		on Exception  { throw LcovException("The coverage data has an invalid LCOV format.", coverage); }
+		on Exception  { throw LcovException("The coverage data has an invalid LCOV format.", coverage, offset); }
 		if (records.isEmpty) throw LcovException("The coverage data is empty.", coverage);
 	}
 

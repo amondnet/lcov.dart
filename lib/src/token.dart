@@ -4,41 +4,41 @@ part of "../lcov.dart";
 abstract class Token {
 
 	/// The coverage data of a branch.
-	static const String branchData = "BRDA";
+	static const branchData = "BRDA";
 
 	/// The number of branches found.
-	static const String branchesFound = "BRF";
+	static const branchesFound = "BRF";
 
 	/// The number of branches hit.
-	static const String branchesHit = "BRH";
+	static const branchesHit = "BRH";
 
 	/// The end of a section.
-	static const String endOfRecord = "end_of_record";
+	static const endOfRecord = "end_of_record";
 
 	/// The coverage data of a function.
-	static const String functionData = "FNDA";
+	static const functionData = "FNDA";
 
 	/// A function name.
-	static const String functionName = "FN";
+	static const functionName = "FN";
 
 	/// The number of functions found.
-	static const String functionsFound = "FNF";
+	static const functionsFound = "FNF";
 
 	/// The number of functions hit.
-	static const String functionsHit = "FNH";
+	static const functionsHit = "FNH";
 
 	/// The coverage data of a line.
-	static const String lineData = "DA";
+	static const lineData = "DA";
 
 	/// The number of instrumented lines.
-	static const String linesFound = "LF";
+	static const linesFound = "LF";
 
 	/// The number of lines with a non-zero execution count.
-	static const String linesHit = "LH";
+	static const linesHit = "LH";
 
 	/// The path to a source file.
-	static const String sourceFile = "SF";
+	static const sourceFile = "SF";
 
 	/// A test name.
-	static const String testName = "TN";
+	static const testName = "TN";
 }

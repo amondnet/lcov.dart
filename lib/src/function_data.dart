@@ -5,9 +5,7 @@ part of "../lcov.dart";
 class FunctionData {
 
   /// Creates a new function data.
-  FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0}):
-    assert(lineNumber >= 0),
-    assert(executionCount >= 0);
+  FunctionData(this.functionName, this.lineNumber, {this.executionCount = 0});
 
   /// The execution count.
   @JsonKey(defaultValue: 0)
@@ -15,11 +13,11 @@ class FunctionData {
 
   /// The function name.
   @JsonKey(defaultValue: "")
-  final String functionName;
+  String functionName;
 
   /// The line number of the function start.
   @JsonKey(defaultValue: 0)
-  final int lineNumber;
+  int lineNumber;
 
   /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() => _$FunctionDataToJson(this);

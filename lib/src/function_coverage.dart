@@ -6,8 +6,6 @@ class FunctionCoverage {
 
   /// Creates a new function coverage.
   FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]):
-    assert(found >= 0),
-    assert(hit >= 0),
     data = data?.toList() ?? <FunctionData>[];
 
   /// The coverage data.

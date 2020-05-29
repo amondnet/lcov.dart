@@ -5,13 +5,11 @@ part of "../lcov.dart";
 class LineData {
 
   /// Creates a new line data.
-  LineData(this.lineNumber, {this.executionCount = 0, this.checksum = ""}):
-    assert(lineNumber >= 0),
-    assert(executionCount >= 0);
+  LineData(this.lineNumber, {this.executionCount = 0, this.checksum = ""});
 
   /// The data checksum.
   @JsonKey(defaultValue: "")
-  final String checksum;
+  String checksum;
 
   /// The execution count.
   @JsonKey(defaultValue: 0)
@@ -19,7 +17,7 @@ class LineData {
 
   /// The line number.
   @JsonKey(defaultValue: 0)
-  final int lineNumber;
+  int lineNumber;
 
   /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() => _$LineDataToJson(this);

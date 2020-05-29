@@ -18,7 +18,7 @@ class Record {
 
 	/// The path to the source file.
 	@JsonKey(defaultValue: "")
-	final String sourceFile;
+	String sourceFile;
 
 	/// Converts this object to a [Map] in JSON format.
 	Map<String, dynamic> toJson() => _$RecordToJson(this);

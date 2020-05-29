@@ -6,8 +6,6 @@ class BranchCoverage {
 
   /// Creates a new branch coverage.
   BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]):
-    assert(found >= 0),
-    assert(hit >= 0),
     data = data?.toList() ?? <BranchData>[];
 
   /// The coverage data.
