@@ -1,5 +1,11 @@
 # Changelog
 
+## Version [6.0.0](https://git.belin.io/cedx/lcov.dart/compare/v5.7.0...v6.0.0)
+- Breaking change: removed the `.fromJson()` factories.
+- Raised the [Dart SDK](https://dart.dev/tools/sdk) constraint.
+- Removed most `final` modifiers from data fields.
+- Replaced the build system based on [Grinder](https://pub.dev/packages/grinder) by [PowerShell](https://docs.microsoft.com/en-us/powershell) scripts.
+
 ## Version [5.7.0](https://git.belin.io/cedx/lcov.dart/compare/v5.6.0...v5.7.0)
 - Updated the documentation.
 - Updated the package dependencies.
