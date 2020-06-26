@@ -1,5 +1,5 @@
 # LCOV Reports <small>for Dart</small>
-![Runtime](https://badgen.net/pub/sdk-version/lcov) ![Release](https://badgen.net/pub/v/lcov) ![License](https://badgen.net/pub/license/lcov) ![Likes](https://badgen.net/pub/likes/lcov) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.dart) ![Build](https://badgen.net/github/checks/cedx/lcov.dart)
+![Runtime](https://badgen.net/pub/sdk-version/lcov) ![Release](https://badgen.net/pub/v/lcov) ![License](https://badgen.net/pub/license/lcov) ![Likes](https://badgen.net/pub/likes/lcov) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.dart) ![Build](https://badgen.net/github/checks/cedx/lcov.dart/main)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://dart.dev).
 
