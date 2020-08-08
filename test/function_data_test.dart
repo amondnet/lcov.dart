@@ -28,8 +28,8 @@ void main() => group("FunctionData", () {
     });
 
     test("should return a format like 'FNDA:<executionCount>,<functionName>' when used as data", () {
-      expect(FunctionData("", 0).toString(asDefinition: false), "FNDA:0,");
-      expect(FunctionData("main", 127, executionCount: 3).toString(asDefinition: false), "FNDA:3,main");
+      expect(FunctionData("", 0).toString(), "FNDA:0,");
+      expect(FunctionData("main", 127, executionCount: 3).toString(), "FNDA:3,main");
     });
   });
 });
