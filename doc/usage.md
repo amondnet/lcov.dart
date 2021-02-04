@@ -1,5 +1,5 @@
 ---
-path: src/branch/main
+path: blob/main
 source: lib/src/report.dart
 ---
 
@@ -67,7 +67,7 @@ Converting the `Report` instance to [JSON](https://www.json.org) format will ret
 }
 ```
 !!! tip
-	See the [API reference](https://api.belin.io/lcov.dart) of this library for more information on the `Report` class.
+	See the [API reference](https://pub.dev/documentation/lcov) of this library for more information on the `Report` class.
 
 ## Format coverage data to the LCOV format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
@@ -106,4 +106,4 @@ end_of_record
 ```
 
 !!! tip
-	See the [API reference](https://api.belin.io/lcov.dart) of this library for detailed information on the available classes.
+	See the [API reference](https://pub.dev/documentation/lcov) of this library for detailed information on the available classes.
