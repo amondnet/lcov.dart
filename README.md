@@ -3,6 +3,8 @@
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Dart](https://dart.dev).
 
+> WARNING: this package is **abandoned** and no longer maintained.
+
 ## Documentation
 - [User guide](https://cedx.github.io/lcov.dart)
 - [API reference](https://pub.dev/documentation/lcov)
