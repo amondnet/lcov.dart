@@ -5,7 +5,7 @@ part of "../lcov.dart";
 class BranchCoverage {
 
   /// Creates a new branch coverage.
-  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData> data]):
+  BranchCoverage([this.found = 0, this.hit = 0, Iterable<BranchData>? data]):
     data = data?.toList() ?? <BranchData>[];
 
   /// The coverage data.

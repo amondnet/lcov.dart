@@ -8,7 +8,7 @@ part of lcov;
 
 Map<String, dynamic> _$BranchCoverageToJson(BranchCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data?.map((e) => e?.toJson())?.toList(),
+      'data': instance.data.map((e) => e.toJson()).toList(),
       'found': instance.found,
       'hit': instance.hit,
     };
@@ -23,7 +23,7 @@ Map<String, dynamic> _$BranchDataToJson(BranchData instance) =>
 
 Map<String, dynamic> _$FunctionCoverageToJson(FunctionCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data?.map((e) => e?.toJson())?.toList(),
+      'data': instance.data.map((e) => e.toJson()).toList(),
       'found': instance.found,
       'hit': instance.hit,
     };
@@ -37,7 +37,7 @@ Map<String, dynamic> _$FunctionDataToJson(FunctionData instance) =>
 
 Map<String, dynamic> _$LineCoverageToJson(LineCoverage instance) =>
     <String, dynamic>{
-      'data': instance.data?.map((e) => e?.toJson())?.toList(),
+      'data': instance.data.map((e) => e.toJson()).toList(),
       'found': instance.found,
       'hit': instance.hit,
     };
@@ -56,6 +56,6 @@ Map<String, dynamic> _$RecordToJson(Record instance) => <String, dynamic>{
     };
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
-      'records': instance.records?.map((e) => e?.toJson())?.toList(),
+      'records': instance.records.map((e) => e?.toJson()).toList(),
       'testName': instance.testName,
     };

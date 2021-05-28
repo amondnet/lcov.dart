@@ -5,7 +5,7 @@ part of "../lcov.dart";
 class LineCoverage {
 
   /// Creates a new line coverage.
-  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData> data]):
+  LineCoverage([this.found = 0, this.hit = 0, Iterable<LineData>? data]):
     data = data?.toList() ?? <LineData>[];
 
   /// The coverage data.

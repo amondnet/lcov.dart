@@ -5,7 +5,7 @@ part of "../lcov.dart";
 class FunctionCoverage {
 
   /// Creates a new function coverage.
-  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData> data]):
+  FunctionCoverage([this.found = 0, this.hit = 0, Iterable<FunctionData>? data]):
     data = data?.toList() ?? <FunctionData>[];
 
   /// The coverage data.

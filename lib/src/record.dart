@@ -8,13 +8,13 @@ class Record {
 	Record(this.sourceFile, {this.branches, this.functions, this.lines});
 
 	/// The branch coverage.
-	BranchCoverage branches;
+	BranchCoverage? branches;
 
 	/// The function coverage.
-	FunctionCoverage functions;
+	FunctionCoverage? functions;
 
 	/// The line coverage.
-	LineCoverage lines;
+	LineCoverage? lines;
 
 	/// The path to the source file.
 	@JsonKey(defaultValue: "")

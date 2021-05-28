@@ -14,13 +14,13 @@ void main() => group("Report", () {
 		test("should contain three records", () {
 			expect(report.records, hasLength(3));
 			expect(report.records.first, isNotNull);
-			expect(report.records[0].sourceFile, "/home/cedx/lcov.dart/fixture.dart");
-			expect(report.records[1].sourceFile, "/home/cedx/lcov.dart/func1.dart");
-			expect(report.records[2].sourceFile, "/home/cedx/lcov.dart/func2.dart");
+			expect(report.records[0]!.sourceFile, "/home/cedx/lcov.dart/fixture.dart");
+			expect(report.records[1]!.sourceFile, "/home/cedx/lcov.dart/func1.dart");
+			expect(report.records[2]!.sourceFile, "/home/cedx/lcov.dart/func2.dart");
 		});
 
 		test("should have detailed branch coverage", () {
-			final branches = report.records[1].branches;
+			final branches = report.records[1]!.branches!;
 			expect(branches.found, 4);
 			expect(branches.hit, 4);
 
@@ -30,7 +30,7 @@ void main() => group("Report", () {
 		});
 
 		test("should have detailed function coverage", () {
-			final functions = report.records[1].functions;
+			final functions = report.records[1]!.functions!;
 			expect(functions.found, 1);
 			expect(functions.hit, 1);
 
@@ -40,7 +40,7 @@ void main() => group("Report", () {
 		});
 
 		test("should have detailed line coverage", () {
-			final lines = report.records[1].lines;
+			final lines = report.records[1]!.lines!;
 			expect(lines.found, 9);
 			expect(lines.hit, 9);
 

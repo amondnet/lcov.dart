@@ -6,15 +6,15 @@ part of "../lcov.dart";
 class Report {
 
 	/// Creates a new report.
-	Report([this.testName = "", Iterable<Record> records]): records = records?.toList() ?? <Record>[];
+	Report([this.testName = "", Iterable<Record>? records]): records = records?.toList() ?? <Record>[];
 
 	/// Parses the specified [coverage] data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
 	/// Throws a [LcovException] if a parsing error occurred.
-	Report.fromCoverage(String coverage): records = <Record>[], testName = "" {
+	Report.fromCoverage(String coverage): records = <Record?>[], testName = "" {
 		var offset = 0;
 
 		try {
-			Record record;
+			Record? record;
 			for (var line in coverage.split(RegExp(r"\r?\n"))) {
 				offset += line.length;
 				line = line.trim();
@@ -38,27 +38,27 @@ class Report {
 
 					case Token.functionName:
 						if (data.length < 2) throw LcovException("Invalid function name.", coverage, offset);
-						record.functions.data.add(FunctionData(data[1], int.parse(data.first, radix: 10)));
+						record!.functions!.data.add(FunctionData(data[1], int.parse(data.first, radix: 10)));
 						break;
 
 					case Token.functionData:
 						if (data.length < 2) throw LcovException("Invalid function data.", coverage, offset);
-						record.functions.data
+						record!.functions!.data
 							.firstWhere((item) => item.functionName == data[1])
 							.executionCount = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.functionsFound:
-						record.functions.found = int.parse(data.first, radix: 10);
+						record!.functions!.found = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.functionsHit:
-						record.functions.hit = int.parse(data.first, radix: 10);
+						record!.functions!.hit = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.branchData:
 						if (data.length < 4) throw LcovException("Invalid branch data.", coverage, offset);
-						record.branches.data.add(BranchData(
+						record!.branches!.data.add(BranchData(
 							int.parse(data[0], radix: 10),
 							int.parse(data[1], radix: 10),
 							int.parse(data[2], radix: 10),
@@ -67,16 +67,16 @@ class Report {
 						break;
 
 					case Token.branchesFound:
-						record.branches.found = int.parse(data.first, radix: 10);
+						record!.branches!.found = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.branchesHit:
-						record.branches.hit = int.parse(data.first, radix: 10);
+						record!.branches!.hit = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.lineData:
 						if (data.length < 2) throw LcovException("Invalid line data.", coverage, offset);
-						record.lines.data.add(LineData(
+						record!.lines!.data.add(LineData(
 							int.parse(data[0], radix: 10),
 							executionCount: int.parse(data[1], radix: 10),
 							checksum: data.length >= 3 ? data[2] : ""
@@ -84,11 +84,11 @@ class Report {
 						break;
 
 					case Token.linesFound:
-						record.lines.found = int.parse(data.first, radix: 10);
+						record!.lines!.found = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.linesHit:
-						record.lines.hit = int.parse(data.first, radix: 10);
+						record!.lines!.hit = int.parse(data.first, radix: 10);
 						break;
 
 					case Token.endOfRecord:
@@ -108,7 +108,7 @@ class Report {
 
 	/// The record list.
 	@JsonKey(defaultValue: [])
-	final List<Record> records;
+	final List<Record?> records;
 
 	/// The test name.
 	@JsonKey(defaultValue: "")
